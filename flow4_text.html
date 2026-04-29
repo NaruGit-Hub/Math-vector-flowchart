@@ -17,7 +17,6 @@ h4 { font-size: 14px; margin-top: 16px; }
 table { border-collapse: collapse; width: 100%; margin: 12px 0; }
 th, td { border: 1px solid #999; padding: 6px 10px; text-align: left; font-size: 14px; vertical-align: top; }
 th { background: #f4f4f4; }
-blockquote { background: #f9f9f6; border-left: 3px solid #888; padding: 8px 16px; margin: 12px 0; font-size: 14px; }
 .img-container { margin: 20px 0; text-align: center; }
 .img-container svg { max-width: 100%; height: auto; }
 .note { background: #fffbe6; border: 1px solid #e0d080; padding: 10px 14px; border-radius: 4px; margin: 12px 0; font-size: 14px; }
@@ -25,10 +24,8 @@ blockquote { background: #f9f9f6; border-left: 3px solid #888; padding: 8px 16px
 .level-standard { border-left: 4px solid #BA7517; padding-left: 10px; }
 .level-advanced { border-left: 4px solid #185FA5; padding-left: 10px; }
 .level-expert { border-left: 4px solid #A32D2D; padding-left: 10px; }
-code { background: #f0f0f0; padding: 1px 4px; border-radius: 2px; }
-.ref { background: #eef4fb; border: 1px solid #c4d9ee; padding: 6px 12px; border-radius: 4px; margin: 8px 0; font-size: 14px; }
 ul.steps { padding-left: 22px; }
-ul.steps li { margin: 4px 0; }
+ul.steps li { margin: 6px 0; }
 .tail { background: #f4f4f4; border: 1px solid #ccc; padding: 6px 10px; margin: 8px 0; border-radius: 3px; font-size: 13px; }
 .toc { background: #f9f9f9; border: 1px solid #ddd; padding: 12px 18px; margin: 20px 0; border-radius: 4px; }
 .toc ul { padding-left: 20px; margin: 4px 0; }
@@ -39,8 +36,37 @@ ul.steps li { margin: 4px 0; }
 .lm-standard { border: 1px solid #BA7517; color: #BA7517; }
 .lm-advanced { border: 1px solid #185FA5; color: #185FA5; }
 .lm-expert { border: 1px solid #A32D2D; color: #A32D2D; }
+.guide {
+  background: #f0f7fb;
+  border: 1px solid #b8d4e8;
+  padding: 16px 20px; border-radius: 6px;
+  margin: 20px 0;
+}
+.guide h2 { border-left: 4px solid #185FA5; margin-top: 0; }
+.guide-step { margin: 12px 0; }
+.guide-step .head { font-weight: 600; color: #185FA5; }
+.guide-options { margin: 8px 0 8px 20px; }
+.guide-options li { margin: 6px 0; }
+.guide-options strong { display: inline-block; min-width: 6em; }
+.routing-table th { background: #f0f7fb; }
 @media print { body { margin: 20px; } }
 </style>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        id="MathJax-script" async></script>
+
 </head>
 <body>
 <h1>ベクトル｜④ 垂線・正射影・外心</h1>
@@ -48,11 +74,11 @@ ul.steps li { margin: 4px 0; }
 <h2 class="level-standard" id="flow4">④ 垂線・正射影・外心<span class="level-mark lm-standard">標準</span></h2>
 <div class="tail"><strong>末尾キーワード:</strong> 「垂線の足を求めよ」／「正射影ベクトルを求めよ」／「外心を求めよ」</div>
 <p>「垂線・正射影・外心」を見たら正射影公式または内積=0の条件で連立する。</p>
-<h3 class="level-standard">4A: 直線（ベクトル）への正射影<span class="level-mark lm-standard">標準</span></h3>
+<h3 class="level-standard" id="4A">4A: 直線（ベクトル）への正射影<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
-<li>公式: OH = (a·b / |a|²) × a</li>
-<li>内積 a·b を計算</li>
-<li>|a|² を計算</li>
+<li>公式: \(\displaystyle \vec{OH} = \frac{\vec{a}\cdot\vec{b}}{|\vec{a}|^2}\vec{a}\)</li>
+<li>内積 \(\vec{a}\cdot\vec{b}\) を計算</li>
+<li>\(|\vec{a}|^2\) を計算</li>
 <li>公式に代入</li>
 </ul>
 <div class="note">「ある点から直線に垂線を下ろす」を見たら即この公式</div>
@@ -100,18 +126,18 @@ ul.steps li { margin: 4px 0; }
 <text x="130.0" y="100.0" class="ftxt">b</text>
 <text x="135.0" y="152.0" class="ftxt">OH</text>
 </svg></div>
-<h3 class="level-standard">4B: 垂線の足を交点として求める<span class="level-mark lm-standard">標準</span></h3>
+<h3 class="level-standard" id="4B">4B: 垂線の足を交点として求める<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
-<li>H = OA + t·AB と置く（直線AB上）</li>
-<li>PH·AB = 0（垂直条件）</li>
-<li>t を決定</li>
+<li>\(\vec{OH} = \vec{OA} + t\vec{AB}\) と置く（直線AB上）</li>
+<li>\(\vec{PH}\cdot\vec{AB} = 0\)（垂直条件）</li>
+<li>\(t\) を決定</li>
 </ul>
 <div class="note">公式を使わない別解。連立で解ける</div>
-<h3 class="level-advanced">4C: 平面への正射影（空間）<span class="level-mark lm-advanced">応用</span></h3>
+<h3 class="level-advanced" id="4C">4C: 平面への正射影（空間）<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
-<li>公式は「ベクトル→ベクトル」なので、まず法線nに正射影</li>
-<li>n への正射影 = (n·x/|n|²)·n</li>
-<li>平面αへの正射影 = x − (n·x/|n|²)·n</li>
+<li>公式は「ベクトル→ベクトル」なので、まず法線 \(\vec{n}\) に正射影</li>
+<li>\(\vec{n}\) への正射影 = \(\displaystyle \frac{\vec{n}\cdot\vec{x}}{|\vec{n}|^2}\vec{n}\)</li>
+<li>平面 \(\alpha\) への正射影 = \(\displaystyle \vec{x} - \frac{\vec{n}\cdot\vec{x}}{|\vec{n}|^2}\vec{n}\)</li>
 </ul>
 <div class="img-container"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240">
 
@@ -154,12 +180,12 @@ ul.steps li { margin: 4px 0; }
 <text x="35.0" y="195.0" class="label">α</text>
 <text x="225.0" y="170.0" class="label">射影</text>
 </svg></div>
-<h3 class="level-advanced">4D: 三角形の外心<span class="level-mark lm-advanced">応用</span></h3>
+<h3 class="level-advanced" id="4D">4D: 三角形の外心<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
-<li>OR = xa + yb と置く</li>
+<li>\(\vec{OR} = x\vec{a} + y\vec{b}\) と置く</li>
 <li>辺の中点 M, N を取る</li>
-<li>RM·OA = 0, RN·OB = 0 を連立</li>
-<li>x, y を決定</li>
+<li>\(\vec{RM}\cdot\vec{OA}=0,\ \vec{RN}\cdot\vec{OB}=0\) を連立</li>
+<li>\(x, y\) を決定</li>
 </ul>
 <div class="note">外心は「垂直二等分線の交点」</div>
 <div class="img-container"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" width="320" height="260">
@@ -209,16 +235,16 @@ ul.steps li { margin: 4px 0; }
 <text x="166.0" y="175.0" class="label">R</text>
 <text x="155.0" y="238.0" class="label">M</text>
 </svg></div>
-<h3 class="level-advanced">4E: 正射影 × 外心の合わせ技<span class="level-mark lm-advanced">応用</span></h3>
+<h3 class="level-advanced" id="4E">4E: 正射影 × 外心の合わせ技<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>外心から辺へ垂線を下ろすと中点に落ちる</li>
 <li>外心と垂直二等分線の相性は◎</li>
 </ul>
-<h3 class="level-expert">4F: 平行六面体の高さ<span class="level-mark lm-expert">発展</span></h3>
+<h3 class="level-expert" id="4F">4F: 平行六面体の高さ<span class="level-mark lm-expert">発展</span></h3>
 <ul class="steps">
-<li>底面の法線方向 n</li>
-<li>高さ |OH| = |b·n| / |n|</li>
-<li>体積 V = 底面積 × 高さ</li>
+<li>底面の法線方向 \(\vec{n}\)</li>
+<li>高さ \(\displaystyle |\vec{OH}| = \frac{|\vec{b}\cdot\vec{n}|}{|\vec{n}|}\)</li>
+<li>体積 \(V\) = 底面積 \(\times\) 高さ</li>
 </ul>
 <hr style="margin-top:40px">
 <p style="font-size:12px; color:#888;">© 数学フローチャート（ベクトル）</p>

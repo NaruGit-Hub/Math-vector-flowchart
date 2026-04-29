@@ -25,6 +25,24 @@ body {
   width: 14px; height: 14px; border: 2px solid; border-radius: 2px;
   display: inline-block; flex-shrink: 0;
 }
+.guide-box {
+  margin: 12px;
+  padding: 12px 14px;
+  background: #f0f7fb;
+  border: 1px solid #b8d4e8;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.guide-box h2 {
+  font-size: 15px;
+  color: #185FA5;
+  margin-bottom: 8px;
+}
+.guide-box .step-head { font-weight: 600; margin-top: 8px; color: #185FA5; }
+.guide-box ul { margin-left: 20px; margin-top: 4px; }
+.guide-box li { margin: 3px 0; }
+.guide-box .marker { color: #A32D2D; font-weight: 600; }
+
 .tree { padding: 12px 8px 40px 8px; }
 .tree ul { list-style: none; padding-left: 20px; border-left: 1px solid #ddd; }
 .tree > ul { border-left: none; padding-left: 0; }
@@ -73,6 +91,9 @@ body {
 }
 .img-wrap svg { width: 100%; height: auto; display: block; }
 
+.note-li { margin: 6px 0; }
+.note-li .node { background: #fffbe6; border-color: #e0d080; }
+
 .hidden { display: none; }
 
 @media (max-width: 600px) {
@@ -82,7 +103,24 @@ body {
   .tree ul { padding-left: 14px; }
   .img-wrap { margin-left: 10px; }
 }
-</style></head><body>
+</style>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        id="MathJax-script" async></script>
+
+</head><body>
 <div class="header"><h1>ベクトル：定石フローチャート</h1></div>
 
 <div class="legend">
@@ -94,52 +132,55 @@ body {
   <span style="color:#999">｜ &#9654; をタップで展開</span>
 </div>
 
+<div class="guide-box">
+<h2>📘 この資料の使い方</h2>
+<div>図形問題に出会ったとき、解法の選択肢は複数あります。この資料は「ベクトルで解くと決めたあと」の定石を整理したものです。</div>
+<div class="step-head">Step 0: まず図を描く</div>
+<div>図形問題を解く前提として、必ず図を描く。</div>
+<div class="step-head">Step 1: 幾何的考察で解けないか試す</div>
+<div>相似・合同・直角・円周角・接弦定理・方べきの定理・正弦定理・余弦定理 など、初等幾何の道具で解ければ計算量が大幅に減る。まずこれを試す。</div>
+<div class="step-head">Step 2: 解析的考察に進む（3つの選択肢）</div>
+<div>幾何で解けない／面倒な場合、以下から選ぶ：</div>
+<ul>
+<li><strong>ベクトル</strong>：対称性のある図形・四面体・平行六面体・空間問題で強い。← この資料はこれ専用<span class="marker">←この資料</span></li>
+<li><strong>座標設定</strong>：直交軸・原点が自然に取れるとき。計算量を減らしやすい。</li>
+<li><strong>複素数平面</strong>：回転・拡大縮小が絡む問題で強い（数Cで学習）。</li>
+</ul>
+<div class="step-head">Step 3: ベクトルで解くと決めたら</div>
+<div>問題文の末尾キーワードを見て、下の早見表から該当するフローへ進む。</div>
+<div class="step-head">末尾キーワード → フロー</div>
+<ul>
+<li>「長さ・面積・体積・なす角を求めよ」 → <strong>① 図形量を求める</strong></li>
+<li>「位置ベクトル・OP を表せ・分点・交点を求めよ」 → <strong>② 点の位置・分点を求める</strong></li>
+<li>「動く範囲・存在領域を図示せよ」 → <strong>③ 終点範囲・軌跡を求める</strong></li>
+<li>「垂線の足・正射影・外心」 → <strong>④ 垂線・正射影・外心</strong></li>
+<li>「直線/平面の方程式・距離を求めよ」 → <strong>⑤ 直線・平面の方程式</strong></li>
+<li>「同一直線/同一平面・垂直であることを示せ」 → <strong>⑥ 共線・共面・平行・垂直の判定/証明</strong></li>
+<li>「式の表す図形を答えよ」 → <strong>⑦ ベクトル方程式の表す図形</strong></li>
+</ul>
+<div style="margin-top:8px; font-size:12px; color:#555;">※ 始点をどこに統一するか、位置ベクトル設定／座標設定どちらを使うかは「道具集」を参照。</div>
+</div>
 <div class="tree">
 <ul>
 <li>
-<span class="node root basic has-children open" onclick="toggle(this)">ベクトル：問題文末尾 → フロー判定</span>
-<ul>
-<li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">方針の上位フロー（解析の前にやること）</span>
-<ul>
-<li><span class="node step leaf">Step 0: 図を描く（鉄則）</span></li>
-<li><span class="node step leaf">Step 1: 幾何的考察できないか？（相似・直角・正弦定理・余弦定理）</span></li>
-<li><span class="node step leaf">Step 2: 解析的考察に進む（位置ベクトル設定 or 座標設定）</span></li>
-<li><span class="node step leaf">    始点をどこに？ → 道具1</span></li>
-<li><span class="node step leaf">    位置ベクトル or 座標 → 道具7・道具8</span></li>
-</ul></li>
-<li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">末尾キーワード → フロー</span>
-<ul>
-<li><span class="node ref leaf">「長さ・面積・体積・なす角」 → ① 図形量を求める</span></li>
-<li><span class="node ref leaf">「位置ベクトル・分点・OPを表せ・交点」 → ② 点の位置・分点を求める</span></li>
-<li><span class="node ref leaf">「動く範囲・存在領域を図示」 → ③ 終点範囲・軌跡を求める</span></li>
-<li><span class="node ref leaf">「垂線の足・正射影・外心」 → ④ 垂線・正射影・外心</span></li>
-<li><span class="node ref leaf">「直線/平面の方程式・距離」 → ⑤ 直線・平面の方程式（空間中心）</span></li>
-<li><span class="node ref leaf">「同一直線/平面・垂直を示せ」 → ⑥ 共線・共面・平行・垂直の判定/証明</span></li>
-<li><span class="node ref leaf">「式の表す図形を答えよ」 → ⑦ ベクトル方程式の表す図形</span></li>
-</ul></li>
-</ul></li></ul>
-<ul>
-<li>
-<span class="node root standard has-children open" onclick="toggle(this)">① 図形量を求める</span>
-<ul>
+<span class="node root standard has-children" onclick="toggle(this)">① 図形量を求める</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「長さを求めよ」／「面積を求めよ」／「体積を求めよ」／「なす角を求めよ」</span></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">1A: 長さ |AB|, |OP| を求める</span>
-<ul>
-<li><span class="node step leaf">AB = b − a などベクトルで表す</span></li>
-<li><span class="node step leaf">|AB|² = (b−a)·(b−a) = |b|² − 2a·b + |a|²</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">1A: 長さ \(|\vec{AB}|,\ |\vec{OP}|\) を求める</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{AB} = \vec{b} - \vec{a}\) などベクトルで表す</span></li>
+<li><span class="node step leaf">\(|\vec{AB}|^2 = (\vec{b}-\vec{a})\cdot(\vec{b}-\vec{a}) = |\vec{b}|^2 - 2\vec{a}\cdot\vec{b} + |\vec{a}|^2\)</span></li>
 <li><span class="node step leaf">平方根をとる</span></li>
-<li><span class="node ref leaf">💡 「絶対値を見たら2乗 → 内積に結ぶ」が定石</span></li>
+<li class="note-li"><span class="node leaf">💡 「絶対値を見たら2乗 → 内積に結ぶ」が定石</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">1B: 三角形の面積</span>
-<ul>
-<li><span class="node step leaf">2辺ベクトル u, v を決める</span></li>
-<li><span class="node step leaf">S = (1/2)√(|u|²|v|² − (u·v)²)</span></li>
-<li><span class="node ref leaf">💡 平面なら |x₁y₂ − x₂y₁|/2 でも可。空間ではこの公式が必須。</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">1B: 三角形の面積</span>
+<ul class="hidden">
+<li><span class="node step leaf">2辺ベクトル \(\vec{u},\ \vec{v}\) を決める</span></li>
+<li><span class="node step leaf">\(\displaystyle S = \frac{1}{2}\sqrt{|\vec{u}|^2|\vec{v}|^2 - (\vec{u}\cdot\vec{v})^2}\)</span></li>
+<li class="note-li"><span class="node leaf">💡 平面なら \(\dfrac{|x_1 y_2 - x_2 y_1|}{2}\) でも可。空間ではこの公式が必須。</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 200" width="280" height="200">
 
 <style>
@@ -183,12 +224,12 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">1C: 四面体の体積（ベクトル）</span>
-<ul>
-<li><span class="node step leaf">底面 △OAB の面積 S を求める</span></li>
-<li><span class="node step leaf">平面OABへの c の正射影を引いて高さ h</span></li>
-<li><span class="node step leaf">V = (1/3) × S × h</span></li>
-<li><span class="node ref leaf">💡 裏計算: V = (1/6)|a·(b×c)|（外積は答案不可）</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">1C: 四面体の体積（ベクトル）</span>
+<ul class="hidden">
+<li><span class="node step leaf">底面 \(\triangle OAB\) の面積 \(S\) を求める</span></li>
+<li><span class="node step leaf">平面 \(OAB\) への \(\vec{c}\) の正射影を引いて高さ \(h\)</span></li>
+<li><span class="node step leaf">\(\displaystyle V = \frac{1}{3} \times S \times h\)</span></li>
+<li class="note-li"><span class="node leaf">💡 裏計算: \(\displaystyle V = \frac{1}{6}|\vec{a}\cdot(\vec{b}\times\vec{c})|\)（外積は答案不可）</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240">
 
 <style>
@@ -237,20 +278,20 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">1D: 平行六面体の体積</span>
-<ul>
-<li><span class="node step leaf">底面の平行四辺形の面積 S</span></li>
-<li><span class="node step leaf">高さ h（法線方向への正射影）</span></li>
-<li><span class="node step leaf">V = S × h</span></li>
-<li><span class="node ref leaf">💡 裏計算: V = |a·(b×c)|</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">1D: 平行六面体の体積</span>
+<ul class="hidden">
+<li><span class="node step leaf">底面の平行四辺形の面積 \(S\)</span></li>
+<li><span class="node step leaf">高さ \(h\)（法線方向への正射影）</span></li>
+<li><span class="node step leaf">\(V = S \times h\)</span></li>
+<li class="note-li"><span class="node leaf">💡 裏計算: \(V = |\vec{a}\cdot(\vec{b}\times\vec{c})|\)</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">1E: 2ベクトルのなす角</span>
-<ul>
-<li><span class="node step leaf">cosθ = (a·b) / (|a||b|)</span></li>
-<li><span class="node step leaf">範囲 0 ≦ θ ≦ π に注意</span></li>
-<li><span class="node ref leaf">💡 直線のなす角(0〜π/2)とベクトルのなす角(0〜π)は別物</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">1E: 2ベクトルのなす角</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\displaystyle \cos\theta = \frac{\vec{a}\cdot\vec{b}}{|\vec{a}||\vec{b}|}\)</span></li>
+<li><span class="node step leaf">範囲 \(0 \leqq \theta \leqq \pi\) に注意</span></li>
+<li class="note-li"><span class="node leaf">💡 直線のなす角(\(0\sim\pi/2\))とベクトルのなす角(\(0\sim\pi\))は別物</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 180" width="280" height="180">
 
 <style>
@@ -291,32 +332,32 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">1F: 2直線のなす角</span>
-<ul>
+<span class="node l1 standard has-children" onclick="toggle(this)">1F: 2直線のなす角</span>
+<ul class="hidden">
 <li><span class="node step leaf">方向ベクトルを取り、内積でcos</span></li>
 <li><span class="node step leaf">鋭角に直す（必要なら絶対値）</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">1G: 平面と直線・2平面のなす角</span>
-<ul>
+<span class="node l1 expert has-children" onclick="toggle(this)">1G: 平面と直線・2平面のなす角</span>
+<ul class="hidden">
 <li><span class="node step leaf">法線ベクトルを取る</span></li>
 <li><span class="node step leaf">内積で計算</span></li>
-<li><span class="node step leaf">「90°−（法線同士のなす角）」等、向きを補正</span></li>
+<li><span class="node step leaf">「\(90°\)−（法線同士のなす角）」等、向きを補正</span></li>
 </ul>
 </li>
 </ul></li></ul>
 <ul>
 <li>
-<span class="node root standard has-children open" onclick="toggle(this)">② 点の位置・分点を求める</span>
-<ul>
+<span class="node root standard has-children" onclick="toggle(this)">② 点の位置・分点を求める</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「位置ベクトルを表せ」／「OPを表せ」／「s:tに内分する点を求めよ」／「交点を求めよ」</span></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">2A: 内分点・外分点の公式</span>
-<ul>
-<li><span class="node step leaf">m:n に内分: p = (na + mb) / (m+n)</span></li>
-<li><span class="node step leaf">m:n に外分: p = (−na + mb) / (m−n)</span></li>
-<li><span class="node step leaf">「m:n に外分」⇔「m:(−n) に内分」として覚える</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">2A: 内分点・外分点の公式</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(m:n\) に内分: \(\displaystyle \vec{p} = \frac{n\vec{a} + m\vec{b}}{m+n}\)</span></li>
+<li><span class="node step leaf">\(m:n\) に外分: \(\displaystyle \vec{q} = \frac{-n\vec{a} + m\vec{b}}{m-n}\)</span></li>
+<li><span class="node step leaf">「\(m:n\) に外分」⇔「\(m:(-n)\) に内分」として覚える</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 140" width="380" height="140">
 
 <style>
@@ -359,18 +400,18 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">2B: 共線条件で点を決定</span>
-<ul>
-<li><span class="node step leaf">OP = (1−t)OA + t·OB と置く</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">2B: 共線条件で点を決定</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OP} = (1-t)\vec{OA} + t\vec{OB}\) と置く</span></li>
 <li><span class="node step leaf">別の条件（直線CD上にある等）と連立</span></li>
-<li><span class="node step leaf">一次独立性より係数比較で t を決定</span></li>
-<li><span class="node ref leaf">💡 「Pは直線AB上」+「別の条件」という形を見たら</span></li>
+<li><span class="node step leaf">一次独立性より係数比較で \(t\) を決定</span></li>
+<li class="note-li"><span class="node leaf">💡 「P は直線AB上」+「別の条件」という形を見たら</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">2C: 共面条件で点を決定（空間）</span>
-<ul>
-<li><span class="node step leaf">OP = sOA + tOB + uOC, s+t+u=1 と置く</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">2C: 共面条件で点を決定（空間）</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OP} = s\vec{OA} + t\vec{OB} + u\vec{OC},\ s+t+u=1\) と置く</span></li>
 <li><span class="node step leaf">別の条件と連立</span></li>
 <li><span class="node step leaf">係数比較</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 220" width="340" height="220">
@@ -420,11 +461,11 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">2D: 角の二等分線との交点</span>
-<ul>
-<li><span class="node step leaf">∠AOBの二等分線方向は a/|a| + b/|b|</span></li>
-<li><span class="node step leaf">AP:PB = OA:OB を使って OP = (|b|a + |a|b)/(|a|+|b|)</span></li>
-<li><span class="node ref leaf">💡 ひし形の公式 OP // a/|a| + b/|b| でも可</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">2D: 角の二等分線との交点</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\angle AOB\) の二等分線方向は \(\displaystyle \frac{\vec{a}}{|\vec{a}|} + \frac{\vec{b}}{|\vec{b}|}\)</span></li>
+<li><span class="node step leaf">\(AP:PB = OA:OB\) を使って \(\displaystyle \vec{OP} = \frac{|\vec{b}|\vec{a} + |\vec{a}|\vec{b}}{|\vec{a}|+|\vec{b}|}\)</span></li>
+<li class="note-li"><span class="node leaf">💡 ひし形の公式 \(\vec{OP} \parallel \dfrac{\vec{a}}{|\vec{a}|} + \dfrac{\vec{b}}{|\vec{b}|}\) でも可</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
 
 <style>
@@ -466,31 +507,31 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">2E: 三角形・四面体の重心</span>
-<ul>
-<li><span class="node step leaf">三角形 ABC の重心: g = (a+b+c)/3</span></li>
-<li><span class="node step leaf">四面体 ABCD の重心: g = (a+b+c+d)/4</span></li>
-<li><span class="node ref leaf">💡 GA + GB + GC = 0（始点を重心に取れば成立）</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">2E: 三角形・四面体の重心</span>
+<ul class="hidden">
+<li><span class="node step leaf">三角形 ABC の重心: \(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}}{3}\)</span></li>
+<li><span class="node step leaf">四面体 ABCD の重心: \(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}+\vec{d}}{4}\)</span></li>
+<li class="note-li"><span class="node leaf">💡 \(\vec{GA}+\vec{GB}+\vec{GC}=\vec{0}\)（始点を重心に取れば成立）</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">2F: 内心の位置ベクトル</span>
-<ul>
-<li><span class="node step leaf">角の二等分線の性質から BD:DC = c:b</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">2F: 内心の位置ベクトル</span>
+<ul class="hidden">
+<li><span class="node step leaf">角の二等分線の性質から \(BD:DC = c:b\)</span></li>
 <li><span class="node step leaf">D の位置ベクトルを出す</span></li>
-<li><span class="node step leaf">AI:ID = (b+c):a を再利用</span></li>
-<li><span class="node step leaf">結果: i = (a·a + b·b + c·c)/(a+b+c)</span></li>
-<li><span class="node ref leaf">💡 a, b, c は対辺の長さ（覚える価値あり）</span></li>
+<li><span class="node step leaf">\(AI:ID = (b+c):a\) を再利用</span></li>
+<li><span class="node step leaf">結果: \(\displaystyle \vec{i} = \frac{a\vec{a} + b\vec{b} + c\vec{c}}{a+b+c}\)</span></li>
+<li class="note-li"><span class="node leaf">💡 \(a, b, c\) は対辺の長さ（覚える価値あり）</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">2G: 外心の位置ベクトル</span>
-<ul>
-<li><span class="node step leaf">OR = xa + yb と置く</span></li>
-<li><span class="node step leaf">辺OA, OBの中点を M, N</span></li>
-<li><span class="node step leaf">RM·OA = 0, RN·OB = 0 を連立</span></li>
-<li><span class="node step leaf">x, y を解く</span></li>
-<li><span class="node ref leaf">💡 外心を始点に取れる場合は |a|=|b|=|c|=R が使えてラク</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">2G: 外心の位置ベクトル</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OR} = x\vec{a} + y\vec{b}\) と置く</span></li>
+<li><span class="node step leaf">辺 OA, OB の中点を M, N</span></li>
+<li><span class="node step leaf">\(\vec{RM}\cdot\vec{OA}=0,\ \vec{RN}\cdot\vec{OB}=0\) を連立</span></li>
+<li><span class="node step leaf">\(x, y\) を解く</span></li>
+<li class="note-li"><span class="node leaf">💡 外心を始点に取れる場合は \(|\vec{a}|=|\vec{b}|=|\vec{c}|=R\) が使えてラク</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" width="320" height="260">
 
 <style>
@@ -541,29 +582,28 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">2H: 「sa + tb + uc = 0」型の利用</span>
-<ul>
-<li><span class="node step leaf">パターン1: 一文字消去 a = −(tb+uc)/s</span></li>
-<li><span class="node step leaf">パターン2: 内積を見る a·(sa+tb+uc) = 0</span></li>
-<li><span class="node step leaf">パターン3: 1つを移項して2乗 |sa|² = |−(tb+uc)|²</span></li>
-<li><span class="node ref leaf">💡 3ベクトルの和が0なら2乗が定石</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">2H: 「\(s\vec{a}+t\vec{b}+u\vec{c}=\vec{0}\)」型の利用</span>
+<ul class="hidden">
+<li><span class="node step leaf">パターン1: 一文字消去 \(\displaystyle \vec{a} = -\frac{t\vec{b}+u\vec{c}}{s}\)</span></li>
+<li><span class="node step leaf">パターン2: 内積を見る \(\vec{a}\cdot(s\vec{a}+t\vec{b}+u\vec{c}) = 0\)</span></li>
+<li><span class="node step leaf">パターン3: 1つを移項して2乗 \(|s\vec{a}|^2 = |-(t\vec{b}+u\vec{c})|^2\)</span></li>
+<li class="note-li"><span class="node leaf">💡 3ベクトルの和が0なら2乗が定石</span></li>
 </ul>
 </li>
 </ul></li></ul>
 <ul>
 <li>
-<span class="node root advanced has-children open" onclick="toggle(this)">③ 終点範囲・軌跡を求める</span>
-<ul>
+<span class="node root advanced has-children" onclick="toggle(this)">③ 終点範囲・軌跡を求める</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「Pの動く範囲を図示せよ」／「Pの存在領域を求めよ」／「領域を求めよ」</span></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">3A: 基本パターン（暗記）</span>
-<ul>
-<li><span class="node step leaf">OP = sa + tb のとき</span></li>
-<li><span class="node step leaf">・s, t 実数全体 → 全平面</span></li>
-<li><span class="node step leaf">・s+t = 1 → 直線AB</span></li>
-<li><span class="node step leaf">・s+t = 1, s≧0,t≧0 → 線分AB</span></li>
-<li><span class="node step leaf">・s+t ≦ 1, s≧0,t≧0 → △OAB周+内部</span></li>
-<li><span class="node step leaf">空間も同様: s+t+u に拡張</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">3A: 基本パターン（暗記）— 平面</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OP} = s\vec{a} + t\vec{b}\) のとき</span></li>
+<li><span class="node step leaf">・\(s, t\) 実数全体 → 全平面</span></li>
+<li><span class="node step leaf">・\(s+t = 1\) → 直線AB</span></li>
+<li><span class="node step leaf">・\(s+t = 1,\ s\geqq 0,\ t\geqq 0\) → 線分AB</span></li>
+<li><span class="node step leaf">・\(s+t \leqq 1,\ s\geqq 0,\ t\geqq 0\) → \(\triangle OAB\) の周および内部</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="560" height="220">
 
 <style>
@@ -639,12 +679,12 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">3A2: 基本パターン（空間）</span>
-<ul>
-<li><span class="node step leaf">OP = la + mb + nc のとき</span></li>
-<li><span class="node step leaf">・l+m+n = 1 → 平面ABC</span></li>
-<li><span class="node step leaf">・l+m+n = 1, 各≧0 → △ABC周+内部</span></li>
-<li><span class="node step leaf">・l+m+n ≦ 1, 各≧0 → 四面体OABC周+内部</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">3A2: 基本パターン（暗記）— 空間</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OP} = l\vec{a} + m\vec{b} + n\vec{c}\) のとき</span></li>
+<li><span class="node step leaf">・\(l+m+n = 1\) → 平面ABC</span></li>
+<li><span class="node step leaf">・\(l+m+n = 1\), 各\(\geqq 0\) → \(\triangle ABC\) の周および内部</span></li>
+<li><span class="node step leaf">・\(l+m+n \leqq 1\), 各\(\geqq 0\) → 四面体OABCの周および内部</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="560" height="220">
 
 <style>
@@ -722,64 +762,64 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">3B: 一般の終点範囲（3手順型）</span>
-<ul>
-<li><span class="node step leaf">s（または t）を固定</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">3B: 一般の終点範囲（3手順型）</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(s\)（または \(t\)）を固定</span></li>
 <li><span class="node step leaf">動く方の変数で線を作る</span></li>
 <li><span class="node step leaf">固定した変数を動かして面に拡大</span></li>
-<li><span class="node ref leaf">💡 0≦a≦1, 1/2≦b≦1 のような長方形領域で使う</span></li>
+<li class="note-li"><span class="node leaf">💡 \(0\leqq a\leqq 1,\ \dfrac{1}{2}\leqq b\leqq 1\) のような長方形領域で使う</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">3C: (s+t) を作って3-Aに帰着</span>
-<ul>
-<li><span class="node step leaf">OP = (s+t) × {(sa+tb)/(s+t)} と変形</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">3C: \((s+t)\) を作って 3-A に帰着</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\displaystyle \vec{OP} = (s+t)\cdot\frac{s\vec{a}+t\vec{b}}{s+t}\) と変形</span></li>
 <li><span class="node step leaf">内側の点 Q は線分AB上を動く</span></li>
-<li><span class="node step leaf">P は OQ を (s+t) 倍した点 → 図示</span></li>
-<li><span class="node ref leaf">💡 「パラメータについて整理する」の発想</span></li>
+<li><span class="node step leaf">P は OQ を \((s+t)\) 倍した点 → 図示</span></li>
+<li class="note-li"><span class="node leaf">💡 「パラメータについて整理する」の発想</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">3D: 始点を変えて簡単化</span>
-<ul>
-<li><span class="node step leaf">a, b, c の係数和が a+b+c=1 等のとき</span></li>
-<li><span class="node step leaf">始点を A に統一（→AP, AB, AC で書き直す）</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">3D: 始点を変えて簡単化</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{a},\vec{b},\vec{c}\) の係数和が \(a+b+c=1\) 等のとき</span></li>
+<li><span class="node step leaf">始点を A に統一（→\(\vec{AP},\vec{AB},\vec{AC}\) で書き直す）</span></li>
 <li><span class="node step leaf">制約条件も書き換え</span></li>
 <li><span class="node step leaf">3-A に帰着</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">3E: 斜交座標による解法</span>
-<ul>
-<li><span class="node step leaf">a, b 方向を斜交軸とみなす</span></li>
-<li><span class="node step leaf">(s, t) 平面で不等式を図示</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">3E: 斜交座標による解法</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{a},\vec{b}\) 方向を斜交軸とみなす</span></li>
+<li><span class="node step leaf">\((s, t)\) 平面で不等式を図示</span></li>
 <li><span class="node step leaf">元の図に戻す</span></li>
-<li><span class="node ref leaf">💡 答案では使いにくいが、見通しが立てやすい</span></li>
+<li class="note-li"><span class="node leaf">💡 答案では使いにくいが、見通しが立てやすい</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">3F: 平面/空間の判別に注意</span>
-<ul>
-<li><span class="node step leaf">|x − a| = r → 平面なら円、空間なら球面</span></li>
-<li><span class="node step leaf">(x − a)·(x − b) = 0 → 平面なら円、空間なら球面</span></li>
-<li><span class="node step leaf">(x − a)·n = 0 → 平面なら直線、空間なら平面</span></li>
-<li><span class="node ref leaf">💡 「答えを円周にしないで球面に」</span></li>
+<span class="node l1 expert has-children" onclick="toggle(this)">3F: 平面/空間の判別に注意</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(|\vec{x} - \vec{a}| = r\) → 平面なら円、空間なら球面</span></li>
+<li><span class="node step leaf">\((\vec{x} - \vec{a})\cdot(\vec{x} - \vec{b}) = 0\) → 平面なら円、空間なら球面</span></li>
+<li><span class="node step leaf">\((\vec{x} - \vec{a})\cdot\vec{n} = 0\) → 平面なら直線、空間なら平面</span></li>
+<li class="note-li"><span class="node leaf">💡 「答えを円周にしないで球面に」</span></li>
 </ul>
 </li>
 </ul></li></ul>
 <ul>
 <li>
-<span class="node root standard has-children open" onclick="toggle(this)">④ 垂線・正射影・外心</span>
-<ul>
+<span class="node root standard has-children" onclick="toggle(this)">④ 垂線・正射影・外心</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「垂線の足を求めよ」／「正射影ベクトルを求めよ」／「外心を求めよ」</span></li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">4A: 直線（ベクトル）への正射影</span>
-<ul>
-<li><span class="node step leaf">公式: OH = (a·b / |a|²) × a</span></li>
-<li><span class="node step leaf">内積 a·b を計算</span></li>
-<li><span class="node step leaf">|a|² を計算</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">4A: 直線（ベクトル）への正射影</span>
+<ul class="hidden">
+<li><span class="node step leaf">公式: \(\displaystyle \vec{OH} = \frac{\vec{a}\cdot\vec{b}}{|\vec{a}|^2}\vec{a}\)</span></li>
+<li><span class="node step leaf">内積 \(\vec{a}\cdot\vec{b}\) を計算</span></li>
+<li><span class="node step leaf">\(|\vec{a}|^2\) を計算</span></li>
 <li><span class="node step leaf">公式に代入</span></li>
-<li><span class="node ref leaf">💡 「ある点から直線に垂線を下ろす」を見たら即この公式</span></li>
+<li class="note-li"><span class="node leaf">💡 「ある点から直線に垂線を下ろす」を見たら即この公式</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200" width="360" height="200">
 
 <style>
@@ -827,20 +867,20 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">4B: 垂線の足を交点として求める</span>
-<ul>
-<li><span class="node step leaf">H = OA + t·AB と置く（直線AB上）</span></li>
-<li><span class="node step leaf">PH·AB = 0（垂直条件）</span></li>
-<li><span class="node step leaf">t を決定</span></li>
-<li><span class="node ref leaf">💡 公式を使わない別解。連立で解ける</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">4B: 垂線の足を交点として求める</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OH} = \vec{OA} + t\vec{AB}\) と置く（直線AB上）</span></li>
+<li><span class="node step leaf">\(\vec{PH}\cdot\vec{AB} = 0\)（垂直条件）</span></li>
+<li><span class="node step leaf">\(t\) を決定</span></li>
+<li class="note-li"><span class="node leaf">💡 公式を使わない別解。連立で解ける</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">4C: 平面への正射影（空間）</span>
-<ul>
-<li><span class="node step leaf">公式は「ベクトル→ベクトル」なので、まず法線nに正射影</span></li>
-<li><span class="node step leaf">n への正射影 = (n·x/|n|²)·n</span></li>
-<li><span class="node step leaf">平面αへの正射影 = x − (n·x/|n|²)·n</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">4C: 平面への正射影（空間）</span>
+<ul class="hidden">
+<li><span class="node step leaf">公式は「ベクトル→ベクトル」なので、まず法線 \(\vec{n}\) に正射影</span></li>
+<li><span class="node step leaf">\(\vec{n}\) への正射影 = \(\displaystyle \frac{\vec{n}\cdot\vec{x}}{|\vec{n}|^2}\vec{n}\)</span></li>
+<li><span class="node step leaf">平面 \(\alpha\) への正射影 = \(\displaystyle \vec{x} - \frac{\vec{n}\cdot\vec{x}}{|\vec{n}|^2}\vec{n}\)</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240">
 
 <style>
@@ -885,13 +925,13 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">4D: 三角形の外心</span>
-<ul>
-<li><span class="node step leaf">OR = xa + yb と置く</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">4D: 三角形の外心</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OR} = x\vec{a} + y\vec{b}\) と置く</span></li>
 <li><span class="node step leaf">辺の中点 M, N を取る</span></li>
-<li><span class="node step leaf">RM·OA = 0, RN·OB = 0 を連立</span></li>
-<li><span class="node step leaf">x, y を決定</span></li>
-<li><span class="node ref leaf">💡 外心は「垂直二等分線の交点」</span></li>
+<li><span class="node step leaf">\(\vec{RM}\cdot\vec{OA}=0,\ \vec{RN}\cdot\vec{OB}=0\) を連立</span></li>
+<li><span class="node step leaf">\(x, y\) を決定</span></li>
+<li class="note-li"><span class="node leaf">💡 外心は「垂直二等分線の交点」</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" width="320" height="260">
 
 <style>
@@ -942,41 +982,41 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">4E: 正射影 × 外心の合わせ技</span>
-<ul>
+<span class="node l1 advanced has-children" onclick="toggle(this)">4E: 正射影 × 外心の合わせ技</span>
+<ul class="hidden">
 <li><span class="node step leaf">外心から辺へ垂線を下ろすと中点に落ちる</span></li>
 <li><span class="node step leaf">外心と垂直二等分線の相性は◎</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">4F: 平行六面体の高さ</span>
-<ul>
-<li><span class="node step leaf">底面の法線方向 n</span></li>
-<li><span class="node step leaf">高さ |OH| = |b·n| / |n|</span></li>
-<li><span class="node step leaf">体積 V = 底面積 × 高さ</span></li>
+<span class="node l1 expert has-children" onclick="toggle(this)">4F: 平行六面体の高さ</span>
+<ul class="hidden">
+<li><span class="node step leaf">底面の法線方向 \(\vec{n}\)</span></li>
+<li><span class="node step leaf">高さ \(\displaystyle |\vec{OH}| = \frac{|\vec{b}\cdot\vec{n}|}{|\vec{n}|}\)</span></li>
+<li><span class="node step leaf">体積 \(V\) = 底面積 \(\times\) 高さ</span></li>
 </ul>
 </li>
 </ul></li></ul>
 <ul>
 <li>
-<span class="node root standard has-children open" onclick="toggle(this)">⑤ 直線・平面の方程式（空間中心）</span>
-<ul>
+<span class="node root standard has-children" onclick="toggle(this)">⑤ 直線・平面の方程式（空間中心）</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「直線の方程式を求めよ」／「平面の方程式を求めよ」／「点と平面の距離」</span></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">5A: 直線のベクトル方程式</span>
-<ul>
-<li><span class="node step leaf">点A(a)を通り、方向ベクトル l に平行: x = a + tl</span></li>
-<li><span class="node step leaf">点A(a,b,c)を通り、方向(α,β,γ)に平行:</span></li>
-<li><span class="node step leaf">(x−a)/α = (y−b)/β = (z−c)/γ</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">5A: 直線のベクトル方程式</span>
+<ul class="hidden">
+<li><span class="node step leaf">点 \(A(\vec{a})\) を通り、方向ベクトル \(\vec{l}\) に平行: \(\vec{x} = \vec{a} + t\vec{l}\)</span></li>
+<li><span class="node step leaf">点 \(A(a,b,c)\) を通り、方向 \((\alpha,\beta,\gamma)\) に平行:</span></li>
+<li><span class="node step leaf">\(\displaystyle \frac{x-a}{\alpha} = \frac{y-b}{\beta} = \frac{z-c}{\gamma}\)</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">5B: 平面のベクトル方程式</span>
-<ul>
-<li><span class="node step leaf">3点A,B,Cを通る: x = αa + βb + γc, α+β+γ=1</span></li>
-<li><span class="node step leaf">点Aを通り u, v で張られる: x = a + su + tv</span></li>
-<li><span class="node step leaf">点Aを通り、法線nに平行: (x−a)·n = 0</span></li>
-<li><span class="node step leaf">成分形: α(x−a) + β(y−b) + γ(z−c) = 0</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">5B: 平面のベクトル方程式</span>
+<ul class="hidden">
+<li><span class="node step leaf">3点 A,B,C を通る: \(\vec{x} = \alpha\vec{a} + \beta\vec{b} + \gamma\vec{c},\ \alpha+\beta+\gamma=1\)</span></li>
+<li><span class="node step leaf">点 A を通り \(\vec{u}, \vec{v}\) で張られる: \(\vec{x} = \vec{a} + s\vec{u} + t\vec{v}\)</span></li>
+<li><span class="node step leaf">点 A を通り、法線 \(\vec{n}\) に平行: \((\vec{x}-\vec{a})\cdot\vec{n} = 0\)</span></li>
+<li><span class="node step leaf">成分形: \(\alpha(x-a) + \beta(y-b) + \gamma(z-c) = 0\)</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 200" width="540" height="200">
 
 <style>
@@ -1030,63 +1070,63 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">5C: 法線ベクトルを求める</span>
-<ul>
-<li><span class="node step leaf">答案用: n = (x,y,z) と置き、n·u=0, n·v=0 を連立</span></li>
-<li><span class="node step leaf">裏計算: 外積 u × v を計算</span></li>
-<li><span class="node step leaf">u×v = (u₂v₃−u₃v₂, u₃v₁−u₁v₃, u₁v₂−u₂v₁)</span></li>
-<li><span class="node ref leaf">💡 答案では外積を使わず内積=0で書く</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">5C: 法線ベクトルを求める</span>
+<ul class="hidden">
+<li><span class="node step leaf">答案用: \(\vec{n} = (x,y,z)\) と置き、\(\vec{n}\cdot\vec{u}=0,\ \vec{n}\cdot\vec{v}=0\) を連立</span></li>
+<li><span class="node step leaf">裏計算: 外積 \(\vec{u}\times\vec{v}\) を計算</span></li>
+<li><span class="node step leaf">\(\vec{u}\times\vec{v} = (u_2 v_3 - u_3 v_2,\ u_3 v_1 - u_1 v_3,\ u_1 v_2 - u_2 v_1)\)</span></li>
+<li class="note-li"><span class="node leaf">💡 答案では外積を使わず内積=0で書く</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">5D: 直線と平面の交点</span>
-<ul>
-<li><span class="node step leaf">直線をパラメータ表示 x = a + tl</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">5D: 直線と平面の交点</span>
+<ul class="hidden">
+<li><span class="node step leaf">直線をパラメータ表示 \(\vec{x} = \vec{a} + t\vec{l}\)</span></li>
 <li><span class="node step leaf">平面の方程式に代入</span></li>
-<li><span class="node step leaf">t を解く → 交点</span></li>
+<li><span class="node step leaf">\(t\) を解く → 交点</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">5E: 2直線の交点／ねじれの判定</span>
-<ul>
+<span class="node l1 advanced has-children" onclick="toggle(this)">5E: 2直線の交点／ねじれの判定</span>
+<ul class="hidden">
 <li><span class="node step leaf">各直線をパラメータ表示</span></li>
 <li><span class="node step leaf">連立して解の有無を見る</span></li>
 <li><span class="node step leaf">解なし → ねじれの位置</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">5F: 点と直線の距離</span>
-<ul>
+<span class="node l1 standard has-children" onclick="toggle(this)">5F: 点と直線の距離</span>
+<ul class="hidden">
 <li><span class="node step leaf">点から直線へ垂線の足 H を出す（4-A 正射影）</span></li>
-<li><span class="node step leaf">距離 = |PH|</span></li>
+<li><span class="node step leaf">距離 = \(|\vec{PH}|\)</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">5G: 点と平面の距離</span>
-<ul>
-<li><span class="node step leaf">公式: d = |α(x₀−a) + β(y₀−b) + γ(z₀−c)| / √(α²+β²+γ²)</span></li>
-<li><span class="node step leaf">別解: 平面上の点AをとりAPのn方向への正射影の長さ</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">5G: 点と平面の距離</span>
+<ul class="hidden">
+<li><span class="node step leaf">公式: \(\displaystyle d = \frac{|\alpha(x_0-a) + \beta(y_0-b) + \gamma(z_0-c)|}{\sqrt{\alpha^2+\beta^2+\gamma^2}}\)</span></li>
+<li><span class="node step leaf">別解: 平面上の点 A をとり \(\vec{AP}\) の \(\vec{n}\) 方向への正射影の長さ</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">5H: 共通垂線・最短距離</span>
-<ul>
+<span class="node l1 expert has-children" onclick="toggle(this)">5H: 共通垂線・最短距離</span>
+<ul class="hidden">
 <li><span class="node step leaf">各直線上に動点 P, Q を置く</span></li>
-<li><span class="node step leaf">PQ·l₁ = 0, PQ·l₂ = 0 を連立</span></li>
-<li><span class="node step leaf">最短距離 |PQ|</span></li>
+<li><span class="node step leaf">\(\vec{PQ}\cdot\vec{l_1}=0,\ \vec{PQ}\cdot\vec{l_2}=0\) を連立</span></li>
+<li><span class="node step leaf">最短距離 \(|\vec{PQ}|\)</span></li>
 </ul>
 </li>
 </ul></li></ul>
 <ul>
 <li>
-<span class="node root standard has-children open" onclick="toggle(this)">⑥ 共線・共面・平行・垂直の判定/証明</span>
-<ul>
+<span class="node root standard has-children" onclick="toggle(this)">⑥ 共線・共面・平行・垂直の判定/証明</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「同一直線上にあることを示せ」／「同一平面上にあることを示せ」／「垂直であることを示せ」</span></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">6A: 3点が同一直線上</span>
-<ul>
-<li><span class="node step leaf">条件: AB = k·AC を満たす実数 k が存在</span></li>
-<li><span class="node step leaf">⇔ OC = tOA + (1−t)OB</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">6A: 3点が同一直線上</span>
+<ul class="hidden">
+<li><span class="node step leaf">条件: \(\vec{AB} = k\vec{AC}\) を満たす実数 \(k\) が存在</span></li>
+<li><span class="node step leaf">⇔ \(\vec{OC} = t\vec{OA} + (1-t)\vec{OB}\)</span></li>
 <li><span class="node step leaf">2つのベクトルを書く</span></li>
 <li><span class="node step leaf">平行関係（実数倍）を示す</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 180" width="340" height="180">
@@ -1128,10 +1168,10 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">6B: 4点が同一平面上</span>
-<ul>
-<li><span class="node step leaf">OD = sOA + tOB + uOC, s+t+u=1</span></li>
-<li><span class="node step leaf">⇔ AD = xAB + yAC（A始点）</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">6B: 4点が同一平面上</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OD} = s\vec{OA} + t\vec{OB} + u\vec{OC},\ s+t+u=1\)</span></li>
+<li><span class="node step leaf">⇔ \(\vec{AD} = x\vec{AB} + y\vec{AC}\)（A 始点）</span></li>
 <li><span class="node step leaf">3つのベクトルを取る</span></li>
 <li><span class="node step leaf">一方を他2つの一次結合で表す</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 220" width="340" height="220">
@@ -1181,60 +1221,60 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">6C: 平行条件・垂直条件（成分）</span>
-<ul>
-<li><span class="node step leaf">平面: (a,b)//(c,d) ⇔ ad − bc = 0</span></li>
-<li><span class="node step leaf">    : (a,b)⊥(c,d) ⇔ ac + bd = 0</span></li>
-<li><span class="node step leaf">空間: u // v ⇔ u = kv</span></li>
-<li><span class="node step leaf">    : u ⊥ v ⇔ u·v = 0</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">6C: 平行条件・垂直条件（成分）</span>
+<ul class="hidden">
+<li><span class="node step leaf">平面: \((a,b)\parallel(c,d) \Leftrightarrow ad - bc = 0\)</span></li>
+<li><span class="node step leaf">\((a,b)\perp(c,d) \Leftrightarrow ac + bd = 0\)</span></li>
+<li><span class="node step leaf">空間: \(\vec{u}\parallel\vec{v} \Leftrightarrow \vec{u} = k\vec{v}\)</span></li>
+<li><span class="node step leaf">\(\vec{u}\perp\vec{v} \Leftrightarrow \vec{u}\cdot\vec{v} = 0\)</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">6D: 直線が平面に直交を示す</span>
-<ul>
-<li><span class="node step leaf">平面の基底 u, v を取る</span></li>
-<li><span class="node step leaf">l·u = 0 かつ l·v = 0 を示す</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">6D: 直線が平面に直交を示す</span>
+<ul class="hidden">
+<li><span class="node step leaf">平面の基底 \(\vec{u}, \vec{v}\) を取る</span></li>
+<li><span class="node step leaf">\(\vec{l}\cdot\vec{u}=0\) かつ \(\vec{l}\cdot\vec{v}=0\) を示す</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">6E: 一次独立性の活用</span>
-<ul>
+<span class="node l1 advanced has-children" onclick="toggle(this)">6E: 一次独立性の活用</span>
+<ul class="hidden">
 <li><span class="node step leaf">同じベクトルを2通りに表したとき</span></li>
-<li><span class="node step leaf">xa + yb + zc = x'a + y'b + z'c</span></li>
-<li><span class="node step leaf">⇒ a,b,c一次独立なら x=x', y=y', z=z'</span></li>
-<li><span class="node ref leaf">💡 係数比較の根拠。連立を解く強力な道具</span></li>
+<li><span class="node step leaf">\(x\vec{a} + y\vec{b} + z\vec{c} = x'\vec{a} + y'\vec{b} + z'\vec{c}\)</span></li>
+<li><span class="node step leaf">⇒ \(\vec{a},\vec{b},\vec{c}\) 一次独立なら \(x=x',y=y',z=z'\)</span></li>
+<li class="note-li"><span class="node leaf">💡 係数比較の根拠。連立を解く強力な道具</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">6F: 対称性ある条件の式変形証明</span>
-<ul>
-<li><span class="node step leaf">例: AP·BP + BP·CP + CP·AP = 0</span></li>
+<span class="node l1 expert has-children" onclick="toggle(this)">6F: 対称性ある条件の式変形証明</span>
+<ul class="hidden">
+<li><span class="node step leaf">例: \(\vec{AP}\cdot\vec{BP} + \vec{BP}\cdot\vec{CP} + \vec{CP}\cdot\vec{AP} = 0\)</span></li>
 <li><span class="node step leaf">始点を統一（位置ベクトル化）</span></li>
-<li><span class="node step leaf">平方完成、または |...|² = ... の形に</span></li>
+<li><span class="node step leaf">平方完成、または \(|\cdots|^2 = \cdots\) の形に</span></li>
 <li><span class="node step leaf">図形的解釈（球面・平面・円）</span></li>
 </ul>
 </li>
 </ul></li></ul>
 <ul>
 <li>
-<span class="node root advanced has-children open" onclick="toggle(this)">⑦ ベクトル方程式の表す図形</span>
-<ul>
+<span class="node root advanced has-children" onclick="toggle(this)">⑦ ベクトル方程式の表す図形</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「式が表す図形を答えよ」／「存在範囲を求めよ」</span></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">7A: パラメータ表示</span>
-<ul>
-<li><span class="node step leaf">形: p = sa + tb</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">7A: パラメータ表示</span>
+<ul class="hidden">
+<li><span class="node step leaf">形: \(\vec{p} = s\vec{a} + t\vec{b}\)</span></li>
 <li><span class="node step leaf">・パラメータ1つ → 直線</span></li>
 <li><span class="node step leaf">・パラメータ2つ → 平面（空間内）</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">7B: 内積=一次の形</span>
-<ul>
-<li><span class="node step leaf">形: a·(p − q) = 0</span></li>
-<li><span class="node step leaf">・平面: 点Qを通り、aに垂直な直線</span></li>
-<li><span class="node step leaf">・空間: 点Qを通り、aに垂直な平面</span></li>
-<li><span class="node ref leaf">💡 内積形の1次式 → 直線/平面</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">7B: 内積=一次の形</span>
+<ul class="hidden">
+<li><span class="node step leaf">形: \(\vec{a}\cdot(\vec{p} - \vec{q}) = 0\)</span></li>
+<li><span class="node step leaf">・平面: 点 Q を通り、\(\vec{a}\) に垂直な直線</span></li>
+<li><span class="node step leaf">・空間: 点 Q を通り、\(\vec{a}\) に垂直な平面</span></li>
+<li class="note-li"><span class="node leaf">💡 内積形の1次式 → 直線/平面</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
 
 <style>
@@ -1274,19 +1314,19 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">7C: 絶対値=定数</span>
-<ul>
-<li><span class="node step leaf">形: |x − a| = r</span></li>
-<li><span class="node step leaf">・平面: 中心A、半径rの円</span></li>
-<li><span class="node step leaf">・空間: 中心A、半径rの球面</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">7C: 絶対値=定数</span>
+<ul class="hidden">
+<li><span class="node step leaf">形: \(|\vec{x} - \vec{a}| = r\)</span></li>
+<li><span class="node step leaf">・平面: 中心 A、半径 \(r\) の円</span></li>
+<li><span class="node step leaf">・空間: 中心 A、半径 \(r\) の球面</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">7D: 内積形の積=0</span>
-<ul>
-<li><span class="node step leaf">形: (x − a)·(x − b) = 0</span></li>
-<li><span class="node step leaf">・平面: ABを直径とする円</span></li>
-<li><span class="node step leaf">・空間: ABを直径とする球面</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">7D: 内積形の積=0</span>
+<ul class="hidden">
+<li><span class="node step leaf">形: \((\vec{x} - \vec{a})\cdot(\vec{x} - \vec{b}) = 0\)</span></li>
+<li><span class="node step leaf">・平面: AB を直径とする円</span></li>
+<li><span class="node step leaf">・空間: AB を直径とする球面</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
 
 <style>
@@ -1331,34 +1371,34 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">7E: 一般の2次形（平方完成）</span>
-<ul>
-<li><span class="node step leaf">形: |p|² + a·p + b = 0</span></li>
-<li><span class="node step leaf">平方完成して |p − c|² = R² の形に</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">7E: 一般の2次形（平方完成）</span>
+<ul class="hidden">
+<li><span class="node step leaf">形: \(|\vec{p}|^2 + \vec{a}\cdot\vec{p} + b = 0\)</span></li>
+<li><span class="node step leaf">平方完成して \(|\vec{p} - \vec{c}|^2 = R^2\) の形に</span></li>
 <li><span class="node step leaf">円（平面）/ 球面（空間）と判定</span></li>
-<li><span class="node ref leaf">💡 2次の項を含むなら円・球面が予想される</span></li>
+<li class="note-li"><span class="node leaf">💡 2次の項を含むなら円・球面が予想される</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">7F: 因数分解で2平面の和に</span>
-<ul>
+<span class="node l1 advanced has-children" onclick="toggle(this)">7F: 因数分解で2平面の和に</span>
+<ul class="hidden">
 <li><span class="node step leaf">2次式が因数分解できる場合</span></li>
 <li><span class="node step leaf">因数分解 → 2つの1次式の積</span></li>
 <li><span class="node step leaf">「内積=0 または 内積=0」の和事象</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">7G: 空間内の円</span>
-<ul>
+<span class="node l1 expert has-children" onclick="toggle(this)">7G: 空間内の円</span>
+<ul class="hidden">
 <li><span class="node step leaf">定石1: 「球面 かつ 平面」と捉える</span></li>
-<li><span class="node step leaf">  |x−a|=r かつ (x−b)·n = 0</span></li>
+<li><span class="node step leaf">\(|\vec{x}-\vec{a}|=r\) かつ \((\vec{x}-\vec{b})\cdot\vec{n} = 0\)</span></li>
 <li><span class="node step leaf">定石2: パラメータ表示</span></li>
-<li><span class="node step leaf">  x = c + (r cosθ)p + (r sinθ)q</span></li>
+<li><span class="node step leaf">\(\vec{x} = \vec{c} + (r\cos\theta)\vec{p} + (r\sin\theta)\vec{q}\)</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">7H: 平面/空間の判定に注意</span>
-<ul>
+<span class="node l1 expert has-children" onclick="toggle(this)">7H: 平面/空間の判定に注意</span>
+<ul class="hidden">
 <li><span class="node step leaf">同じ式でも「平面」か「空間」かで答えが変わる</span></li>
 <li><span class="node step leaf">・平面 → 円・直線</span></li>
 <li><span class="node step leaf">・空間 → 球面・平面</span></li>
@@ -1368,33 +1408,33 @@ body {
 </ul></li></ul>
 <ul>
 <li>
-<span class="node root basic has-children open" onclick="toggle(this)">道具集（フロー横断）</span>
-<ul>
+<span class="node root basic has-children" onclick="toggle(this)">道具集（フロー横断）</span>
+<ul class="hidden">
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">始点統一の判断</span>
-<ul>
+<span class="node l1 basic has-children" onclick="toggle(this)">始点統一の判断</span>
+<ul class="hidden">
 <li><span class="node step leaf">条件が対称（A,B,C等価） → 位置ベクトル（始点はどこでも）</span></li>
 <li><span class="node step leaf">1点だけ条件が違う → その点を始点に統一</span></li>
-<li><span class="node step leaf">外心が絡む → 外心を始点（|a|=|b|=|c|=R が使える）</span></li>
+<li><span class="node step leaf">外心が絡む → 外心を始点（\(|\vec{a}|=|\vec{b}|=|\vec{c}|=R\) が使える）</span></li>
 </ul></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">一次独立／一次結合</span>
-<ul>
-<li><span class="node step leaf">平面: a, b 一次独立 ⇔ sa + tb = 0 ⇒ s = t = 0</span></li>
-<li><span class="node step leaf">任意のベクトル x = pa + qb で一意に表せる</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">一次独立／一次結合</span>
+<ul class="hidden">
+<li><span class="node step leaf">平面: \(\vec{a},\vec{b}\) 一次独立 \(\Leftrightarrow s\vec{a}+t\vec{b}=\vec{0} \Rightarrow s=t=0\)</span></li>
+<li><span class="node step leaf">任意のベクトル \(\vec{x} = p\vec{a} + q\vec{b}\) で一意に表せる</span></li>
 <li><span class="node step leaf">係数比較ができるのが最大の武器</span></li>
 </ul></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">絶対値の2乗 → 内積</span>
-<ul>
-<li><span class="node step leaf">|a|² = a·a</span></li>
-<li><span class="node step leaf">|a ± b|² = |a|² ± 2a·b + |b|²</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">絶対値の2乗 → 内積</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(|\vec{a}|^2 = \vec{a}\cdot\vec{a}\)</span></li>
+<li><span class="node step leaf">\(|\vec{a} \pm \vec{b}|^2 = |\vec{a}|^2 \pm 2\vec{a}\cdot\vec{b} + |\vec{b}|^2\)</span></li>
 <li><span class="node step leaf">「絶対値を見たら2乗」が定石</span></li>
 </ul></li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">角の二等分線</span>
-<ul>
-<li><span class="node step leaf">∠AOBの二等分線方向: a/|a| + b/|b|</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">角の二等分線</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\angle AOB\) の二等分線方向: \(\displaystyle \frac{\vec{a}}{|\vec{a}|} + \frac{\vec{b}}{|\vec{b}|}\)</span></li>
 <li><span class="node step leaf">向きに注意（外角と区別）</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
 
@@ -1436,46 +1476,47 @@ body {
 </svg></div></li>
 </ul></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">重心の位置ベクトル</span>
-<ul>
-<li><span class="node step leaf">三角形 ABC の重心: g = (a+b+c)/3</span></li>
-<li><span class="node step leaf">四面体 ABCD の重心: g = (a+b+c+d)/4</span></li>
-<li><span class="node step leaf">GA + GB + GC = 0（始点を重心に取れば）</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">重心の位置ベクトル</span>
+<ul class="hidden">
+<li><span class="node step leaf">三角形 ABC の重心: \(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}}{3}\)</span></li>
+<li><span class="node step leaf">四面体 ABCD の重心: \(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}+\vec{d}}{4}\)</span></li>
+<li><span class="node step leaf">\(\vec{GA}+\vec{GB}+\vec{GC}=\vec{0}\)（始点を重心に取れば）</span></li>
 </ul></li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">外積（裏計算用・答案不可）</span>
-<ul>
-<li><span class="node step leaf">定義: a×b = (a₂b₃−a₃b₂, a₃b₁−a₁b₃, a₁b₂−a₂b₁)</span></li>
-<li><span class="node step leaf">性質: a×b は a, b の両方に垂直</span></li>
-<li><span class="node step leaf">    |a×b| = a, b が作る平行四辺形の面積</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">外積（裏計算用・答案不可）</span>
+<ul class="hidden">
+<li><span class="node step leaf">定義: \(\vec{a}\times\vec{b} = (a_2 b_3 - a_3 b_2,\ a_3 b_1 - a_1 b_3,\ a_1 b_2 - a_2 b_1)\)</span></li>
+<li><span class="node step leaf">性質: \(\vec{a}\times\vec{b}\) は \(\vec{a},\vec{b}\) の両方に垂直</span></li>
+<li><span class="node step leaf">\(|\vec{a}\times\vec{b}|\) = \(\vec{a},\vec{b}\) が作る平行四辺形の面積</span></li>
 <li><span class="node step leaf">用途: 法線ベクトルの「答え合わせ」</span></li>
-<li><span class="node step leaf">      平行六面体の体積 V = |a·(b×c)|</span></li>
-<li><span class="node step leaf">      四面体の体積 = V/6</span></li>
+<li><span class="node step leaf">平行六面体の体積 \(V = |\vec{a}\cdot(\vec{b}\times\vec{c})|\)</span></li>
+<li><span class="node step leaf">四面体の体積 = \(V/6\)</span></li>
 <li><span class="node step leaf">⚠ 答案では「内積=0を満たす」と書く</span></li>
 </ul></li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">対称性のあるベクトルの座標設定</span>
-<ul>
-<li><span class="node step leaf">平面: 長さ1の a, b → a=(1,0), b=(cosθ, sinθ)</span></li>
-<li><span class="node step leaf">空間: 長さ1の a, b, c → a=(1,0,0), b=(cosθ, sinθ, 0),</span></li>
-<li><span class="node step leaf">                       c=(l, m, n) [l²+m²+n²=1]</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">対称性のあるベクトルの座標設定</span>
+<ul class="hidden">
+<li><span class="node step leaf">平面: 長さ1の \(\vec{a},\vec{b}\) → \(\vec{a}=(1,0),\ \vec{b}=(\cos\theta,\sin\theta)\)</span></li>
+<li><span class="node step leaf">空間: 長さ1の \(\vec{a},\vec{b},\vec{c}\)</span></li>
+<li><span class="node step leaf">→ \(\vec{a}=(1,0,0),\ \vec{b}=(\cos\theta,\sin\theta,0),\)</span></li>
+<li><span class="node step leaf">\(\vec{c}=(l, m, n)\ [l^2+m^2+n^2=1]\)</span></li>
 <li><span class="node step leaf">設定する文字を最小化するのがコツ</span></li>
 </ul></li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">平面 vs 空間の解法選択</span>
-<ul>
+<span class="node l1 standard has-children" onclick="toggle(this)">平面 vs 空間の解法選択</span>
+<ul class="hidden">
 <li><span class="node step leaf">ベクトルで解く（特に四面体・平行六面体で有効）</span></li>
 <li><span class="node step leaf">座標設定で解く（直交軸が見えるとき）</span></li>
 <li><span class="node step leaf">断面図など幾何的に解く（対称面・対称軸を含む面）</span></li>
 <li><span class="node step leaf">展開図を考える（最短経路など）</span></li>
 </ul></li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">ベクトル和 sa+tb+uc=0 の利用</span>
-<ul>
-<li><span class="node step leaf">一文字消去: a = −(tb+uc)/s</span></li>
-<li><span class="node step leaf">内積を見る: a·(sa+tb+uc) = 0</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">ベクトル和 \(s\vec{a}+t\vec{b}+u\vec{c}=\vec{0}\) の利用</span>
+<ul class="hidden">
+<li><span class="node step leaf">一文字消去: \(\displaystyle \vec{a} = -\frac{t\vec{b}+u\vec{c}}{s}\)</span></li>
+<li><span class="node step leaf">内積を見る: \(\vec{a}\cdot(s\vec{a}+t\vec{b}+u\vec{c}) = 0\)</span></li>
 <li><span class="node step leaf">対称性を見る</span></li>
-<li><span class="node step leaf">1つ移項して2乗 |sa|² = |−(tb+uc)|²</span></li>
+<li><span class="node step leaf">1つ移項して2乗 \(|s\vec{a}|^2 = |-(t\vec{b}+u\vec{c})|^2\)</span></li>
 </ul></li>
 </ul></li></ul>
 </div>
@@ -1485,6 +1526,12 @@ function toggle(el) {
   if (!ul || ul.tagName !== 'UL') return;
   ul.classList.toggle('hidden');
   el.classList.toggle('open');
+  // MathJaxが既に読み込み済みで、新しく表示された範囲に未処理の数式があれば再処理
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    if (!ul.classList.contains('hidden')) {
+      window.MathJax.typesetPromise([ul]).catch(() => {});
+    }
+  }
 }
 </script>
 </body></html>

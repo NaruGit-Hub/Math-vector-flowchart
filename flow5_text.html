@@ -17,7 +17,6 @@ h4 { font-size: 14px; margin-top: 16px; }
 table { border-collapse: collapse; width: 100%; margin: 12px 0; }
 th, td { border: 1px solid #999; padding: 6px 10px; text-align: left; font-size: 14px; vertical-align: top; }
 th { background: #f4f4f4; }
-blockquote { background: #f9f9f6; border-left: 3px solid #888; padding: 8px 16px; margin: 12px 0; font-size: 14px; }
 .img-container { margin: 20px 0; text-align: center; }
 .img-container svg { max-width: 100%; height: auto; }
 .note { background: #fffbe6; border: 1px solid #e0d080; padding: 10px 14px; border-radius: 4px; margin: 12px 0; font-size: 14px; }
@@ -25,10 +24,8 @@ blockquote { background: #f9f9f6; border-left: 3px solid #888; padding: 8px 16px
 .level-standard { border-left: 4px solid #BA7517; padding-left: 10px; }
 .level-advanced { border-left: 4px solid #185FA5; padding-left: 10px; }
 .level-expert { border-left: 4px solid #A32D2D; padding-left: 10px; }
-code { background: #f0f0f0; padding: 1px 4px; border-radius: 2px; }
-.ref { background: #eef4fb; border: 1px solid #c4d9ee; padding: 6px 12px; border-radius: 4px; margin: 8px 0; font-size: 14px; }
 ul.steps { padding-left: 22px; }
-ul.steps li { margin: 4px 0; }
+ul.steps li { margin: 6px 0; }
 .tail { background: #f4f4f4; border: 1px solid #ccc; padding: 6px 10px; margin: 8px 0; border-radius: 3px; font-size: 13px; }
 .toc { background: #f9f9f9; border: 1px solid #ddd; padding: 12px 18px; margin: 20px 0; border-radius: 4px; }
 .toc ul { padding-left: 20px; margin: 4px 0; }
@@ -39,8 +36,37 @@ ul.steps li { margin: 4px 0; }
 .lm-standard { border: 1px solid #BA7517; color: #BA7517; }
 .lm-advanced { border: 1px solid #185FA5; color: #185FA5; }
 .lm-expert { border: 1px solid #A32D2D; color: #A32D2D; }
+.guide {
+  background: #f0f7fb;
+  border: 1px solid #b8d4e8;
+  padding: 16px 20px; border-radius: 6px;
+  margin: 20px 0;
+}
+.guide h2 { border-left: 4px solid #185FA5; margin-top: 0; }
+.guide-step { margin: 12px 0; }
+.guide-step .head { font-weight: 600; color: #185FA5; }
+.guide-options { margin: 8px 0 8px 20px; }
+.guide-options li { margin: 6px 0; }
+.guide-options strong { display: inline-block; min-width: 6em; }
+.routing-table th { background: #f0f7fb; }
 @media print { body { margin: 20px; } }
 </style>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        id="MathJax-script" async></script>
+
 </head>
 <body>
 <h1>ベクトル｜⑤ 直線・平面の方程式（空間中心）</h1>
@@ -48,18 +74,18 @@ ul.steps li { margin: 4px 0; }
 <h2 class="level-standard" id="flow5">⑤ 直線・平面の方程式（空間中心）<span class="level-mark lm-standard">標準</span></h2>
 <div class="tail"><strong>末尾キーワード:</strong> 「直線の方程式を求めよ」／「平面の方程式を求めよ」／「点と平面の距離」</div>
 <p>ベクトル方程式を立てる。直線は「点+方向」、平面は「点+2方向」または「点+法線」。</p>
-<h3 class="level-basic">5A: 直線のベクトル方程式<span class="level-mark lm-basic">基本</span></h3>
+<h3 class="level-basic" id="5A">5A: 直線のベクトル方程式<span class="level-mark lm-basic">基本</span></h3>
 <ul class="steps">
-<li>点A(a)を通り、方向ベクトル l に平行: x = a + tl</li>
-<li>点A(a,b,c)を通り、方向(α,β,γ)に平行:</li>
-<li>(x−a)/α = (y−b)/β = (z−c)/γ</li>
+<li>点 \(A(\vec{a})\) を通り、方向ベクトル \(\vec{l}\) に平行: \(\vec{x} = \vec{a} + t\vec{l}\)</li>
+<li>点 \(A(a,b,c)\) を通り、方向 \((\alpha,\beta,\gamma)\) に平行:</li>
+<li>\(\displaystyle \frac{x-a}{\alpha} = \frac{y-b}{\beta} = \frac{z-c}{\gamma}\)</li>
 </ul>
-<h3 class="level-basic">5B: 平面のベクトル方程式<span class="level-mark lm-basic">基本</span></h3>
+<h3 class="level-basic" id="5B">5B: 平面のベクトル方程式<span class="level-mark lm-basic">基本</span></h3>
 <ul class="steps">
-<li>3点A,B,Cを通る: x = αa + βb + γc, α+β+γ=1</li>
-<li>点Aを通り u, v で張られる: x = a + su + tv</li>
-<li>点Aを通り、法線nに平行: (x−a)·n = 0</li>
-<li>成分形: α(x−a) + β(y−b) + γ(z−c) = 0</li>
+<li>3点 A,B,C を通る: \(\vec{x} = \alpha\vec{a} + \beta\vec{b} + \gamma\vec{c},\ \alpha+\beta+\gamma=1\)</li>
+<li>点 A を通り \(\vec{u}, \vec{v}\) で張られる: \(\vec{x} = \vec{a} + s\vec{u} + t\vec{v}\)</li>
+<li>点 A を通り、法線 \(\vec{n}\) に平行: \((\vec{x}-\vec{a})\cdot\vec{n} = 0\)</li>
+<li>成分形: \(\alpha(x-a) + \beta(y-b) + \gamma(z-c) = 0\)</li>
 </ul>
 <div class="img-container"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 200" width="540" height="200">
 
@@ -111,40 +137,40 @@ ul.steps li { margin: 4px 0; }
 <text x="485.0" y="90.0" class="ftxt">n</text>
 <text x="410.0" y="175.0" class="label">(3) 1点と法線</text>
 </svg></div>
-<h3 class="level-advanced">5C: 法線ベクトルを求める<span class="level-mark lm-advanced">応用</span></h3>
+<h3 class="level-advanced" id="5C">5C: 法線ベクトルを求める<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
-<li>答案用: n = (x,y,z) と置き、n·u=0, n·v=0 を連立</li>
-<li>裏計算: 外積 u × v を計算</li>
-<li>u×v = (u₂v₃−u₃v₂, u₃v₁−u₁v₃, u₁v₂−u₂v₁)</li>
+<li>答案用: \(\vec{n} = (x,y,z)\) と置き、\(\vec{n}\cdot\vec{u}=0,\ \vec{n}\cdot\vec{v}=0\) を連立</li>
+<li>裏計算: 外積 \(\vec{u}\times\vec{v}\) を計算</li>
+<li>\(\vec{u}\times\vec{v} = (u_2 v_3 - u_3 v_2,\ u_3 v_1 - u_1 v_3,\ u_1 v_2 - u_2 v_1)\)</li>
 </ul>
 <div class="note">答案では外積を使わず内積=0で書く</div>
-<h3 class="level-standard">5D: 直線と平面の交点<span class="level-mark lm-standard">標準</span></h3>
+<h3 class="level-standard" id="5D">5D: 直線と平面の交点<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
-<li>直線をパラメータ表示 x = a + tl</li>
+<li>直線をパラメータ表示 \(\vec{x} = \vec{a} + t\vec{l}\)</li>
 <li>平面の方程式に代入</li>
-<li>t を解く → 交点</li>
+<li>\(t\) を解く → 交点</li>
 </ul>
-<h3 class="level-advanced">5E: 2直線の交点／ねじれの判定<span class="level-mark lm-advanced">応用</span></h3>
+<h3 class="level-advanced" id="5E">5E: 2直線の交点／ねじれの判定<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>各直線をパラメータ表示</li>
 <li>連立して解の有無を見る</li>
 <li>解なし → ねじれの位置</li>
 </ul>
-<h3 class="level-standard">5F: 点と直線の距離<span class="level-mark lm-standard">標準</span></h3>
+<h3 class="level-standard" id="5F">5F: 点と直線の距離<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
 <li>点から直線へ垂線の足 H を出す（4-A 正射影）</li>
-<li>距離 = |PH|</li>
+<li>距離 = \(|\vec{PH}|\)</li>
 </ul>
-<h3 class="level-standard">5G: 点と平面の距離<span class="level-mark lm-standard">標準</span></h3>
+<h3 class="level-standard" id="5G">5G: 点と平面の距離<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
-<li>公式: d = |α(x₀−a) + β(y₀−b) + γ(z₀−c)| / √(α²+β²+γ²)</li>
-<li>別解: 平面上の点AをとりAPのn方向への正射影の長さ</li>
+<li>公式: \(\displaystyle d = \frac{|\alpha(x_0-a) + \beta(y_0-b) + \gamma(z_0-c)|}{\sqrt{\alpha^2+\beta^2+\gamma^2}}\)</li>
+<li>別解: 平面上の点 A をとり \(\vec{AP}\) の \(\vec{n}\) 方向への正射影の長さ</li>
 </ul>
-<h3 class="level-expert">5H: 共通垂線・最短距離<span class="level-mark lm-expert">発展</span></h3>
+<h3 class="level-expert" id="5H">5H: 共通垂線・最短距離<span class="level-mark lm-expert">発展</span></h3>
 <ul class="steps">
 <li>各直線上に動点 P, Q を置く</li>
-<li>PQ·l₁ = 0, PQ·l₂ = 0 を連立</li>
-<li>最短距離 |PQ|</li>
+<li>\(\vec{PQ}\cdot\vec{l_1}=0,\ \vec{PQ}\cdot\vec{l_2}=0\) を連立</li>
+<li>最短距離 \(|\vec{PQ}|\)</li>
 </ul>
 <hr style="margin-top:40px">
 <p style="font-size:12px; color:#888;">© 数学フローチャート（ベクトル）</p>

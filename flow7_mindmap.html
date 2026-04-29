@@ -28,6 +28,24 @@ body {
   width: 14px; height: 14px; border: 2px solid; border-radius: 2px;
   display: inline-block; flex-shrink: 0;
 }
+.guide-box {
+  margin: 12px;
+  padding: 12px 14px;
+  background: #f0f7fb;
+  border: 1px solid #b8d4e8;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.guide-box h2 {
+  font-size: 15px;
+  color: #185FA5;
+  margin-bottom: 8px;
+}
+.guide-box .step-head { font-weight: 600; margin-top: 8px; color: #185FA5; }
+.guide-box ul { margin-left: 20px; margin-top: 4px; }
+.guide-box li { margin: 3px 0; }
+.guide-box .marker { color: #A32D2D; font-weight: 600; }
+
 .tree { padding: 12px 8px 40px 8px; }
 .tree ul { list-style: none; padding-left: 20px; border-left: 1px solid #ddd; }
 .tree > ul { border-left: none; padding-left: 0; }
@@ -76,6 +94,9 @@ body {
 }
 .img-wrap svg { width: 100%; height: auto; display: block; }
 
+.note-li { margin: 6px 0; }
+.note-li .node { background: #fffbe6; border-color: #e0d080; }
+
 .hidden { display: none; }
 
 @media (max-width: 600px) {
@@ -86,6 +107,22 @@ body {
   .img-wrap { margin-left: 10px; }
 }
 </style>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        id="MathJax-script" async></script>
+
 </head>
 <body>
 <div class="header"><h1>⑦ ベクトル方程式の表す図形</h1></div>
@@ -102,24 +139,24 @@ body {
 <div class="tree">
 <ul>
 <li>
-<span class="node root advanced has-children open" onclick="toggle(this)">⑦ ベクトル方程式の表す図形</span>
-<ul>
+<span class="node root advanced has-children" onclick="toggle(this)">⑦ ベクトル方程式の表す図形</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「式が表す図形を答えよ」／「存在範囲を求めよ」</span></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">7A: パラメータ表示</span>
-<ul>
-<li><span class="node step leaf">形: p = sa + tb</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">7A: パラメータ表示</span>
+<ul class="hidden">
+<li><span class="node step leaf">形: \(\vec{p} = s\vec{a} + t\vec{b}\)</span></li>
 <li><span class="node step leaf">・パラメータ1つ → 直線</span></li>
 <li><span class="node step leaf">・パラメータ2つ → 平面（空間内）</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">7B: 内積=一次の形</span>
-<ul>
-<li><span class="node step leaf">形: a·(p − q) = 0</span></li>
-<li><span class="node step leaf">・平面: 点Qを通り、aに垂直な直線</span></li>
-<li><span class="node step leaf">・空間: 点Qを通り、aに垂直な平面</span></li>
-<li><span class="node ref leaf">💡 内積形の1次式 → 直線/平面</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">7B: 内積=一次の形</span>
+<ul class="hidden">
+<li><span class="node step leaf">形: \(\vec{a}\cdot(\vec{p} - \vec{q}) = 0\)</span></li>
+<li><span class="node step leaf">・平面: 点 Q を通り、\(\vec{a}\) に垂直な直線</span></li>
+<li><span class="node step leaf">・空間: 点 Q を通り、\(\vec{a}\) に垂直な平面</span></li>
+<li class="note-li"><span class="node leaf">💡 内積形の1次式 → 直線/平面</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
 
 <style>
@@ -159,19 +196,19 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">7C: 絶対値=定数</span>
-<ul>
-<li><span class="node step leaf">形: |x − a| = r</span></li>
-<li><span class="node step leaf">・平面: 中心A、半径rの円</span></li>
-<li><span class="node step leaf">・空間: 中心A、半径rの球面</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">7C: 絶対値=定数</span>
+<ul class="hidden">
+<li><span class="node step leaf">形: \(|\vec{x} - \vec{a}| = r\)</span></li>
+<li><span class="node step leaf">・平面: 中心 A、半径 \(r\) の円</span></li>
+<li><span class="node step leaf">・空間: 中心 A、半径 \(r\) の球面</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">7D: 内積形の積=0</span>
-<ul>
-<li><span class="node step leaf">形: (x − a)·(x − b) = 0</span></li>
-<li><span class="node step leaf">・平面: ABを直径とする円</span></li>
-<li><span class="node step leaf">・空間: ABを直径とする球面</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">7D: 内積形の積=0</span>
+<ul class="hidden">
+<li><span class="node step leaf">形: \((\vec{x} - \vec{a})\cdot(\vec{x} - \vec{b}) = 0\)</span></li>
+<li><span class="node step leaf">・平面: AB を直径とする円</span></li>
+<li><span class="node step leaf">・空間: AB を直径とする球面</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
 
 <style>
@@ -216,34 +253,34 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">7E: 一般の2次形（平方完成）</span>
-<ul>
-<li><span class="node step leaf">形: |p|² + a·p + b = 0</span></li>
-<li><span class="node step leaf">平方完成して |p − c|² = R² の形に</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">7E: 一般の2次形（平方完成）</span>
+<ul class="hidden">
+<li><span class="node step leaf">形: \(|\vec{p}|^2 + \vec{a}\cdot\vec{p} + b = 0\)</span></li>
+<li><span class="node step leaf">平方完成して \(|\vec{p} - \vec{c}|^2 = R^2\) の形に</span></li>
 <li><span class="node step leaf">円（平面）/ 球面（空間）と判定</span></li>
-<li><span class="node ref leaf">💡 2次の項を含むなら円・球面が予想される</span></li>
+<li class="note-li"><span class="node leaf">💡 2次の項を含むなら円・球面が予想される</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">7F: 因数分解で2平面の和に</span>
-<ul>
+<span class="node l1 advanced has-children" onclick="toggle(this)">7F: 因数分解で2平面の和に</span>
+<ul class="hidden">
 <li><span class="node step leaf">2次式が因数分解できる場合</span></li>
 <li><span class="node step leaf">因数分解 → 2つの1次式の積</span></li>
 <li><span class="node step leaf">「内積=0 または 内積=0」の和事象</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">7G: 空間内の円</span>
-<ul>
+<span class="node l1 expert has-children" onclick="toggle(this)">7G: 空間内の円</span>
+<ul class="hidden">
 <li><span class="node step leaf">定石1: 「球面 かつ 平面」と捉える</span></li>
-<li><span class="node step leaf">  |x−a|=r かつ (x−b)·n = 0</span></li>
+<li><span class="node step leaf">\(|\vec{x}-\vec{a}|=r\) かつ \((\vec{x}-\vec{b})\cdot\vec{n} = 0\)</span></li>
 <li><span class="node step leaf">定石2: パラメータ表示</span></li>
-<li><span class="node step leaf">  x = c + (r cosθ)p + (r sinθ)q</span></li>
+<li><span class="node step leaf">\(\vec{x} = \vec{c} + (r\cos\theta)\vec{p} + (r\sin\theta)\vec{q}\)</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">7H: 平面/空間の判定に注意</span>
-<ul>
+<span class="node l1 expert has-children" onclick="toggle(this)">7H: 平面/空間の判定に注意</span>
+<ul class="hidden">
 <li><span class="node step leaf">同じ式でも「平面」か「空間」かで答えが変わる</span></li>
 <li><span class="node step leaf">・平面 → 円・直線</span></li>
 <li><span class="node step leaf">・空間 → 球面・平面</span></li>
@@ -258,6 +295,12 @@ function toggle(el) {
   if (!ul || ul.tagName !== 'UL') return;
   ul.classList.toggle('hidden');
   el.classList.toggle('open');
+  // MathJaxが既に読み込み済みで、新しく表示された範囲に未処理の数式があれば再処理
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    if (!ul.classList.contains('hidden')) {
+      window.MathJax.typesetPromise([ul]).catch(() => {});
+    }
+  }
 }
 </script>
 </body>

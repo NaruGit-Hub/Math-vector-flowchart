@@ -28,6 +28,24 @@ body {
   width: 14px; height: 14px; border: 2px solid; border-radius: 2px;
   display: inline-block; flex-shrink: 0;
 }
+.guide-box {
+  margin: 12px;
+  padding: 12px 14px;
+  background: #f0f7fb;
+  border: 1px solid #b8d4e8;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.guide-box h2 {
+  font-size: 15px;
+  color: #185FA5;
+  margin-bottom: 8px;
+}
+.guide-box .step-head { font-weight: 600; margin-top: 8px; color: #185FA5; }
+.guide-box ul { margin-left: 20px; margin-top: 4px; }
+.guide-box li { margin: 3px 0; }
+.guide-box .marker { color: #A32D2D; font-weight: 600; }
+
 .tree { padding: 12px 8px 40px 8px; }
 .tree ul { list-style: none; padding-left: 20px; border-left: 1px solid #ddd; }
 .tree > ul { border-left: none; padding-left: 0; }
@@ -76,6 +94,9 @@ body {
 }
 .img-wrap svg { width: 100%; height: auto; display: block; }
 
+.note-li { margin: 6px 0; }
+.note-li .node { background: #fffbe6; border-color: #e0d080; }
+
 .hidden { display: none; }
 
 @media (max-width: 600px) {
@@ -86,6 +107,22 @@ body {
   .img-wrap { margin-left: 10px; }
 }
 </style>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        id="MathJax-script" async></script>
+
 </head>
 <body>
 <div class="header"><h1>③ 終点範囲・軌跡を求める</h1></div>
@@ -102,18 +139,17 @@ body {
 <div class="tree">
 <ul>
 <li>
-<span class="node root advanced has-children open" onclick="toggle(this)">③ 終点範囲・軌跡を求める</span>
-<ul>
+<span class="node root advanced has-children" onclick="toggle(this)">③ 終点範囲・軌跡を求める</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「Pの動く範囲を図示せよ」／「Pの存在領域を求めよ」／「領域を求めよ」</span></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">3A: 基本パターン（暗記）</span>
-<ul>
-<li><span class="node step leaf">OP = sa + tb のとき</span></li>
-<li><span class="node step leaf">・s, t 実数全体 → 全平面</span></li>
-<li><span class="node step leaf">・s+t = 1 → 直線AB</span></li>
-<li><span class="node step leaf">・s+t = 1, s≧0,t≧0 → 線分AB</span></li>
-<li><span class="node step leaf">・s+t ≦ 1, s≧0,t≧0 → △OAB周+内部</span></li>
-<li><span class="node step leaf">空間も同様: s+t+u に拡張</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">3A: 基本パターン（暗記）— 平面</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OP} = s\vec{a} + t\vec{b}\) のとき</span></li>
+<li><span class="node step leaf">・\(s, t\) 実数全体 → 全平面</span></li>
+<li><span class="node step leaf">・\(s+t = 1\) → 直線AB</span></li>
+<li><span class="node step leaf">・\(s+t = 1,\ s\geqq 0,\ t\geqq 0\) → 線分AB</span></li>
+<li><span class="node step leaf">・\(s+t \leqq 1,\ s\geqq 0,\ t\geqq 0\) → \(\triangle OAB\) の周および内部</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="560" height="220">
 
 <style>
@@ -189,12 +225,12 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">3A2: 基本パターン（空間）</span>
-<ul>
-<li><span class="node step leaf">OP = la + mb + nc のとき</span></li>
-<li><span class="node step leaf">・l+m+n = 1 → 平面ABC</span></li>
-<li><span class="node step leaf">・l+m+n = 1, 各≧0 → △ABC周+内部</span></li>
-<li><span class="node step leaf">・l+m+n ≦ 1, 各≧0 → 四面体OABC周+内部</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">3A2: 基本パターン（暗記）— 空間</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OP} = l\vec{a} + m\vec{b} + n\vec{c}\) のとき</span></li>
+<li><span class="node step leaf">・\(l+m+n = 1\) → 平面ABC</span></li>
+<li><span class="node step leaf">・\(l+m+n = 1\), 各\(\geqq 0\) → \(\triangle ABC\) の周および内部</span></li>
+<li><span class="node step leaf">・\(l+m+n \leqq 1\), 各\(\geqq 0\) → 四面体OABCの周および内部</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="560" height="220">
 
 <style>
@@ -272,48 +308,48 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">3B: 一般の終点範囲（3手順型）</span>
-<ul>
-<li><span class="node step leaf">s（または t）を固定</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">3B: 一般の終点範囲（3手順型）</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(s\)（または \(t\)）を固定</span></li>
 <li><span class="node step leaf">動く方の変数で線を作る</span></li>
 <li><span class="node step leaf">固定した変数を動かして面に拡大</span></li>
-<li><span class="node ref leaf">💡 0≦a≦1, 1/2≦b≦1 のような長方形領域で使う</span></li>
+<li class="note-li"><span class="node leaf">💡 \(0\leqq a\leqq 1,\ \dfrac{1}{2}\leqq b\leqq 1\) のような長方形領域で使う</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">3C: (s+t) を作って3-Aに帰着</span>
-<ul>
-<li><span class="node step leaf">OP = (s+t) × {(sa+tb)/(s+t)} と変形</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">3C: \((s+t)\) を作って 3-A に帰着</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\displaystyle \vec{OP} = (s+t)\cdot\frac{s\vec{a}+t\vec{b}}{s+t}\) と変形</span></li>
 <li><span class="node step leaf">内側の点 Q は線分AB上を動く</span></li>
-<li><span class="node step leaf">P は OQ を (s+t) 倍した点 → 図示</span></li>
-<li><span class="node ref leaf">💡 「パラメータについて整理する」の発想</span></li>
+<li><span class="node step leaf">P は OQ を \((s+t)\) 倍した点 → 図示</span></li>
+<li class="note-li"><span class="node leaf">💡 「パラメータについて整理する」の発想</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">3D: 始点を変えて簡単化</span>
-<ul>
-<li><span class="node step leaf">a, b, c の係数和が a+b+c=1 等のとき</span></li>
-<li><span class="node step leaf">始点を A に統一（→AP, AB, AC で書き直す）</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">3D: 始点を変えて簡単化</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{a},\vec{b},\vec{c}\) の係数和が \(a+b+c=1\) 等のとき</span></li>
+<li><span class="node step leaf">始点を A に統一（→\(\vec{AP},\vec{AB},\vec{AC}\) で書き直す）</span></li>
 <li><span class="node step leaf">制約条件も書き換え</span></li>
 <li><span class="node step leaf">3-A に帰着</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">3E: 斜交座標による解法</span>
-<ul>
-<li><span class="node step leaf">a, b 方向を斜交軸とみなす</span></li>
-<li><span class="node step leaf">(s, t) 平面で不等式を図示</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">3E: 斜交座標による解法</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{a},\vec{b}\) 方向を斜交軸とみなす</span></li>
+<li><span class="node step leaf">\((s, t)\) 平面で不等式を図示</span></li>
 <li><span class="node step leaf">元の図に戻す</span></li>
-<li><span class="node ref leaf">💡 答案では使いにくいが、見通しが立てやすい</span></li>
+<li class="note-li"><span class="node leaf">💡 答案では使いにくいが、見通しが立てやすい</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">3F: 平面/空間の判別に注意</span>
-<ul>
-<li><span class="node step leaf">|x − a| = r → 平面なら円、空間なら球面</span></li>
-<li><span class="node step leaf">(x − a)·(x − b) = 0 → 平面なら円、空間なら球面</span></li>
-<li><span class="node step leaf">(x − a)·n = 0 → 平面なら直線、空間なら平面</span></li>
-<li><span class="node ref leaf">💡 「答えを円周にしないで球面に」</span></li>
+<span class="node l1 expert has-children" onclick="toggle(this)">3F: 平面/空間の判別に注意</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(|\vec{x} - \vec{a}| = r\) → 平面なら円、空間なら球面</span></li>
+<li><span class="node step leaf">\((\vec{x} - \vec{a})\cdot(\vec{x} - \vec{b}) = 0\) → 平面なら円、空間なら球面</span></li>
+<li><span class="node step leaf">\((\vec{x} - \vec{a})\cdot\vec{n} = 0\) → 平面なら直線、空間なら平面</span></li>
+<li class="note-li"><span class="node leaf">💡 「答えを円周にしないで球面に」</span></li>
 </ul>
 </li>
 </ul></li></ul>
@@ -324,6 +360,12 @@ function toggle(el) {
   if (!ul || ul.tagName !== 'UL') return;
   ul.classList.toggle('hidden');
   el.classList.toggle('open');
+  // MathJaxが既に読み込み済みで、新しく表示された範囲に未処理の数式があれば再処理
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    if (!ul.classList.contains('hidden')) {
+      window.MathJax.typesetPromise([ul]).catch(() => {});
+    }
+  }
 }
 </script>
 </body>

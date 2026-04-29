@@ -28,6 +28,24 @@ body {
   width: 14px; height: 14px; border: 2px solid; border-radius: 2px;
   display: inline-block; flex-shrink: 0;
 }
+.guide-box {
+  margin: 12px;
+  padding: 12px 14px;
+  background: #f0f7fb;
+  border: 1px solid #b8d4e8;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.guide-box h2 {
+  font-size: 15px;
+  color: #185FA5;
+  margin-bottom: 8px;
+}
+.guide-box .step-head { font-weight: 600; margin-top: 8px; color: #185FA5; }
+.guide-box ul { margin-left: 20px; margin-top: 4px; }
+.guide-box li { margin: 3px 0; }
+.guide-box .marker { color: #A32D2D; font-weight: 600; }
+
 .tree { padding: 12px 8px 40px 8px; }
 .tree ul { list-style: none; padding-left: 20px; border-left: 1px solid #ddd; }
 .tree > ul { border-left: none; padding-left: 0; }
@@ -76,6 +94,9 @@ body {
 }
 .img-wrap svg { width: 100%; height: auto; display: block; }
 
+.note-li { margin: 6px 0; }
+.note-li .node { background: #fffbe6; border-color: #e0d080; }
+
 .hidden { display: none; }
 
 @media (max-width: 600px) {
@@ -86,6 +107,22 @@ body {
   .img-wrap { margin-left: 10px; }
 }
 </style>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        id="MathJax-script" async></script>
+
 </head>
 <body>
 <div class="header"><h1>④ 垂線・正射影・外心</h1></div>
@@ -102,17 +139,17 @@ body {
 <div class="tree">
 <ul>
 <li>
-<span class="node root standard has-children open" onclick="toggle(this)">④ 垂線・正射影・外心</span>
-<ul>
+<span class="node root standard has-children" onclick="toggle(this)">④ 垂線・正射影・外心</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「垂線の足を求めよ」／「正射影ベクトルを求めよ」／「外心を求めよ」</span></li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">4A: 直線（ベクトル）への正射影</span>
-<ul>
-<li><span class="node step leaf">公式: OH = (a·b / |a|²) × a</span></li>
-<li><span class="node step leaf">内積 a·b を計算</span></li>
-<li><span class="node step leaf">|a|² を計算</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">4A: 直線（ベクトル）への正射影</span>
+<ul class="hidden">
+<li><span class="node step leaf">公式: \(\displaystyle \vec{OH} = \frac{\vec{a}\cdot\vec{b}}{|\vec{a}|^2}\vec{a}\)</span></li>
+<li><span class="node step leaf">内積 \(\vec{a}\cdot\vec{b}\) を計算</span></li>
+<li><span class="node step leaf">\(|\vec{a}|^2\) を計算</span></li>
 <li><span class="node step leaf">公式に代入</span></li>
-<li><span class="node ref leaf">💡 「ある点から直線に垂線を下ろす」を見たら即この公式</span></li>
+<li class="note-li"><span class="node leaf">💡 「ある点から直線に垂線を下ろす」を見たら即この公式</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200" width="360" height="200">
 
 <style>
@@ -160,20 +197,20 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">4B: 垂線の足を交点として求める</span>
-<ul>
-<li><span class="node step leaf">H = OA + t·AB と置く（直線AB上）</span></li>
-<li><span class="node step leaf">PH·AB = 0（垂直条件）</span></li>
-<li><span class="node step leaf">t を決定</span></li>
-<li><span class="node ref leaf">💡 公式を使わない別解。連立で解ける</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">4B: 垂線の足を交点として求める</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OH} = \vec{OA} + t\vec{AB}\) と置く（直線AB上）</span></li>
+<li><span class="node step leaf">\(\vec{PH}\cdot\vec{AB} = 0\)（垂直条件）</span></li>
+<li><span class="node step leaf">\(t\) を決定</span></li>
+<li class="note-li"><span class="node leaf">💡 公式を使わない別解。連立で解ける</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">4C: 平面への正射影（空間）</span>
-<ul>
-<li><span class="node step leaf">公式は「ベクトル→ベクトル」なので、まず法線nに正射影</span></li>
-<li><span class="node step leaf">n への正射影 = (n·x/|n|²)·n</span></li>
-<li><span class="node step leaf">平面αへの正射影 = x − (n·x/|n|²)·n</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">4C: 平面への正射影（空間）</span>
+<ul class="hidden">
+<li><span class="node step leaf">公式は「ベクトル→ベクトル」なので、まず法線 \(\vec{n}\) に正射影</span></li>
+<li><span class="node step leaf">\(\vec{n}\) への正射影 = \(\displaystyle \frac{\vec{n}\cdot\vec{x}}{|\vec{n}|^2}\vec{n}\)</span></li>
+<li><span class="node step leaf">平面 \(\alpha\) への正射影 = \(\displaystyle \vec{x} - \frac{\vec{n}\cdot\vec{x}}{|\vec{n}|^2}\vec{n}\)</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240">
 
 <style>
@@ -218,13 +255,13 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">4D: 三角形の外心</span>
-<ul>
-<li><span class="node step leaf">OR = xa + yb と置く</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">4D: 三角形の外心</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OR} = x\vec{a} + y\vec{b}\) と置く</span></li>
 <li><span class="node step leaf">辺の中点 M, N を取る</span></li>
-<li><span class="node step leaf">RM·OA = 0, RN·OB = 0 を連立</span></li>
-<li><span class="node step leaf">x, y を決定</span></li>
-<li><span class="node ref leaf">💡 外心は「垂直二等分線の交点」</span></li>
+<li><span class="node step leaf">\(\vec{RM}\cdot\vec{OA}=0,\ \vec{RN}\cdot\vec{OB}=0\) を連立</span></li>
+<li><span class="node step leaf">\(x, y\) を決定</span></li>
+<li class="note-li"><span class="node leaf">💡 外心は「垂直二等分線の交点」</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" width="320" height="260">
 
 <style>
@@ -275,18 +312,18 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">4E: 正射影 × 外心の合わせ技</span>
-<ul>
+<span class="node l1 advanced has-children" onclick="toggle(this)">4E: 正射影 × 外心の合わせ技</span>
+<ul class="hidden">
 <li><span class="node step leaf">外心から辺へ垂線を下ろすと中点に落ちる</span></li>
 <li><span class="node step leaf">外心と垂直二等分線の相性は◎</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">4F: 平行六面体の高さ</span>
-<ul>
-<li><span class="node step leaf">底面の法線方向 n</span></li>
-<li><span class="node step leaf">高さ |OH| = |b·n| / |n|</span></li>
-<li><span class="node step leaf">体積 V = 底面積 × 高さ</span></li>
+<span class="node l1 expert has-children" onclick="toggle(this)">4F: 平行六面体の高さ</span>
+<ul class="hidden">
+<li><span class="node step leaf">底面の法線方向 \(\vec{n}\)</span></li>
+<li><span class="node step leaf">高さ \(\displaystyle |\vec{OH}| = \frac{|\vec{b}\cdot\vec{n}|}{|\vec{n}|}\)</span></li>
+<li><span class="node step leaf">体積 \(V\) = 底面積 \(\times\) 高さ</span></li>
 </ul>
 </li>
 </ul></li></ul>
@@ -297,6 +334,12 @@ function toggle(el) {
   if (!ul || ul.tagName !== 'UL') return;
   ul.classList.toggle('hidden');
   el.classList.toggle('open');
+  // MathJaxが既に読み込み済みで、新しく表示された範囲に未処理の数式があれば再処理
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    if (!ul.classList.contains('hidden')) {
+      window.MathJax.typesetPromise([ul]).catch(() => {});
+    }
+  }
 }
 </script>
 </body>

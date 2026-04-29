@@ -28,6 +28,24 @@ body {
   width: 14px; height: 14px; border: 2px solid; border-radius: 2px;
   display: inline-block; flex-shrink: 0;
 }
+.guide-box {
+  margin: 12px;
+  padding: 12px 14px;
+  background: #f0f7fb;
+  border: 1px solid #b8d4e8;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.guide-box h2 {
+  font-size: 15px;
+  color: #185FA5;
+  margin-bottom: 8px;
+}
+.guide-box .step-head { font-weight: 600; margin-top: 8px; color: #185FA5; }
+.guide-box ul { margin-left: 20px; margin-top: 4px; }
+.guide-box li { margin: 3px 0; }
+.guide-box .marker { color: #A32D2D; font-weight: 600; }
+
 .tree { padding: 12px 8px 40px 8px; }
 .tree ul { list-style: none; padding-left: 20px; border-left: 1px solid #ddd; }
 .tree > ul { border-left: none; padding-left: 0; }
@@ -76,6 +94,9 @@ body {
 }
 .img-wrap svg { width: 100%; height: auto; display: block; }
 
+.note-li { margin: 6px 0; }
+.note-li .node { background: #fffbe6; border-color: #e0d080; }
+
 .hidden { display: none; }
 
 @media (max-width: 600px) {
@@ -86,6 +107,22 @@ body {
   .img-wrap { margin-left: 10px; }
 }
 </style>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        id="MathJax-script" async></script>
+
 </head>
 <body>
 <div class="header"><h1>⑤ 直線・平面の方程式（空間中心）</h1></div>
@@ -102,24 +139,24 @@ body {
 <div class="tree">
 <ul>
 <li>
-<span class="node root standard has-children open" onclick="toggle(this)">⑤ 直線・平面の方程式（空間中心）</span>
-<ul>
+<span class="node root standard has-children" onclick="toggle(this)">⑤ 直線・平面の方程式（空間中心）</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「直線の方程式を求めよ」／「平面の方程式を求めよ」／「点と平面の距離」</span></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">5A: 直線のベクトル方程式</span>
-<ul>
-<li><span class="node step leaf">点A(a)を通り、方向ベクトル l に平行: x = a + tl</span></li>
-<li><span class="node step leaf">点A(a,b,c)を通り、方向(α,β,γ)に平行:</span></li>
-<li><span class="node step leaf">(x−a)/α = (y−b)/β = (z−c)/γ</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">5A: 直線のベクトル方程式</span>
+<ul class="hidden">
+<li><span class="node step leaf">点 \(A(\vec{a})\) を通り、方向ベクトル \(\vec{l}\) に平行: \(\vec{x} = \vec{a} + t\vec{l}\)</span></li>
+<li><span class="node step leaf">点 \(A(a,b,c)\) を通り、方向 \((\alpha,\beta,\gamma)\) に平行:</span></li>
+<li><span class="node step leaf">\(\displaystyle \frac{x-a}{\alpha} = \frac{y-b}{\beta} = \frac{z-c}{\gamma}\)</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">5B: 平面のベクトル方程式</span>
-<ul>
-<li><span class="node step leaf">3点A,B,Cを通る: x = αa + βb + γc, α+β+γ=1</span></li>
-<li><span class="node step leaf">点Aを通り u, v で張られる: x = a + su + tv</span></li>
-<li><span class="node step leaf">点Aを通り、法線nに平行: (x−a)·n = 0</span></li>
-<li><span class="node step leaf">成分形: α(x−a) + β(y−b) + γ(z−c) = 0</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">5B: 平面のベクトル方程式</span>
+<ul class="hidden">
+<li><span class="node step leaf">3点 A,B,C を通る: \(\vec{x} = \alpha\vec{a} + \beta\vec{b} + \gamma\vec{c},\ \alpha+\beta+\gamma=1\)</span></li>
+<li><span class="node step leaf">点 A を通り \(\vec{u}, \vec{v}\) で張られる: \(\vec{x} = \vec{a} + s\vec{u} + t\vec{v}\)</span></li>
+<li><span class="node step leaf">点 A を通り、法線 \(\vec{n}\) に平行: \((\vec{x}-\vec{a})\cdot\vec{n} = 0\)</span></li>
+<li><span class="node step leaf">成分形: \(\alpha(x-a) + \beta(y-b) + \gamma(z-c) = 0\)</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 200" width="540" height="200">
 
 <style>
@@ -173,50 +210,50 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">5C: 法線ベクトルを求める</span>
-<ul>
-<li><span class="node step leaf">答案用: n = (x,y,z) と置き、n·u=0, n·v=0 を連立</span></li>
-<li><span class="node step leaf">裏計算: 外積 u × v を計算</span></li>
-<li><span class="node step leaf">u×v = (u₂v₃−u₃v₂, u₃v₁−u₁v₃, u₁v₂−u₂v₁)</span></li>
-<li><span class="node ref leaf">💡 答案では外積を使わず内積=0で書く</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">5C: 法線ベクトルを求める</span>
+<ul class="hidden">
+<li><span class="node step leaf">答案用: \(\vec{n} = (x,y,z)\) と置き、\(\vec{n}\cdot\vec{u}=0,\ \vec{n}\cdot\vec{v}=0\) を連立</span></li>
+<li><span class="node step leaf">裏計算: 外積 \(\vec{u}\times\vec{v}\) を計算</span></li>
+<li><span class="node step leaf">\(\vec{u}\times\vec{v} = (u_2 v_3 - u_3 v_2,\ u_3 v_1 - u_1 v_3,\ u_1 v_2 - u_2 v_1)\)</span></li>
+<li class="note-li"><span class="node leaf">💡 答案では外積を使わず内積=0で書く</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">5D: 直線と平面の交点</span>
-<ul>
-<li><span class="node step leaf">直線をパラメータ表示 x = a + tl</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">5D: 直線と平面の交点</span>
+<ul class="hidden">
+<li><span class="node step leaf">直線をパラメータ表示 \(\vec{x} = \vec{a} + t\vec{l}\)</span></li>
 <li><span class="node step leaf">平面の方程式に代入</span></li>
-<li><span class="node step leaf">t を解く → 交点</span></li>
+<li><span class="node step leaf">\(t\) を解く → 交点</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">5E: 2直線の交点／ねじれの判定</span>
-<ul>
+<span class="node l1 advanced has-children" onclick="toggle(this)">5E: 2直線の交点／ねじれの判定</span>
+<ul class="hidden">
 <li><span class="node step leaf">各直線をパラメータ表示</span></li>
 <li><span class="node step leaf">連立して解の有無を見る</span></li>
 <li><span class="node step leaf">解なし → ねじれの位置</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">5F: 点と直線の距離</span>
-<ul>
+<span class="node l1 standard has-children" onclick="toggle(this)">5F: 点と直線の距離</span>
+<ul class="hidden">
 <li><span class="node step leaf">点から直線へ垂線の足 H を出す（4-A 正射影）</span></li>
-<li><span class="node step leaf">距離 = |PH|</span></li>
+<li><span class="node step leaf">距離 = \(|\vec{PH}|\)</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">5G: 点と平面の距離</span>
-<ul>
-<li><span class="node step leaf">公式: d = |α(x₀−a) + β(y₀−b) + γ(z₀−c)| / √(α²+β²+γ²)</span></li>
-<li><span class="node step leaf">別解: 平面上の点AをとりAPのn方向への正射影の長さ</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">5G: 点と平面の距離</span>
+<ul class="hidden">
+<li><span class="node step leaf">公式: \(\displaystyle d = \frac{|\alpha(x_0-a) + \beta(y_0-b) + \gamma(z_0-c)|}{\sqrt{\alpha^2+\beta^2+\gamma^2}}\)</span></li>
+<li><span class="node step leaf">別解: 平面上の点 A をとり \(\vec{AP}\) の \(\vec{n}\) 方向への正射影の長さ</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">5H: 共通垂線・最短距離</span>
-<ul>
+<span class="node l1 expert has-children" onclick="toggle(this)">5H: 共通垂線・最短距離</span>
+<ul class="hidden">
 <li><span class="node step leaf">各直線上に動点 P, Q を置く</span></li>
-<li><span class="node step leaf">PQ·l₁ = 0, PQ·l₂ = 0 を連立</span></li>
-<li><span class="node step leaf">最短距離 |PQ|</span></li>
+<li><span class="node step leaf">\(\vec{PQ}\cdot\vec{l_1}=0,\ \vec{PQ}\cdot\vec{l_2}=0\) を連立</span></li>
+<li><span class="node step leaf">最短距離 \(|\vec{PQ}|\)</span></li>
 </ul>
 </li>
 </ul></li></ul>
@@ -227,6 +264,12 @@ function toggle(el) {
   if (!ul || ul.tagName !== 'UL') return;
   ul.classList.toggle('hidden');
   el.classList.toggle('open');
+  // MathJaxが既に読み込み済みで、新しく表示された範囲に未処理の数式があれば再処理
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    if (!ul.classList.contains('hidden')) {
+      window.MathJax.typesetPromise([ul]).catch(() => {});
+    }
+  }
 }
 </script>
 </body>

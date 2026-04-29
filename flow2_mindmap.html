@@ -28,6 +28,24 @@ body {
   width: 14px; height: 14px; border: 2px solid; border-radius: 2px;
   display: inline-block; flex-shrink: 0;
 }
+.guide-box {
+  margin: 12px;
+  padding: 12px 14px;
+  background: #f0f7fb;
+  border: 1px solid #b8d4e8;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.guide-box h2 {
+  font-size: 15px;
+  color: #185FA5;
+  margin-bottom: 8px;
+}
+.guide-box .step-head { font-weight: 600; margin-top: 8px; color: #185FA5; }
+.guide-box ul { margin-left: 20px; margin-top: 4px; }
+.guide-box li { margin: 3px 0; }
+.guide-box .marker { color: #A32D2D; font-weight: 600; }
+
 .tree { padding: 12px 8px 40px 8px; }
 .tree ul { list-style: none; padding-left: 20px; border-left: 1px solid #ddd; }
 .tree > ul { border-left: none; padding-left: 0; }
@@ -76,6 +94,9 @@ body {
 }
 .img-wrap svg { width: 100%; height: auto; display: block; }
 
+.note-li { margin: 6px 0; }
+.note-li .node { background: #fffbe6; border-color: #e0d080; }
+
 .hidden { display: none; }
 
 @media (max-width: 600px) {
@@ -86,6 +107,22 @@ body {
   .img-wrap { margin-left: 10px; }
 }
 </style>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        id="MathJax-script" async></script>
+
 </head>
 <body>
 <div class="header"><h1>② 点の位置・分点を求める</h1></div>
@@ -102,15 +139,15 @@ body {
 <div class="tree">
 <ul>
 <li>
-<span class="node root standard has-children open" onclick="toggle(this)">② 点の位置・分点を求める</span>
-<ul>
+<span class="node root standard has-children" onclick="toggle(this)">② 点の位置・分点を求める</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「位置ベクトルを表せ」／「OPを表せ」／「s:tに内分する点を求めよ」／「交点を求めよ」</span></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">2A: 内分点・外分点の公式</span>
-<ul>
-<li><span class="node step leaf">m:n に内分: p = (na + mb) / (m+n)</span></li>
-<li><span class="node step leaf">m:n に外分: p = (−na + mb) / (m−n)</span></li>
-<li><span class="node step leaf">「m:n に外分」⇔「m:(−n) に内分」として覚える</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">2A: 内分点・外分点の公式</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(m:n\) に内分: \(\displaystyle \vec{p} = \frac{n\vec{a} + m\vec{b}}{m+n}\)</span></li>
+<li><span class="node step leaf">\(m:n\) に外分: \(\displaystyle \vec{q} = \frac{-n\vec{a} + m\vec{b}}{m-n}\)</span></li>
+<li><span class="node step leaf">「\(m:n\) に外分」⇔「\(m:(-n)\) に内分」として覚える</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 140" width="380" height="140">
 
 <style>
@@ -153,18 +190,18 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">2B: 共線条件で点を決定</span>
-<ul>
-<li><span class="node step leaf">OP = (1−t)OA + t·OB と置く</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">2B: 共線条件で点を決定</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OP} = (1-t)\vec{OA} + t\vec{OB}\) と置く</span></li>
 <li><span class="node step leaf">別の条件（直線CD上にある等）と連立</span></li>
-<li><span class="node step leaf">一次独立性より係数比較で t を決定</span></li>
-<li><span class="node ref leaf">💡 「Pは直線AB上」+「別の条件」という形を見たら</span></li>
+<li><span class="node step leaf">一次独立性より係数比較で \(t\) を決定</span></li>
+<li class="note-li"><span class="node leaf">💡 「P は直線AB上」+「別の条件」という形を見たら</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">2C: 共面条件で点を決定（空間）</span>
-<ul>
-<li><span class="node step leaf">OP = sOA + tOB + uOC, s+t+u=1 と置く</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">2C: 共面条件で点を決定（空間）</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OP} = s\vec{OA} + t\vec{OB} + u\vec{OC},\ s+t+u=1\) と置く</span></li>
 <li><span class="node step leaf">別の条件と連立</span></li>
 <li><span class="node step leaf">係数比較</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 220" width="340" height="220">
@@ -214,11 +251,11 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">2D: 角の二等分線との交点</span>
-<ul>
-<li><span class="node step leaf">∠AOBの二等分線方向は a/|a| + b/|b|</span></li>
-<li><span class="node step leaf">AP:PB = OA:OB を使って OP = (|b|a + |a|b)/(|a|+|b|)</span></li>
-<li><span class="node ref leaf">💡 ひし形の公式 OP // a/|a| + b/|b| でも可</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">2D: 角の二等分線との交点</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\angle AOB\) の二等分線方向は \(\displaystyle \frac{\vec{a}}{|\vec{a}|} + \frac{\vec{b}}{|\vec{b}|}\)</span></li>
+<li><span class="node step leaf">\(AP:PB = OA:OB\) を使って \(\displaystyle \vec{OP} = \frac{|\vec{b}|\vec{a} + |\vec{a}|\vec{b}}{|\vec{a}|+|\vec{b}|}\)</span></li>
+<li class="note-li"><span class="node leaf">💡 ひし形の公式 \(\vec{OP} \parallel \dfrac{\vec{a}}{|\vec{a}|} + \dfrac{\vec{b}}{|\vec{b}|}\) でも可</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
 
 <style>
@@ -260,31 +297,31 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">2E: 三角形・四面体の重心</span>
-<ul>
-<li><span class="node step leaf">三角形 ABC の重心: g = (a+b+c)/3</span></li>
-<li><span class="node step leaf">四面体 ABCD の重心: g = (a+b+c+d)/4</span></li>
-<li><span class="node ref leaf">💡 GA + GB + GC = 0（始点を重心に取れば成立）</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">2E: 三角形・四面体の重心</span>
+<ul class="hidden">
+<li><span class="node step leaf">三角形 ABC の重心: \(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}}{3}\)</span></li>
+<li><span class="node step leaf">四面体 ABCD の重心: \(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}+\vec{d}}{4}\)</span></li>
+<li class="note-li"><span class="node leaf">💡 \(\vec{GA}+\vec{GB}+\vec{GC}=\vec{0}\)（始点を重心に取れば成立）</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">2F: 内心の位置ベクトル</span>
-<ul>
-<li><span class="node step leaf">角の二等分線の性質から BD:DC = c:b</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">2F: 内心の位置ベクトル</span>
+<ul class="hidden">
+<li><span class="node step leaf">角の二等分線の性質から \(BD:DC = c:b\)</span></li>
 <li><span class="node step leaf">D の位置ベクトルを出す</span></li>
-<li><span class="node step leaf">AI:ID = (b+c):a を再利用</span></li>
-<li><span class="node step leaf">結果: i = (a·a + b·b + c·c)/(a+b+c)</span></li>
-<li><span class="node ref leaf">💡 a, b, c は対辺の長さ（覚える価値あり）</span></li>
+<li><span class="node step leaf">\(AI:ID = (b+c):a\) を再利用</span></li>
+<li><span class="node step leaf">結果: \(\displaystyle \vec{i} = \frac{a\vec{a} + b\vec{b} + c\vec{c}}{a+b+c}\)</span></li>
+<li class="note-li"><span class="node leaf">💡 \(a, b, c\) は対辺の長さ（覚える価値あり）</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">2G: 外心の位置ベクトル</span>
-<ul>
-<li><span class="node step leaf">OR = xa + yb と置く</span></li>
-<li><span class="node step leaf">辺OA, OBの中点を M, N</span></li>
-<li><span class="node step leaf">RM·OA = 0, RN·OB = 0 を連立</span></li>
-<li><span class="node step leaf">x, y を解く</span></li>
-<li><span class="node ref leaf">💡 外心を始点に取れる場合は |a|=|b|=|c|=R が使えてラク</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">2G: 外心の位置ベクトル</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OR} = x\vec{a} + y\vec{b}\) と置く</span></li>
+<li><span class="node step leaf">辺 OA, OB の中点を M, N</span></li>
+<li><span class="node step leaf">\(\vec{RM}\cdot\vec{OA}=0,\ \vec{RN}\cdot\vec{OB}=0\) を連立</span></li>
+<li><span class="node step leaf">\(x, y\) を解く</span></li>
+<li class="note-li"><span class="node leaf">💡 外心を始点に取れる場合は \(|\vec{a}|=|\vec{b}|=|\vec{c}|=R\) が使えてラク</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" width="320" height="260">
 
 <style>
@@ -335,12 +372,12 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">2H: 「sa + tb + uc = 0」型の利用</span>
-<ul>
-<li><span class="node step leaf">パターン1: 一文字消去 a = −(tb+uc)/s</span></li>
-<li><span class="node step leaf">パターン2: 内積を見る a·(sa+tb+uc) = 0</span></li>
-<li><span class="node step leaf">パターン3: 1つを移項して2乗 |sa|² = |−(tb+uc)|²</span></li>
-<li><span class="node ref leaf">💡 3ベクトルの和が0なら2乗が定石</span></li>
+<span class="node l1 advanced has-children" onclick="toggle(this)">2H: 「\(s\vec{a}+t\vec{b}+u\vec{c}=\vec{0}\)」型の利用</span>
+<ul class="hidden">
+<li><span class="node step leaf">パターン1: 一文字消去 \(\displaystyle \vec{a} = -\frac{t\vec{b}+u\vec{c}}{s}\)</span></li>
+<li><span class="node step leaf">パターン2: 内積を見る \(\vec{a}\cdot(s\vec{a}+t\vec{b}+u\vec{c}) = 0\)</span></li>
+<li><span class="node step leaf">パターン3: 1つを移項して2乗 \(|s\vec{a}|^2 = |-(t\vec{b}+u\vec{c})|^2\)</span></li>
+<li class="note-li"><span class="node leaf">💡 3ベクトルの和が0なら2乗が定石</span></li>
 </ul>
 </li>
 </ul></li></ul>
@@ -351,6 +388,12 @@ function toggle(el) {
   if (!ul || ul.tagName !== 'UL') return;
   ul.classList.toggle('hidden');
   el.classList.toggle('open');
+  // MathJaxが既に読み込み済みで、新しく表示された範囲に未処理の数式があれば再処理
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    if (!ul.classList.contains('hidden')) {
+      window.MathJax.typesetPromise([ul]).catch(() => {});
+    }
+  }
 }
 </script>
 </body>

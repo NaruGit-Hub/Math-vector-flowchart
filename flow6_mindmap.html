@@ -28,6 +28,24 @@ body {
   width: 14px; height: 14px; border: 2px solid; border-radius: 2px;
   display: inline-block; flex-shrink: 0;
 }
+.guide-box {
+  margin: 12px;
+  padding: 12px 14px;
+  background: #f0f7fb;
+  border: 1px solid #b8d4e8;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.guide-box h2 {
+  font-size: 15px;
+  color: #185FA5;
+  margin-bottom: 8px;
+}
+.guide-box .step-head { font-weight: 600; margin-top: 8px; color: #185FA5; }
+.guide-box ul { margin-left: 20px; margin-top: 4px; }
+.guide-box li { margin: 3px 0; }
+.guide-box .marker { color: #A32D2D; font-weight: 600; }
+
 .tree { padding: 12px 8px 40px 8px; }
 .tree ul { list-style: none; padding-left: 20px; border-left: 1px solid #ddd; }
 .tree > ul { border-left: none; padding-left: 0; }
@@ -76,6 +94,9 @@ body {
 }
 .img-wrap svg { width: 100%; height: auto; display: block; }
 
+.note-li { margin: 6px 0; }
+.note-li .node { background: #fffbe6; border-color: #e0d080; }
+
 .hidden { display: none; }
 
 @media (max-width: 600px) {
@@ -86,6 +107,22 @@ body {
   .img-wrap { margin-left: 10px; }
 }
 </style>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        id="MathJax-script" async></script>
+
 </head>
 <body>
 <div class="header"><h1>⑥ 共線・共面・平行・垂直の判定/証明</h1></div>
@@ -102,14 +139,14 @@ body {
 <div class="tree">
 <ul>
 <li>
-<span class="node root standard has-children open" onclick="toggle(this)">⑥ 共線・共面・平行・垂直の判定/証明</span>
-<ul>
+<span class="node root standard has-children" onclick="toggle(this)">⑥ 共線・共面・平行・垂直の判定/証明</span>
+<ul class="hidden">
 <li><span class="node tail leaf">末尾: 「同一直線上にあることを示せ」／「同一平面上にあることを示せ」／「垂直であることを示せ」</span></li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">6A: 3点が同一直線上</span>
-<ul>
-<li><span class="node step leaf">条件: AB = k·AC を満たす実数 k が存在</span></li>
-<li><span class="node step leaf">⇔ OC = tOA + (1−t)OB</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">6A: 3点が同一直線上</span>
+<ul class="hidden">
+<li><span class="node step leaf">条件: \(\vec{AB} = k\vec{AC}\) を満たす実数 \(k\) が存在</span></li>
+<li><span class="node step leaf">⇔ \(\vec{OC} = t\vec{OA} + (1-t)\vec{OB}\)</span></li>
 <li><span class="node step leaf">2つのベクトルを書く</span></li>
 <li><span class="node step leaf">平行関係（実数倍）を示す</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 180" width="340" height="180">
@@ -151,10 +188,10 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">6B: 4点が同一平面上</span>
-<ul>
-<li><span class="node step leaf">OD = sOA + tOB + uOC, s+t+u=1</span></li>
-<li><span class="node step leaf">⇔ AD = xAB + yAC（A始点）</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">6B: 4点が同一平面上</span>
+<ul class="hidden">
+<li><span class="node step leaf">\(\vec{OD} = s\vec{OA} + t\vec{OB} + u\vec{OC},\ s+t+u=1\)</span></li>
+<li><span class="node step leaf">⇔ \(\vec{AD} = x\vec{AB} + y\vec{AC}\)（A 始点）</span></li>
 <li><span class="node step leaf">3つのベクトルを取る</span></li>
 <li><span class="node step leaf">一方を他2つの一次結合で表す</span></li>
 <li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 220" width="340" height="220">
@@ -204,36 +241,36 @@ body {
 </ul>
 </li>
 <li>
-<span class="node l1 basic has-children open" onclick="toggle(this)">6C: 平行条件・垂直条件（成分）</span>
-<ul>
-<li><span class="node step leaf">平面: (a,b)//(c,d) ⇔ ad − bc = 0</span></li>
-<li><span class="node step leaf">    : (a,b)⊥(c,d) ⇔ ac + bd = 0</span></li>
-<li><span class="node step leaf">空間: u // v ⇔ u = kv</span></li>
-<li><span class="node step leaf">    : u ⊥ v ⇔ u·v = 0</span></li>
+<span class="node l1 basic has-children" onclick="toggle(this)">6C: 平行条件・垂直条件（成分）</span>
+<ul class="hidden">
+<li><span class="node step leaf">平面: \((a,b)\parallel(c,d) \Leftrightarrow ad - bc = 0\)</span></li>
+<li><span class="node step leaf">\((a,b)\perp(c,d) \Leftrightarrow ac + bd = 0\)</span></li>
+<li><span class="node step leaf">空間: \(\vec{u}\parallel\vec{v} \Leftrightarrow \vec{u} = k\vec{v}\)</span></li>
+<li><span class="node step leaf">\(\vec{u}\perp\vec{v} \Leftrightarrow \vec{u}\cdot\vec{v} = 0\)</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 standard has-children open" onclick="toggle(this)">6D: 直線が平面に直交を示す</span>
-<ul>
-<li><span class="node step leaf">平面の基底 u, v を取る</span></li>
-<li><span class="node step leaf">l·u = 0 かつ l·v = 0 を示す</span></li>
+<span class="node l1 standard has-children" onclick="toggle(this)">6D: 直線が平面に直交を示す</span>
+<ul class="hidden">
+<li><span class="node step leaf">平面の基底 \(\vec{u}, \vec{v}\) を取る</span></li>
+<li><span class="node step leaf">\(\vec{l}\cdot\vec{u}=0\) かつ \(\vec{l}\cdot\vec{v}=0\) を示す</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 advanced has-children open" onclick="toggle(this)">6E: 一次独立性の活用</span>
-<ul>
+<span class="node l1 advanced has-children" onclick="toggle(this)">6E: 一次独立性の活用</span>
+<ul class="hidden">
 <li><span class="node step leaf">同じベクトルを2通りに表したとき</span></li>
-<li><span class="node step leaf">xa + yb + zc = x'a + y'b + z'c</span></li>
-<li><span class="node step leaf">⇒ a,b,c一次独立なら x=x', y=y', z=z'</span></li>
-<li><span class="node ref leaf">💡 係数比較の根拠。連立を解く強力な道具</span></li>
+<li><span class="node step leaf">\(x\vec{a} + y\vec{b} + z\vec{c} = x'\vec{a} + y'\vec{b} + z'\vec{c}\)</span></li>
+<li><span class="node step leaf">⇒ \(\vec{a},\vec{b},\vec{c}\) 一次独立なら \(x=x',y=y',z=z'\)</span></li>
+<li class="note-li"><span class="node leaf">💡 係数比較の根拠。連立を解く強力な道具</span></li>
 </ul>
 </li>
 <li>
-<span class="node l1 expert has-children open" onclick="toggle(this)">6F: 対称性ある条件の式変形証明</span>
-<ul>
-<li><span class="node step leaf">例: AP·BP + BP·CP + CP·AP = 0</span></li>
+<span class="node l1 expert has-children" onclick="toggle(this)">6F: 対称性ある条件の式変形証明</span>
+<ul class="hidden">
+<li><span class="node step leaf">例: \(\vec{AP}\cdot\vec{BP} + \vec{BP}\cdot\vec{CP} + \vec{CP}\cdot\vec{AP} = 0\)</span></li>
 <li><span class="node step leaf">始点を統一（位置ベクトル化）</span></li>
-<li><span class="node step leaf">平方完成、または |...|² = ... の形に</span></li>
+<li><span class="node step leaf">平方完成、または \(|\cdots|^2 = \cdots\) の形に</span></li>
 <li><span class="node step leaf">図形的解釈（球面・平面・円）</span></li>
 </ul>
 </li>
@@ -245,6 +282,12 @@ function toggle(el) {
   if (!ul || ul.tagName !== 'UL') return;
   ul.classList.toggle('hidden');
   el.classList.toggle('open');
+  // MathJaxが既に読み込み済みで、新しく表示された範囲に未処理の数式があれば再処理
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    if (!ul.classList.contains('hidden')) {
+      window.MathJax.typesetPromise([ul]).catch(() => {});
+    }
+  }
 }
 </script>
 </body>

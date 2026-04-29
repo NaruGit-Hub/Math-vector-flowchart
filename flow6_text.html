@@ -17,7 +17,6 @@ h4 { font-size: 14px; margin-top: 16px; }
 table { border-collapse: collapse; width: 100%; margin: 12px 0; }
 th, td { border: 1px solid #999; padding: 6px 10px; text-align: left; font-size: 14px; vertical-align: top; }
 th { background: #f4f4f4; }
-blockquote { background: #f9f9f6; border-left: 3px solid #888; padding: 8px 16px; margin: 12px 0; font-size: 14px; }
 .img-container { margin: 20px 0; text-align: center; }
 .img-container svg { max-width: 100%; height: auto; }
 .note { background: #fffbe6; border: 1px solid #e0d080; padding: 10px 14px; border-radius: 4px; margin: 12px 0; font-size: 14px; }
@@ -25,10 +24,8 @@ blockquote { background: #f9f9f6; border-left: 3px solid #888; padding: 8px 16px
 .level-standard { border-left: 4px solid #BA7517; padding-left: 10px; }
 .level-advanced { border-left: 4px solid #185FA5; padding-left: 10px; }
 .level-expert { border-left: 4px solid #A32D2D; padding-left: 10px; }
-code { background: #f0f0f0; padding: 1px 4px; border-radius: 2px; }
-.ref { background: #eef4fb; border: 1px solid #c4d9ee; padding: 6px 12px; border-radius: 4px; margin: 8px 0; font-size: 14px; }
 ul.steps { padding-left: 22px; }
-ul.steps li { margin: 4px 0; }
+ul.steps li { margin: 6px 0; }
 .tail { background: #f4f4f4; border: 1px solid #ccc; padding: 6px 10px; margin: 8px 0; border-radius: 3px; font-size: 13px; }
 .toc { background: #f9f9f9; border: 1px solid #ddd; padding: 12px 18px; margin: 20px 0; border-radius: 4px; }
 .toc ul { padding-left: 20px; margin: 4px 0; }
@@ -39,8 +36,37 @@ ul.steps li { margin: 4px 0; }
 .lm-standard { border: 1px solid #BA7517; color: #BA7517; }
 .lm-advanced { border: 1px solid #185FA5; color: #185FA5; }
 .lm-expert { border: 1px solid #A32D2D; color: #A32D2D; }
+.guide {
+  background: #f0f7fb;
+  border: 1px solid #b8d4e8;
+  padding: 16px 20px; border-radius: 6px;
+  margin: 20px 0;
+}
+.guide h2 { border-left: 4px solid #185FA5; margin-top: 0; }
+.guide-step { margin: 12px 0; }
+.guide-step .head { font-weight: 600; color: #185FA5; }
+.guide-options { margin: 8px 0 8px 20px; }
+.guide-options li { margin: 6px 0; }
+.guide-options strong { display: inline-block; min-width: 6em; }
+.routing-table th { background: #f0f7fb; }
 @media print { body { margin: 20px; } }
 </style>
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
+    processEscapes: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"
+        id="MathJax-script" async></script>
+
 </head>
 <body>
 <h1>ベクトル｜⑥ 共線・共面・平行・垂直の判定/証明</h1>
@@ -48,10 +74,10 @@ ul.steps li { margin: 4px 0; }
 <h2 class="level-standard" id="flow6">⑥ 共線・共面・平行・垂直の判定/証明<span class="level-mark lm-standard">標準</span></h2>
 <div class="tail"><strong>末尾キーワード:</strong> 「同一直線上にあることを示せ」／「同一平面上にあることを示せ」／「垂直であることを示せ」</div>
 <p>「示せ・証明せよ」を見たら、共線条件・共面条件・内積=0で書き表す。</p>
-<h3 class="level-basic">6A: 3点が同一直線上<span class="level-mark lm-basic">基本</span></h3>
+<h3 class="level-basic" id="6A">6A: 3点が同一直線上<span class="level-mark lm-basic">基本</span></h3>
 <ul class="steps">
-<li>条件: AB = k·AC を満たす実数 k が存在</li>
-<li>⇔ OC = tOA + (1−t)OB</li>
+<li>条件: \(\vec{AB} = k\vec{AC}\) を満たす実数 \(k\) が存在</li>
+<li>⇔ \(\vec{OC} = t\vec{OA} + (1-t)\vec{OB}\)</li>
 <li>2つのベクトルを書く</li>
 <li>平行関係（実数倍）を示す</li>
 </ul>
@@ -91,10 +117,10 @@ ul.steps li { margin: 4px 0; }
 <text x="285.0" y="88.0" class="label">C</text>
 <text x="40.0" y="160.0" class="label">AB = k · AC を満たす実数 k が存在</text>
 </svg></div>
-<h3 class="level-standard">6B: 4点が同一平面上<span class="level-mark lm-standard">標準</span></h3>
+<h3 class="level-standard" id="6B">6B: 4点が同一平面上<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
-<li>OD = sOA + tOB + uOC, s+t+u=1</li>
-<li>⇔ AD = xAB + yAC（A始点）</li>
+<li>\(\vec{OD} = s\vec{OA} + t\vec{OB} + u\vec{OC},\ s+t+u=1\)</li>
+<li>⇔ \(\vec{AD} = x\vec{AB} + y\vec{AC}\)（A 始点）</li>
 <li>3つのベクトルを取る</li>
 <li>一方を他2つの一次結合で表す</li>
 </ul>
@@ -142,30 +168,30 @@ ul.steps li { margin: 4px 0; }
 <text x="165.0" y="125.0" class="label">P</text>
 <text x="20.0" y="205.0" class="label">OP = sOA + tOB + uOC, s+t+u=1</text>
 </svg></div>
-<h3 class="level-basic">6C: 平行条件・垂直条件（成分）<span class="level-mark lm-basic">基本</span></h3>
+<h3 class="level-basic" id="6C">6C: 平行条件・垂直条件（成分）<span class="level-mark lm-basic">基本</span></h3>
 <ul class="steps">
-<li>平面: (a,b)//(c,d) ⇔ ad − bc = 0</li>
-<li>    : (a,b)⊥(c,d) ⇔ ac + bd = 0</li>
-<li>空間: u // v ⇔ u = kv</li>
-<li>    : u ⊥ v ⇔ u·v = 0</li>
+<li>平面: \((a,b)\parallel(c,d) \Leftrightarrow ad - bc = 0\)</li>
+<li>\((a,b)\perp(c,d) \Leftrightarrow ac + bd = 0\)</li>
+<li>空間: \(\vec{u}\parallel\vec{v} \Leftrightarrow \vec{u} = k\vec{v}\)</li>
+<li>\(\vec{u}\perp\vec{v} \Leftrightarrow \vec{u}\cdot\vec{v} = 0\)</li>
 </ul>
-<h3 class="level-standard">6D: 直線が平面に直交を示す<span class="level-mark lm-standard">標準</span></h3>
+<h3 class="level-standard" id="6D">6D: 直線が平面に直交を示す<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
-<li>平面の基底 u, v を取る</li>
-<li>l·u = 0 かつ l·v = 0 を示す</li>
+<li>平面の基底 \(\vec{u}, \vec{v}\) を取る</li>
+<li>\(\vec{l}\cdot\vec{u}=0\) かつ \(\vec{l}\cdot\vec{v}=0\) を示す</li>
 </ul>
-<h3 class="level-advanced">6E: 一次独立性の活用<span class="level-mark lm-advanced">応用</span></h3>
+<h3 class="level-advanced" id="6E">6E: 一次独立性の活用<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>同じベクトルを2通りに表したとき</li>
-<li>xa + yb + zc = x'a + y'b + z'c</li>
-<li>⇒ a,b,c一次独立なら x=x', y=y', z=z'</li>
+<li>\(x\vec{a} + y\vec{b} + z\vec{c} = x'\vec{a} + y'\vec{b} + z'\vec{c}\)</li>
+<li>⇒ \(\vec{a},\vec{b},\vec{c}\) 一次独立なら \(x=x',y=y',z=z'\)</li>
 </ul>
 <div class="note">係数比較の根拠。連立を解く強力な道具</div>
-<h3 class="level-expert">6F: 対称性ある条件の式変形証明<span class="level-mark lm-expert">発展</span></h3>
+<h3 class="level-expert" id="6F">6F: 対称性ある条件の式変形証明<span class="level-mark lm-expert">発展</span></h3>
 <ul class="steps">
-<li>例: AP·BP + BP·CP + CP·AP = 0</li>
+<li>例: \(\vec{AP}\cdot\vec{BP} + \vec{BP}\cdot\vec{CP} + \vec{CP}\cdot\vec{AP} = 0\)</li>
 <li>始点を統一（位置ベクトル化）</li>
-<li>平方完成、または |...|² = ... の形に</li>
+<li>平方完成、または \(|\cdots|^2 = \cdots\) の形に</li>
 <li>図形的解釈（球面・平面・円）</li>
 </ul>
 <hr style="margin-top:40px">
