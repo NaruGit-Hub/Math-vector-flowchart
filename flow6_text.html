@@ -49,6 +49,44 @@ ul.steps li { margin: 6px 0; }
 .guide-options li { margin: 6px 0; }
 .guide-options strong { display: inline-block; min-width: 6em; }
 .routing-table th { background: #f0f7fb; }
+.example {
+  background: #fdf6f0;
+  border: 1px solid #e0c0a0;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+.example-head {
+  font-weight: 600;
+  color: #A55A1F;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.example-section { margin: 8px 0; }
+.example-section .lbl {
+  font-weight: 600;
+  color: #555;
+  font-size: 12px;
+  display: inline-block;
+  background: #fff;
+  padding: 1px 8px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-right: 6px;
+}
+.example-problem { margin: 6px 0 10px 0; }
+.example-solution { margin: 4px 0 4px 12px; }
+.example-solution li { margin: 4px 0; list-style: none; }
+.example-answer {
+  background: #fff;
+  border: 1px solid #d0a070;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 600;
+}
+.example-fig { margin: 10px 0; text-align: center; }
+.example-fig svg { max-width: 100%; height: auto; }
 @media print { body { margin: 20px; } }
 </style>
 
@@ -117,6 +155,17 @@ window.MathJax = {
 <text x="285.0" y="88.0" class="label">C</text>
 <text x="40.0" y="160.0" class="label">AB = k · AC を満たす実数 k が存在</text>
 </svg></div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>3点 \(A(1,2,3),\ B(2,4,5),\ C(4,8,9)\) が同一直線上にあるか判定せよ。</div>
+<div class="example-section"><span class="lbl">方針</span>\(\vec{AB}\) と \(\vec{AC}\) が平行（=実数倍）かを見る。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\vec{AB}=(1,2,2),\ \vec{AC}=(3,6,6)\)</li>
+<li>\(\vec{AC} = 3\vec{AB}\) なので、3点は同一直線上にある。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">同一直線上にある</span></div>
+</div>
 <h3 class="level-standard" id="6B">6B: 4点が同一平面上<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
 <li>\(\vec{OD} = s\vec{OA} + t\vec{OB} + u\vec{OC},\ s+t+u=1\)</li>
@@ -168,6 +217,18 @@ window.MathJax = {
 <text x="165.0" y="125.0" class="label">P</text>
 <text x="20.0" y="205.0" class="label">OP = sOA + tOB + uOC, s+t+u=1</text>
 </svg></div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>4点 \(O(0,0,0),\ A(1,0,0),\ B(0,1,0),\ D(2,3,0)\) が同一平面上にあるか判定せよ。</div>
+<div class="example-section"><span class="lbl">方針</span>D を \(\vec{OA},\vec{OB}\) の一次結合で表せるか確認。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\vec{OD}=s\vec{OA}+t\vec{OB}\) と置く：\((2,3,0)=s(1,0,0)+t(0,1,0)\)</li>
+<li>\(s=2,\ t=3\) で成立。よって D は \(\vec{OA},\vec{OB}\) の一次結合で書ける。</li>
+<li>4点は同一平面（z=0 平面）上にある。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">同一平面上にある</span></div>
+</div>
 <h3 class="level-basic" id="6C">6C: 平行条件・垂直条件（成分）<span class="level-mark lm-basic">基本</span></h3>
 <ul class="steps">
 <li>平面: \((a,b)\parallel(c,d) \Leftrightarrow ad - bc = 0\)</li>
@@ -175,11 +236,34 @@ window.MathJax = {
 <li>空間: \(\vec{u}\parallel\vec{v} \Leftrightarrow \vec{u} = k\vec{v}\)</li>
 <li>\(\vec{u}\perp\vec{v} \Leftrightarrow \vec{u}\cdot\vec{v} = 0\)</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>2つの空間ベクトル \(\vec{u}=(2,-1,3),\ \vec{v}=(1,4,-1)\) が垂直か判定せよ。</div>
+<div class="example-section"><span class="lbl">方針</span>u·v=0 か確認するだけ。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\vec{u}\cdot\vec{v} = 2\cdot 1 + (-1)\cdot 4 + 3\cdot(-1) = 2 - 4 - 3 = -5\)</li>
+<li>内積が0でないので垂直ではない。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">垂直ではない</span></div>
+</div>
 <h3 class="level-standard" id="6D">6D: 直線が平面に直交を示す<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
 <li>平面の基底 \(\vec{u}, \vec{v}\) を取る</li>
 <li>\(\vec{l}\cdot\vec{u}=0\) かつ \(\vec{l}\cdot\vec{v}=0\) を示す</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>直線 \(\ell\): 方向 \(\vec{l}=(1,1,1)\) が、平面 \(\alpha\): \(x+y+z=0\) に直交することを示せ。</div>
+<div class="example-section"><span class="lbl">方針</span>平面の基底（\(\alpha\) 上の一次独立な2ベクトル）両方と \(\vec{l}\) が垂直であることを示す。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>平面 \(\alpha\) 上の一次独立なベクトル：\(\vec{u}=(1,-1,0),\ \vec{v}=(1,0,-1)\)</li>
+<li>\(\vec{l}\cdot\vec{u}=1-1+0=0\)、\(\vec{l}\cdot\vec{v}=1+0-1=0\)</li>
+<li>よって \(\vec{l}\) は平面 \(\alpha\) に直交する。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(\vec{l}\) は平面 \(\alpha\) に直交する（証明完了）</span></div>
+</div>
 <h3 class="level-advanced" id="6E">6E: 一次独立性の活用<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>同じベクトルを2通りに表したとき</li>
@@ -187,6 +271,18 @@ window.MathJax = {
 <li>⇒ \(\vec{a},\vec{b},\vec{c}\) 一次独立なら \(x=x',y=y',z=z'\)</li>
 </ul>
 <div class="note">係数比較の根拠。連立を解く強力な道具</div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>\(\vec{a},\vec{b}\) が一次独立のとき、\(\vec{p} = (s+1)\vec{a} + (t-2)\vec{b} = 3\vec{a} + \vec{b}\) を満たす実数 \(s, t\) を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>一次独立なら係数比較ができる。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\vec{a},\vec{b}\) は一次独立なので、両辺の係数を比較：</li>
+<li>\(s+1=3 \Rightarrow s=2\)</li>
+<li>\(t-2=1 \Rightarrow t=3\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(s=2,\ t=3\)</span></div>
+</div>
 <h3 class="level-expert" id="6F">6F: 対称性ある条件の式変形証明<span class="level-mark lm-expert">発展</span></h3>
 <ul class="steps">
 <li>例: \(\vec{AP}\cdot\vec{BP} + \vec{BP}\cdot\vec{CP} + \vec{CP}\cdot\vec{AP} = 0\)</li>
@@ -194,6 +290,19 @@ window.MathJax = {
 <li>平方完成、または \(|\cdots|^2 = \cdots\) の形に</li>
 <li>図形的解釈（球面・平面・円）</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>空間内の点 P が \(\vec{AP}\cdot\vec{BP} = 0\) を満たすとき、P の軌跡を求めよ（A, B は定点）。</div>
+<div class="example-section"><span class="lbl">方針</span>1次形と見せかけて、内積を展開すると 2次式 → 平方完成で球面になる。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\vec{AP}\cdot\vec{BP}=(\vec{p}-\vec{a})\cdot(\vec{p}-\vec{b})=0\)</li>
+<li>\(|\vec{p}|^2 - (\vec{a}+\vec{b})\cdot\vec{p} + \vec{a}\cdot\vec{b} = 0\)</li>
+<li>\(\displaystyle \left|\vec{p} - \frac{\vec{a}+\vec{b}}{2}\right|^2 = \left|\frac{\vec{a}-\vec{b}}{2}\right|^2 = \frac{|\vec{AB}|^2}{4}\)</li>
+<li>中心 = AB の中点、半径 = AB/2 → AB を直径とする球面。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">AB を直径とする球面</span></div>
+</div>
 <hr style="margin-top:40px">
 <p style="font-size:12px; color:#888;">© 数学フローチャート（ベクトル）</p>
 </body>

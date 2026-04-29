@@ -49,6 +49,44 @@ ul.steps li { margin: 6px 0; }
 .guide-options li { margin: 6px 0; }
 .guide-options strong { display: inline-block; min-width: 6em; }
 .routing-table th { background: #f0f7fb; }
+.example {
+  background: #fdf6f0;
+  border: 1px solid #e0c0a0;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+.example-head {
+  font-weight: 600;
+  color: #A55A1F;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.example-section { margin: 8px 0; }
+.example-section .lbl {
+  font-weight: 600;
+  color: #555;
+  font-size: 12px;
+  display: inline-block;
+  background: #fff;
+  padding: 1px 8px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-right: 6px;
+}
+.example-problem { margin: 6px 0 10px 0; }
+.example-solution { margin: 4px 0 4px 12px; }
+.example-solution li { margin: 4px 0; list-style: none; }
+.example-answer {
+  background: #fff;
+  border: 1px solid #d0a070;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 600;
+}
+.example-fig { margin: 10px 0; text-align: center; }
+.example-fig svg { max-width: 100%; height: auto; }
 @media print { body { margin: 20px; } }
 </style>
 
@@ -80,6 +118,17 @@ window.MathJax = {
 <li>点 \(A(a,b,c)\) を通り、方向 \((\alpha,\beta,\gamma)\) に平行:</li>
 <li>\(\displaystyle \frac{x-a}{\alpha} = \frac{y-b}{\beta} = \frac{z-c}{\gamma}\)</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>点 \(A(1,2,3)\) を通り、方向ベクトル \(\vec{l}=(2,-1,1)\) に平行な直線の方程式を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>公式に代入するだけ。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\displaystyle \frac{x-1}{2} = \frac{y-2}{-1} = \frac{z-3}{1}\)</li>
+<li>または、パラメータ表示 \((x,y,z) = (1+2t,\ 2-t,\ 3+t)\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(\displaystyle \frac{x-1}{2} = \frac{y-2}{-1} = \frac{z-3}{1}\)</span></div>
+</div>
 <h3 class="level-basic" id="5B">5B: 平面のベクトル方程式<span class="level-mark lm-basic">基本</span></h3>
 <ul class="steps">
 <li>3点 A,B,C を通る: \(\vec{x} = \alpha\vec{a} + \beta\vec{b} + \gamma\vec{c},\ \alpha+\beta+\gamma=1\)</li>
@@ -137,6 +186,20 @@ window.MathJax = {
 <text x="485.0" y="90.0" class="ftxt">n</text>
 <text x="410.0" y="175.0" class="label">(3) 1点と法線</text>
 </svg></div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>3点 \(A(1,0,0),\ B(0,1,0),\ C(0,0,1)\) を通る平面の方程式を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>パラメータ表示でも法線形でもよいが、ここでは法線形で出す。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\vec{AB}=(-1,1,0),\ \vec{AC}=(-1,0,1)\)</li>
+<li>法線 \(\vec{n}=(\alpha,\beta,\gamma)\) と置き、\(\vec{n}\cdot\vec{AB}=0,\ \vec{n}\cdot\vec{AC}=0\)：</li>
+<li>\(-\alpha+\beta = 0,\ -\alpha+\gamma = 0\) より \(\vec{n}=(1,1,1)\) が取れる。</li>
+<li>点 A を通るので \(1\cdot(x-1)+1\cdot y+1\cdot z = 0\)</li>
+<li>整理して \(x+y+z = 1\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(x+y+z=1\)</span></div>
+</div>
 <h3 class="level-advanced" id="5C">5C: 法線ベクトルを求める<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>答案用: \(\vec{n} = (x,y,z)\) と置き、\(\vec{n}\cdot\vec{u}=0,\ \vec{n}\cdot\vec{v}=0\) を連立</li>
@@ -144,34 +207,111 @@ window.MathJax = {
 <li>\(\vec{u}\times\vec{v} = (u_2 v_3 - u_3 v_2,\ u_3 v_1 - u_1 v_3,\ u_1 v_2 - u_2 v_1)\)</li>
 </ul>
 <div class="note">答案では外積を使わず内積=0で書く</div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>2つのベクトル \(\vec{u}=(1,2,3),\ \vec{v}=(2,1,0)\) の両方に垂直なベクトルを1つ求めよ（答案用：内積=0で連立）。</div>
+<div class="example-section"><span class="lbl">方針</span>n=(x,y,z) と置き、u·n=0, v·n=0 を連立。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\vec{n}=(x,y,z)\) と置く。</li>
+<li>\(\vec{u}\cdot\vec{n}=x+2y+3z=0\) … ①</li>
+<li>\(\vec{v}\cdot\vec{n}=2x+y=0\) より \(y=-2x\) … ②</li>
+<li>②を①に代入：\(x-4x+3z=0\) より \(z=x\)</li>
+<li>\(x=1\) と取れば \(\vec{n}=(1,-2,1)\)</li>
+<li>裏計算（外積）でも \(\vec{u}\times\vec{v}=(2\cdot 0-3\cdot 1,\ 3\cdot 2-1\cdot 0,\ 1\cdot 1-2\cdot 2)=(-3,6,-3)\) で同じ向き。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(\vec{n}=(1,-2,1)\)（または定数倍）</span></div>
+</div>
 <h3 class="level-standard" id="5D">5D: 直線と平面の交点<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
 <li>直線をパラメータ表示 \(\vec{x} = \vec{a} + t\vec{l}\)</li>
 <li>平面の方程式に代入</li>
 <li>\(t\) を解く → 交点</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>直線 \((x,y,z)=(1+t, 2t, -1+3t)\) と平面 \(x+y+z=4\) の交点を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>直線のパラメータ表示を平面の方程式に代入して t を解く。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\((1+t)+2t+(-1+3t) = 4\)</li>
+<li>\(6t = 4\) より \(\displaystyle t = \frac{2}{3}\)</li>
+<li>代入して \(\displaystyle \left(\frac{5}{3},\ \frac{4}{3},\ 1\right)\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">交点 \(\displaystyle \left(\frac{5}{3},\ \frac{4}{3},\ 1\right)\)</span></div>
+</div>
 <h3 class="level-advanced" id="5E">5E: 2直線の交点／ねじれの判定<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>各直線をパラメータ表示</li>
 <li>連立して解の有無を見る</li>
 <li>解なし → ねじれの位置</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>2直線 \(\ell_1\): \((x,y,z)=(t,t,0)\)、\(\ell_2\): \((x,y,z)=(1-s,\ 0,\ s)\) について、交わるか・ねじれの位置か判定せよ。</div>
+<div class="example-section"><span class="lbl">方針</span>両式が等しくなる (s, t) があるかを連立で確認。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(t=1-s,\ t=0,\ 0=s\) より \(t=0,\ s=0\)</li>
+<li>検算：\(t=1-s\) は \(0=1-0=1\) で矛盾。</li>
+<li>連立解なし → ねじれの位置。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">ねじれの位置</span></div>
+</div>
 <h3 class="level-standard" id="5F">5F: 点と直線の距離<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
 <li>点から直線へ垂線の足 H を出す（4-A 正射影）</li>
 <li>距離 = \(|\vec{PH}|\)</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>点 \(P(2,1,3)\) と直線 \(\ell\): \((x,y,z)=(t,t,t)\) との距離を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>P から \(\ell\) への垂線の足 H を出し、\(|\vec{PH}|\) を求める。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\ell\) 上の点を \(H=(t,t,t)\) と置く。</li>
+<li>\(\vec{PH}=(t-2, t-1, t-3)\)、方向 \(\vec{l}=(1,1,1)\)</li>
+<li>\(\vec{PH}\cdot\vec{l}=0\)：\((t-2)+(t-1)+(t-3)=3t-6=0\) より \(t=2\)</li>
+<li>\(H=(2,2,2)\)、\(\vec{PH}=(0,1,-1)\)</li>
+<li>距離 \(|\vec{PH}|=\sqrt{0+1+1}=\sqrt{2}\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">距離 \(\sqrt{2}\)</span></div>
+</div>
 <h3 class="level-standard" id="5G">5G: 点と平面の距離<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
 <li>公式: \(\displaystyle d = \frac{|\alpha(x_0-a) + \beta(y_0-b) + \gamma(z_0-c)|}{\sqrt{\alpha^2+\beta^2+\gamma^2}}\)</li>
 <li>別解: 平面上の点 A をとり \(\vec{AP}\) の \(\vec{n}\) 方向への正射影の長さ</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>点 \(P(1,2,3)\) と平面 \(2x-y+2z=1\) との距離を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>公式に代入。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\displaystyle d = \frac{|2\cdot 1 - 2 + 2\cdot 3 - 1|}{\sqrt{2^2+(-1)^2+2^2}} = \frac{|5|}{3} = \frac{5}{3}\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">距離 \(\displaystyle \frac{5}{3}\)</span></div>
+</div>
 <h3 class="level-expert" id="5H">5H: 共通垂線・最短距離<span class="level-mark lm-expert">発展</span></h3>
 <ul class="steps">
 <li>各直線上に動点 P, Q を置く</li>
 <li>\(\vec{PQ}\cdot\vec{l_1}=0,\ \vec{PQ}\cdot\vec{l_2}=0\) を連立</li>
 <li>最短距離 \(|\vec{PQ}|\)</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>2直線 \(\ell_1\): \((x,y,z)=(t,0,0)\)、\(\ell_2\): \((x,y,z)=(0,s,1)\) の最短距離を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>各直線上に動点 P, Q を取り、PQ が両方向ベクトルに垂直になるように決める。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(P=(t,0,0),\ Q=(0,s,1)\) と置く。</li>
+<li>\(\vec{PQ}=(-t,s,1)\)、方向 \(\vec{l_1}=(1,0,0),\ \vec{l_2}=(0,1,0)\)</li>
+<li>\(\vec{PQ}\cdot\vec{l_1}=-t=0\) → \(t=0\)</li>
+<li>\(\vec{PQ}\cdot\vec{l_2}=s=0\) → \(s=0\)</li>
+<li>\(\vec{PQ}=(0,0,1)\)、最短距離 \(|\vec{PQ}|=1\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">最短距離 \(1\)</span></div>
+</div>
 <hr style="margin-top:40px">
 <p style="font-size:12px; color:#888;">© 数学フローチャート（ベクトル）</p>
 </body>

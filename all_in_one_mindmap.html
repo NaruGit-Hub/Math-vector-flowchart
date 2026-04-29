@@ -94,6 +94,43 @@ body {
 .note-li { margin: 6px 0; }
 .note-li .node { background: #fffbe6; border-color: #e0d080; }
 
+.example-li .node { background: #fdf6f0; border-color: #d0a070; font-weight: 500; }
+.example-block {
+  margin: 6px 0 6px 20px;
+  padding: 10px 14px;
+  background: #fdf6f0;
+  border: 1px solid #e0c0a0;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 600px;
+}
+.example-block .lbl {
+  font-weight: 600;
+  color: #555;
+  font-size: 11px;
+  display: inline-block;
+  background: #fff;
+  padding: 1px 6px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-right: 4px;
+}
+.example-block .problem { margin: 4px 0 8px 0; }
+.example-block .solution { margin: 4px 0 4px 8px; padding-left: 0; }
+.example-block .solution li { margin: 3px 0; list-style: none; }
+.example-block .answer {
+  background: #fff;
+  border: 1px solid #d0a070;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 600;
+}
+.example-block .ex-fig { margin: 8px 0; text-align: center; }
+.example-block .ex-fig svg { max-width: 100%; height: auto; }
+.example-block .approach { color: #555; }
+
 .hidden { display: none; }
 
 @media (max-width: 600px) {
@@ -173,6 +210,12 @@ window.MathJax = {
 <li><span class="node step leaf">\(|\vec{AB}|^2 = (\vec{b}-\vec{a})\cdot(\vec{b}-\vec{a}) = |\vec{b}|^2 - 2\vec{a}\cdot\vec{b} + |\vec{a}|^2\)</span></li>
 <li><span class="node step leaf">平方根をとる</span></li>
 <li class="note-li"><span class="node leaf">💡 「絶対値を見たら2乗 → 内積に結ぶ」が定石</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>三角形 OAB において、\(|\vec{a}|=3,\ |\vec{b}|=2,\ \vec{a}\cdot\vec{b}=4\) とする。辺 AB の長さを求めよ。</div><div class="approach"><span class="lbl">方針</span>\(\vec{AB}=\vec{b}-\vec{a}\) と書き、絶対値の2乗→内積の定石を使う。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{AB} = \vec{b} - \vec{a}\) より、</li><li>\(|\vec{AB}|^2 = |\vec{b}-\vec{a}|^2 = |\vec{b}|^2 - 2\vec{a}\cdot\vec{b} + |\vec{a}|^2\)</li><li>\(\quad = 4 - 8 + 9 = 5\)</li><li>よって \(|\vec{AB}| = \sqrt{5}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(|\vec{AB}| = \sqrt{5}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -221,6 +264,12 @@ window.MathJax = {
 <text x="82.0" y="100.0" class="ftxt">v</text>
 <text x="60.0" y="190.0" class="label">S = (1/2)√(|u|²|v|² − (u·v)²)</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(|\vec{a}|=2,\ |\vec{b}|=3,\ \vec{a}\cdot\vec{b}=4\) のとき、\(\vec{a},\vec{b}\) で張られる三角形 OAB の面積 \(S\) を求めよ。</div><div class="approach"><span class="lbl">方針</span>公式 \(\displaystyle S = \frac{1}{2}\sqrt{|\vec{a}|^2|\vec{b}|^2 - (\vec{a}\cdot\vec{b})^2}\) に代入するだけ。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\displaystyle S = \frac{1}{2}\sqrt{|\vec{a}|^2|\vec{b}|^2 - (\vec{a}\cdot\vec{b})^2}\)</li><li>\(\displaystyle \quad = \frac{1}{2}\sqrt{4 \cdot 9 - 16} = \frac{1}{2}\sqrt{20} = \sqrt{5}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(S = \sqrt{5}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -275,6 +324,12 @@ window.MathJax = {
 <text x="170.0" y="112.5" class="label">高さ h</text>
 <text x="40.0" y="230.0" class="label">V = (1/3) × △OAB × h</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>四面体 OABC において、\(|\vec{a}|=|\vec{b}|=|\vec{c}|=1\)、\(\vec{a}\cdot\vec{b}=\vec{b}\cdot\vec{c}=\vec{c}\cdot\vec{a}=\dfrac{1}{2}\) のとき、四面体の体積を求めよ。</div><div class="approach"><span class="lbl">方針</span>底面の面積 → 高さ（正射影で求める）→ 体積、の順。対称性が高いので計算は楽。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>底面 \(\triangle OAB\) の面積：\(\displaystyle S = \frac{1}{2}\sqrt{1\cdot 1 - \left(\frac{1}{2}\right)^2} = \frac{\sqrt{3}}{4}\)</li><li>高さ \(h\)：\(\vec{c}\) の平面 \(OAB\) への正射影を求める。</li><li>対称性より \(\vec{c}\) を \(\vec{a},\vec{b}\) に分解して \(\vec{c} = s\vec{a}+t\vec{b}+\vec{h}\) と置くと、</li><li>\(\vec{h}\cdot\vec{a}=0,\ \vec{h}\cdot\vec{b}=0\) より \(\displaystyle s = t = \frac{1}{3}\)</li><li>\(\displaystyle |\vec{h}|^2 = \left|\vec{c}-\frac{1}{3}\vec{a}-\frac{1}{3}\vec{b}\right|^2 = \frac{2}{3}\)</li><li>よって \(\displaystyle h = \sqrt{\frac{2}{3}}\)</li><li>\(\displaystyle V = \frac{1}{3} \cdot \frac{\sqrt{3}}{4} \cdot \sqrt{\frac{2}{3}} = \frac{\sqrt{2}}{12}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle V = \frac{\sqrt{2}}{12}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -284,6 +339,12 @@ window.MathJax = {
 <li><span class="node step leaf">高さ \(h\)（法線方向への正射影）</span></li>
 <li><span class="node step leaf">\(V = S \times h\)</span></li>
 <li class="note-li"><span class="node leaf">💡 裏計算: \(V = |\vec{a}\cdot(\vec{b}\times\vec{c})|\)</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>3つのベクトル \(\vec{a},\vec{b},\vec{c}\) で張られる平行六面体について、\(|\vec{a}|=|\vec{b}|=|\vec{c}|=1\)、互いのなす角がすべて \(60°\) のとき、体積 \(V\) を求めよ。</div><div class="approach"><span class="lbl">方針</span>裏計算で \(V=|\vec{a}\cdot(\vec{b}\times\vec{c})|\) を予想し、答案では「底面積×高さ」で書く。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>底面 \(\vec{a},\vec{b}\) の作る平行四辺形の面積：\(\displaystyle S = \sqrt{1\cdot 1 - \frac{1}{4}} = \frac{\sqrt{3}}{2}\)</li><li>高さ：\(\vec{c}\) を底面に正射影した残りの長さ。</li><li>\(\vec{c} = s\vec{a}+t\vec{b}+\vec{h}\) と置き、内積条件から \(\displaystyle s = t = \frac{1}{3}\)</li><li>\(\displaystyle h = |\vec{h}| = \sqrt{\frac{2}{3}}\)</li><li>\(\displaystyle V = S \cdot h = \frac{\sqrt{3}}{2} \cdot \sqrt{\frac{2}{3}} = \frac{\sqrt{2}}{2}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle V = \frac{\sqrt{2}}{2}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -329,6 +390,12 @@ window.MathJax = {
 <text x="120.0" y="70.0" class="ftxt">b</text>
 <text x="40.0" y="160.0" class="label">cosθ = (a · b) / (|a| |b|)</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(|\vec{a}|=2,\ |\vec{b}|=3,\ \vec{a}\cdot\vec{b}=-3\) のとき、\(\vec{a}\) と \(\vec{b}\) のなす角 \(\theta\) を求めよ。</div><div class="approach"><span class="lbl">方針</span>公式 \(\displaystyle \cos\theta = \frac{\vec{a}\cdot\vec{b}}{|\vec{a}||\vec{b}|}\) に代入。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\displaystyle \cos\theta = \frac{-3}{2\cdot 3} = -\frac{1}{2}\)</li><li>\(0 \leqq \theta \leqq \pi\) より、</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \theta = \frac{2}{3}\pi\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -336,6 +403,12 @@ window.MathJax = {
 <ul class="hidden">
 <li><span class="node step leaf">方向ベクトルを取り、内積でcos</span></li>
 <li><span class="node step leaf">鋭角に直す（必要なら絶対値）</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>2直線 \(\ell_1\): 方向ベクトル \(\vec{u}=(1,2,2)\)、\(\ell_2\): 方向ベクトル \(\vec{v}=(2,-1,2)\) のなす角を求めよ。</div><div class="approach"><span class="lbl">方針</span>方向ベクトルの内積でcosを出し、絶対値で鋭角に直す。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{u}\cdot\vec{v} = 2 - 2 + 4 = 4\)</li><li>\(|\vec{u}| = 3,\ |\vec{v}| = 3\)</li><li>\(\displaystyle \cos\theta = \frac{|4|}{3\cdot 3} = \frac{4}{9}\)（鋭角に直すため絶対値）</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \theta = \arccos\frac{4}{9}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -344,6 +417,12 @@ window.MathJax = {
 <li><span class="node step leaf">法線ベクトルを取る</span></li>
 <li><span class="node step leaf">内積で計算</span></li>
 <li><span class="node step leaf">「\(90°\)−（法線同士のなす角）」等、向きを補正</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>平面 \(\alpha\): \(x+y+z=1\) と直線 \(\ell\): 方向ベクトル \(\vec{l}=(1,1,0)\) のなす角を求めよ。</div><div class="approach"><span class="lbl">方針</span>平面の法線 \(\vec{n}\) と \(\vec{l}\) のなす角 \(\varphi\) を出し、\(90°-\varphi\) が直線と平面のなす角。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>法線 \(\vec{n}=(1,1,1)\)</li><li>\(\vec{l}\cdot\vec{n} = 2,\ |\vec{l}|=\sqrt{2},\ |\vec{n}|=\sqrt{3}\)</li><li>\(\displaystyle \cos\varphi = \frac{2}{\sqrt{2}\cdot\sqrt{3}} = \frac{\sqrt{6}}{3}\)（鋭角）</li><li>よって直線と平面のなす角 \(\theta = 90° - \varphi\) より</li><li>\(\displaystyle \sin\theta = \cos\varphi = \frac{\sqrt{6}}{3}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \sin\theta = \frac{\sqrt{6}}{3}\)（または \(\theta = \arcsin\frac{\sqrt{6}}{3}\)）</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul></li></ul>
@@ -397,6 +476,12 @@ window.MathJax = {
 <text x="60.0" y="110.0" class="label">P = (nA + mB)/(m+n)  m:n に内分</text>
 <text x="60.0" y="128.0" class="label">Q = (−nA + mB)/(m−n) m:n に外分</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>線分 AB を \(2:3\) に内分する点 P と、\(2:3\) に外分する点 Q の位置ベクトルを、\(\vec{a}=\vec{OA},\ \vec{b}=\vec{OB}\) で表せ。</div><div class="approach"><span class="lbl">方針</span>公式に代入。外分は内分の式の符号を1か所変えれば良い。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>内分: \(\displaystyle \vec{OP} = \frac{3\vec{a} + 2\vec{b}}{2+3} = \frac{3\vec{a}+2\vec{b}}{5}\)</li><li>外分: \(\displaystyle \vec{OQ} = \frac{-3\vec{a} + 2\vec{b}}{2-3} = 3\vec{a} - 2\vec{b}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{OP} = \frac{3\vec{a}+2\vec{b}}{5},\ \vec{OQ} = 3\vec{a}-2\vec{b}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -406,6 +491,56 @@ window.MathJax = {
 <li><span class="node step leaf">別の条件（直線CD上にある等）と連立</span></li>
 <li><span class="node step leaf">一次独立性より係数比較で \(t\) を決定</span></li>
 <li class="note-li"><span class="node leaf">💡 「P は直線AB上」+「別の条件」という形を見たら</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>三角形 OAB において、辺 OA を \(1:2\) に内分する点を M、辺 OB の中点を N とする。線分 AN と BM の交点を P とするとき、\(\vec{OP}\) を \(\vec{a}=\vec{OA},\ \vec{b}=\vec{OB}\) で表せ。</div><div class="approach"><span class="lbl">方針</span>「P は直線AN上」かつ「P は直線BM上」を立式して連立。係数比較で決定。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>P が直線 AN 上：\(\vec{OP} = (1-s)\vec{a} + s\cdot\dfrac{\vec{b}}{2}\)</li><li>P が直線 BM 上：\(\vec{OP} = t\cdot\dfrac{\vec{a}}{3} + (1-t)\vec{b}\)</li><li>\(\vec{a},\vec{b}\) は一次独立より係数比較：</li><li>\(\displaystyle 1-s = \frac{t}{3},\ \frac{s}{2} = 1-t\)</li><li>連立して \(\displaystyle s = \frac{4}{5},\ t = \frac{3}{5}\)</li><li>\(\displaystyle \vec{OP} = \frac{1}{5}\vec{a} + \frac{2}{5}\vec{b}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{OP} = \frac{1}{5}\vec{a} + \frac{2}{5}\vec{b}\)</span></div><div class="ex-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<line x1="60.0" y1="200.0" x2="270.0" y2="200.0" class="vec-thin"/>
+<line x1="60.0" y1="200.0" x2="180.0" y2="50.0" class="vec-thin"/>
+<line x1="270.0" y1="200.0" x2="180.0" y2="50.0" class="vec-thin"/>
+<line x1="270.0" y1="200.0" x2="120.0" y2="125.0" class="vec-thin"/>
+<line x1="180.0" y1="50.0" x2="130.0" y2="200.0" class="vec-thin"/>
+<circle cx="60.0" cy="200.0" r="3" class="pt"/>
+<circle cx="270.0" cy="200.0" r="3" class="pt"/>
+<circle cx="180.0" cy="50.0" r="3" class="pt"/>
+<circle cx="130.0" cy="200.0" r="2.5" class="pt"/>
+<circle cx="120.0" cy="125.0" r="2.5" class="pt"/>
+<circle cx="150.0" cy="140.0" r="3.5" class="pt"/>
+<text x="45.0" y="205.0" class="label">O</text>
+<text x="275.0" y="205.0" class="label">A</text>
+<text x="175.0" y="42.0" class="label">B</text>
+<text x="125.0" y="218.0" class="label">M</text>
+<text x="102.0" y="123.0" class="label">N</text>
+<text x="155.0" y="135.0" class="label">P</text>
+</svg></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -458,6 +593,12 @@ window.MathJax = {
 <text x="165.0" y="125.0" class="label">P</text>
 <text x="20.0" y="205.0" class="label">OP = sOA + tOB + uOC, s+t+u=1</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>四面体 OABC において、辺 OA, OB, OC の中点をそれぞれ L, M, N とする。直線 OG（G は \(\triangle ABC\) の重心）と平面 LMN の交点 P について、\(\vec{OP}\) を \(\vec{a},\vec{b},\vec{c}\) で表せ。</div><div class="approach"><span class="lbl">方針</span>P が直線 OG 上＝1パラメータ、P が平面 LMN 上＝係数和=1（共面条件）を立式して連立。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\displaystyle \vec{OG} = \frac{\vec{a}+\vec{b}+\vec{c}}{3}\)</li><li>P は直線 OG 上：\(\displaystyle \vec{OP} = u\cdot\frac{\vec{a}+\vec{b}+\vec{c}}{3}\)</li><li>P は平面 LMN 上：\(\vec{OP} = s\vec{OL} + t\vec{OM} + r\vec{ON}\)（\(s+t+r=1\)）</li><li>\(\displaystyle = \frac{s}{2}\vec{a} + \frac{t}{2}\vec{b} + \frac{r}{2}\vec{c}\)</li><li>両式で係数比較：\(\displaystyle \frac{u}{3} = \frac{s}{2} = \frac{t}{2} = \frac{r}{2}\) かつ \(s+t+r=1\)</li><li>対称性より \(\displaystyle s=t=r=\frac{1}{3}\)、よって \(\displaystyle \frac{u}{3} = \frac{1}{6}\)、\(\displaystyle u = \frac{1}{2}\)</li><li>\(\displaystyle \vec{OP} = \frac{1}{6}(\vec{a}+\vec{b}+\vec{c})\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{OP} = \frac{1}{6}(\vec{a}+\vec{b}+\vec{c})\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -504,6 +645,12 @@ window.MathJax = {
 <text x="74.4" y="108.4" class="ftxt">b/|b|</text>
 <text x="189.4" y="118.4" class="ftxt">二等分方向</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\triangle OAB\) において \(OA=3,\ OB=2\) とする。\(\angle AOB\) の二等分線と辺 AB の交点 P について、\(\vec{OP}\) を \(\vec{a}=\vec{OA},\ \vec{b}=\vec{OB}\) で表せ。</div><div class="approach"><span class="lbl">方針</span>\(AP:PB = OA:OB = 3:2\) なので、内分点の公式に代入。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(AP:PB = OA:OB = 3:2\) より P は AB を \(3:2\) に内分。</li><li>\(\displaystyle \vec{OP} = \frac{2\vec{a} + 3\vec{b}}{3+2} = \frac{2\vec{a}+3\vec{b}}{5}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{OP} = \frac{2\vec{a}+3\vec{b}}{5}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -512,6 +659,12 @@ window.MathJax = {
 <li><span class="node step leaf">三角形 ABC の重心: \(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}}{3}\)</span></li>
 <li><span class="node step leaf">四面体 ABCD の重心: \(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}+\vec{d}}{4}\)</span></li>
 <li class="note-li"><span class="node leaf">💡 \(\vec{GA}+\vec{GB}+\vec{GC}=\vec{0}\)（始点を重心に取れば成立）</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\triangle ABC\) の重心を G、四面体 ABCD の重心を G' とする。それぞれの位置ベクトルを各頂点の位置ベクトルで表せ。</div><div class="approach"><span class="lbl">方針</span>公式そのもの。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>三角形の重心：\(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}}{3}\)</li><li>四面体の重心：\(\displaystyle \vec{g'} = \frac{\vec{a}+\vec{b}+\vec{c}+\vec{d}}{4}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}}{3},\ \vec{g'} = \frac{\vec{a}+\vec{b}+\vec{c}+\vec{d}}{4}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -522,6 +675,12 @@ window.MathJax = {
 <li><span class="node step leaf">\(AI:ID = (b+c):a\) を再利用</span></li>
 <li><span class="node step leaf">結果: \(\displaystyle \vec{i} = \frac{a\vec{a} + b\vec{b} + c\vec{c}}{a+b+c}\)</span></li>
 <li class="note-li"><span class="node leaf">💡 \(a, b, c\) は対辺の長さ（覚える価値あり）</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\triangle ABC\) において \(BC=a,\ CA=b,\ AB=c\) とする。内心 I の位置ベクトル \(\vec{i}\) を、各頂点の位置ベクトルで表せ。</div><div class="approach"><span class="lbl">方針</span>角の二等分線を2回使う。BD:DC=c:b、AI:ID=(b+c):a の順で。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>角 A の二等分線と辺 BC の交点 D について、\(BD:DC = c:b\)</li><li>\(\displaystyle \vec{d} = \frac{b\vec{b} + c\vec{c}}{b+c}\)</li><li>角 B の二等分線の性質より \(AI:ID = (b+c):a\)</li><li>\(\displaystyle \vec{i} = \frac{a\vec{a} + (b+c)\vec{d}}{(b+c)+a} = \frac{a\vec{a} + b\vec{b} + c\vec{c}}{a+b+c}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{i} = \frac{a\vec{a} + b\vec{b} + c\vec{c}}{a+b+c}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -579,6 +738,12 @@ window.MathJax = {
 <text x="166.0" y="175.0" class="label">R</text>
 <text x="155.0" y="238.0" class="label">M</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\triangle OAB\) において \(|\vec{a}|=2,\ |\vec{b}|=3,\ \vec{a}\cdot\vec{b}=4\) とする。外心 R について \(\vec{OR}=x\vec{a}+y\vec{b}\) と置くとき、\(x, y\) を求めよ。</div><div class="approach"><span class="lbl">方針</span>外心は OA, OB の垂直二等分線の交点。各中点 M, N について RM⊥OA, RN⊥OB。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>OA, OB の中点 \(\displaystyle M=\frac{\vec{a}}{2},\ N=\frac{\vec{b}}{2}\)</li><li>\(\vec{RM}\cdot\vec{a}=0\)：\(\displaystyle \left(\frac{\vec{a}}{2}-x\vec{a}-y\vec{b}\right)\cdot\vec{a} = 0\)</li><li>\(\displaystyle \frac{|\vec{a}|^2}{2} - x|\vec{a}|^2 - y\vec{a}\cdot\vec{b} = 0\)</li><li>\(2 - 4x - 4y = 0\) … ①</li><li>同様に \(\vec{RN}\cdot\vec{b}=0\) より \(\displaystyle \frac{9}{2} - 4x - 9y = 0\) … ②</li><li>①②を解いて \(\displaystyle x = \frac{3}{20},\ y = \frac{7}{20}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle x = \frac{3}{20},\ y = \frac{7}{20}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -588,6 +753,12 @@ window.MathJax = {
 <li><span class="node step leaf">パターン2: 内積を見る \(\vec{a}\cdot(s\vec{a}+t\vec{b}+u\vec{c}) = 0\)</span></li>
 <li><span class="node step leaf">パターン3: 1つを移項して2乗 \(|s\vec{a}|^2 = |-(t\vec{b}+u\vec{c})|^2\)</span></li>
 <li class="note-li"><span class="node leaf">💡 3ベクトルの和が0なら2乗が定石</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(|\vec{a}|=|\vec{b}|=|\vec{c}|=1\) かつ \(2\vec{a}+3\vec{b}+\sqrt{7}\,\vec{c}=\vec{0}\) のとき、\(\vec{a}\) と \(\vec{b}\) のなす角を求めよ。</div><div class="approach"><span class="lbl">方針</span>3つのベクトルの和が \(\vec{0}\) なので、1つを移項して2乗。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(2\vec{a}+3\vec{b}=-\sqrt{7}\,\vec{c}\) の両辺を2乗：</li><li>\(|2\vec{a}+3\vec{b}|^2 = 7|\vec{c}|^2\)</li><li>\(4|\vec{a}|^2 + 12\vec{a}\cdot\vec{b} + 9|\vec{b}|^2 = 7\)</li><li>\(4 + 12\vec{a}\cdot\vec{b} + 9 = 7\)</li><li>\(\displaystyle \vec{a}\cdot\vec{b} = -\frac{1}{2}\)</li><li>\(|\vec{a}|=|\vec{b}|=1\) より \(\displaystyle \cos\theta = -\frac{1}{2}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \theta = \frac{2}{3}\pi\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul></li></ul>
@@ -676,6 +847,12 @@ window.MathJax = {
 <text x="420.0" y="190.0" class="label">④s+t≦1,s≧0,t≧0</text>
 <text x="428.0" y="208.0" class="label">→ △OAB周+内部</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\vec{OP} = s\vec{a} + t\vec{b}\) について、実数 \(s, t\) が \(s+t \leqq 1,\ s\geqq 0,\ t\geqq 0\) を満たして動くとき、点 P の存在範囲を答えよ。</div><div class="approach"><span class="lbl">方針</span>暗記している5パターンに照らし合わせる。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(s+t\leqq 1,\ s\geqq 0,\ t\geqq 0\) は基本パターン④に該当。</li></ul><div><span class="lbl">答え</span><span class="answer">\(\triangle OAB\) の周および内部</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -759,6 +936,12 @@ window.MathJax = {
 <text x="420.0" y="180.0" class="label">④l+m+n≦1,各≧0</text>
 <text x="428.0" y="198.0" class="label">→ 四面体周+内部</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\vec{OP} = l\vec{a} + m\vec{b} + n\vec{c}\) について、実数 \(l, m, n\) が \(l+m+n=1,\ l\geqq 0,\ m\geqq 0,\ n\geqq 0\) を満たして動くとき、点 P の存在範囲を答えよ。</div><div class="approach"><span class="lbl">方針</span>空間版の暗記パターンに照合。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>係数和 \(l+m+n=1\) かつ各 \(\geqq 0\) は、空間の基本パターン③に該当。</li></ul><div><span class="lbl">答え</span><span class="answer">\(\triangle ABC\) の周および内部</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -768,6 +951,55 @@ window.MathJax = {
 <li><span class="node step leaf">動く方の変数で線を作る</span></li>
 <li><span class="node step leaf">固定した変数を動かして面に拡大</span></li>
 <li class="note-li"><span class="node leaf">💡 \(0\leqq a\leqq 1,\ \dfrac{1}{2}\leqq b\leqq 1\) のような長方形領域で使う</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\vec{OP} = a\vec{OA} + b\vec{OB}\) について、\(0\leqq a\leqq 1,\ \dfrac{1}{2}\leqq b\leqq 1\) のとき、点 P の動く範囲を図示せよ。</div><div class="approach"><span class="lbl">方針</span>3手順型：(1) b を固定して a を動かす → 線分。(2) b を動かす → 線分が平行移動して帯（平行四辺形）。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>① \(b=k\)（定数）と固定すると \(\vec{OP} = a\vec{OA} + k\vec{OB}\)。</li><li>② \(0\leqq a\leqq 1\) より、P は始点 \(k\vec{OB}\)、終点 \(\vec{OA}+k\vec{OB}\) の線分上を動く。</li><li>③ \(\dfrac{1}{2}\leqq k\leqq 1\) と動かすと、線分が平行移動。</li><li>よって P の範囲は、\(\vec{OB}/2\) と \(\vec{OB}\) を結ぶ線分を「\(\vec{OA}\) 方向に幅 \(|\vec{OA}|\)」だけ平行移動した平行四辺形。</li></ul><div><span class="lbl">答え</span><span class="answer">4頂点 \(\dfrac{1}{2}\vec{OB},\ \vec{OB},\ \vec{OA}+\vec{OB},\ \vec{OA}+\dfrac{1}{2}\vec{OB}\) を結ぶ平行四辺形（境界を含む）</span></div><div class="ex-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" width="400" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="100.0,110.0 300.0,110.0 340.0,40.0 140.0,40.0" fill="#ddd" stroke="#000" stroke-width="1.5"/>
+<line x1="60.0" y1="180.0" x2="260.0" y2="180.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="60.0" y1="180.0" x2="140.0" y2="40.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="100.0" y1="110.0" x2="300.0" y2="110.0" class="dashed"/>
+<circle cx="60.0" cy="180.0" r="3" class="pt"/>
+<circle cx="260.0" cy="180.0" r="3" class="pt"/>
+<circle cx="140.0" cy="40.0" r="3" class="pt"/>
+<circle cx="100.0" cy="110.0" r="2.5" class="pt"/>
+<circle cx="300.0" cy="110.0" r="2.5" class="pt"/>
+<circle cx="340.0" cy="40.0" r="2.5" class="pt"/>
+<text x="45.0" y="185.0" class="label">O</text>
+<text x="265.0" y="185.0" class="label">A</text>
+<text x="125.0" y="35.0" class="label">B</text>
+<text x="68.0" y="113.0" class="label">½B</text>
+<text x="343.0" y="37.0" class="label">A+B</text>
+<text x="60.0" y="210.0" class="label">P の動く範囲（網掛け部）</text>
+</svg></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -777,6 +1009,53 @@ window.MathJax = {
 <li><span class="node step leaf">内側の点 Q は線分AB上を動く</span></li>
 <li><span class="node step leaf">P は OQ を \((s+t)\) 倍した点 → 図示</span></li>
 <li class="note-li"><span class="node leaf">💡 「パラメータについて整理する」の発想</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\vec{OP} = s\vec{OA} + t\vec{OB}\) について、\(s\geqq 0,\ t\geqq 0,\ \dfrac{1}{2}\leqq s+t\leqq 1\) のとき、P の動く範囲を答えよ。</div><div class="approach"><span class="lbl">方針</span>\((s+t)\) を作って 3-A に帰着。\((s+t)\) を一度の値に固定して帰着 → 動かして拡大。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\displaystyle \vec{OP} = (s+t)\cdot\frac{s\vec{OA}+t\vec{OB}}{s+t}\)</li><li>内側 \(\displaystyle \vec{OQ} = \frac{s\vec{OA}+t\vec{OB}}{s+t}\) は \(\dfrac{s}{s+t}+\dfrac{t}{s+t}=1\) かつ各 \(\geqq 0\) より線分 AB 上を動く。</li><li>P は OQ を \((s+t)\) 倍した点。</li><li>\(s+t = \dfrac{1}{2}\) のとき：線分 AB を原点中心に \(\dfrac{1}{2}\) 倍した線分（A, B の中点を結ぶ）。</li><li>\(s+t = 1\) のとき：線分 AB そのもの。</li><li>両線分の間（および境界）が P の範囲 → 台形（A, B, AB の中点 M_A, M_B を結ぶ領域）。</li></ul><div><span class="lbl">答え</span><span class="answer">4点 A, B, \(\dfrac{\vec{OA}}{2}\), \(\dfrac{\vec{OB}}{2}\) を結ぶ台形（境界を含む）</span></div><div class="ex-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="160.0,190.0 260.0,190.0 180.0,50.0 120.0,120.0" fill="#ddd" stroke="#000" stroke-width="1.5"/>
+<line x1="60.0" y1="190.0" x2="260.0" y2="190.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="60.0" y1="190.0" x2="180.0" y2="50.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="60.0" cy="190.0" r="3" class="pt"/>
+<circle cx="260.0" cy="190.0" r="3" class="pt"/>
+<circle cx="180.0" cy="50.0" r="3" class="pt"/>
+<circle cx="160.0" cy="190.0" r="2.5" class="pt"/>
+<circle cx="120.0" cy="120.0" r="2.5" class="pt"/>
+<text x="45.0" y="195.0" class="label">O</text>
+<text x="265.0" y="195.0" class="label">A</text>
+<text x="175.0" y="42.0" class="label">B</text>
+<text x="155.0" y="208.0" class="label">A/2</text>
+<text x="90.0" y="123.0" class="label">B/2</text>
+<text x="60.0" y="210.0" class="label">P の動く範囲（網掛け部）</text>
+</svg></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -786,6 +1065,12 @@ window.MathJax = {
 <li><span class="node step leaf">始点を A に統一（→\(\vec{AP},\vec{AB},\vec{AC}\) で書き直す）</span></li>
 <li><span class="node step leaf">制約条件も書き換え</span></li>
 <li><span class="node step leaf">3-A に帰着</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>平面上に \(\triangle ABC\) と点 O がある。実数 \(a, b, c\) が \(a\geqq 0,\ b\geqq 0,\ c\geqq 0,\ a+b+c=1\) を満たして動くとき、\(\vec{OP} = a\vec{OA} + b\vec{OB} + c\vec{OC}\) で定まる P の存在領域を求めよ。</div><div class="approach"><span class="lbl">方針</span>始点を A に統一すると見通しが立つ。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{OP} - \vec{OA} = b(\vec{OB}-\vec{OA}) + c(\vec{OC}-\vec{OA})\)（∵ \(a+b+c=1\)）</li><li>\(\vec{AP} = b\vec{AB} + c\vec{AC},\ b+c\leqq 1,\ b\geqq 0,\ c\geqq 0\)</li><li>これは 3-A の基本パターン④（\(b+c\leqq 1\) かつ各 \(\geqq 0\)）。</li></ul><div><span class="lbl">答え</span><span class="answer">\(\triangle ABC\) の周および内部</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -795,6 +1080,61 @@ window.MathJax = {
 <li><span class="node step leaf">\((s, t)\) 平面で不等式を図示</span></li>
 <li><span class="node step leaf">元の図に戻す</span></li>
 <li class="note-li"><span class="node leaf">💡 答案では使いにくいが、見通しが立てやすい</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\vec{OP} = s\vec{OA} + t\vec{OB}\) について、\(0\leqq s\leqq 1,\ 0\leqq t\leqq 1\) のとき、P の動く範囲を斜交座標で考えよ。</div><div class="approach"><span class="lbl">方針</span>\(\vec{OA}, \vec{OB}\) を斜交軸に取り、\((s,t)\) 平面上で領域を作って元の図に戻す。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(s, t\) を直交座標とみなすと、\(0\leqq s\leqq 1,\ 0\leqq t\leqq 1\) は単位正方形。</li><li>これを \(\vec{OA}\) 方向、\(\vec{OB}\) 方向に取り直す（=斜交軸）。</li><li>単位正方形の4頂点 \((0,0),(1,0),(1,1),(0,1)\) は順に \(\vec{0},\ \vec{OA},\ \vec{OA}+\vec{OB},\ \vec{OB}\)。</li><li>よって P の範囲は4頂点 O, A, A+B, B を結ぶ平行四辺形。</li></ul><div><span class="lbl">答え</span><span class="answer">4頂点 \(O,\ A,\ \vec{OA}+\vec{OB},\ B\) の平行四辺形（境界含む）</span></div><div class="ex-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 220" width="540" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<line x1="40.0" y1="180.0" x2="200.0" y2="180.0" class="vec"/>
+<line x1="50.0" y1="190.0" x2="50.0" y2="30.0" class="vec"/>
+<rect x="50" y="80" width="100" height="100" fill="#ddd" stroke="#000"/>
+<text x="40.0" y="198.0" class="label">O</text>
+<text x="150.0" y="198.0" class="label">1</text>
+<text x="35.0" y="80.0" class="label">1</text>
+<text x="200.0" y="185.0" class="label">s</text>
+<text x="45.0" y="20.0" class="label">t</text>
+<text x="55.0" y="20.0" class="label">(s,t) 平面</text>
+<text x="220.0" y="110.0" class="label">→</text>
+<polygon points="290,190 490,190 570.0,50.0 370,50" fill="#ddd" stroke="#000" stroke-width="1.5"/>
+<line x1="290.0" y1="190.0" x2="490.0" y2="190.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="290.0" y1="190.0" x2="370.0" y2="50.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="290.0" cy="190.0" r="3" class="pt"/>
+<circle cx="490.0" cy="190.0" r="3" class="pt"/>
+<circle cx="370.0" cy="50.0" r="3" class="pt"/>
+<circle cx="570.0" cy="50.0" r="2.5" class="pt"/>
+<text x="275.0" y="195.0" class="label">O</text>
+<text x="495.0" y="195.0" class="label">A</text>
+<text x="355.0" y="45.0" class="label">B</text>
+<text x="573.0" y="47.0" class="label">A+B</text>
+<text x="290.0" y="20.0" class="label">実際の平行四辺形</text>
+</svg></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -804,6 +1144,12 @@ window.MathJax = {
 <li><span class="node step leaf">\((\vec{x} - \vec{a})\cdot(\vec{x} - \vec{b}) = 0\) → 平面なら円、空間なら球面</span></li>
 <li><span class="node step leaf">\((\vec{x} - \vec{a})\cdot\vec{n} = 0\) → 平面なら直線、空間なら平面</span></li>
 <li class="note-li"><span class="node leaf">💡 「答えを円周にしないで球面に」</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>空間内の点 P が \((\vec{p}-\vec{a})\cdot(\vec{p}-\vec{b}) = 0\) を満たすとき、P の軌跡を答えよ。</div><div class="approach"><span class="lbl">方針</span>内積の積=0 → AB を直径とする図形。空間か平面かで「球面」「円」が変わるので注意。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\((\vec{p}-\vec{a})\cdot(\vec{p}-\vec{b})=0\) は「\(\vec{AP}\cdot\vec{BP}=0\)」</li><li>つまり ∠APB = 90°（タレスの定理）</li><li>空間内なので、AB を直径とする「球面」（円ではない）。</li></ul><div><span class="lbl">答え</span><span class="answer">AB を直径とする球面</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul></li></ul>
@@ -864,6 +1210,12 @@ window.MathJax = {
 <text x="130.0" y="100.0" class="ftxt">b</text>
 <text x="135.0" y="152.0" class="ftxt">OH</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(|\vec{a}|=2,\ |\vec{b}|=3,\ \vec{a}\cdot\vec{b}=2\) のとき、\(\vec{b}\) の \(\vec{a}\) 上への正射影ベクトル \(\vec{OH}\) を求めよ。</div><div class="approach"><span class="lbl">方針</span>公式 \(\displaystyle \vec{OH} = \frac{\vec{a}\cdot\vec{b}}{|\vec{a}|^2}\vec{a}\) に代入。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\displaystyle \vec{OH} = \frac{\vec{a}\cdot\vec{b}}{|\vec{a}|^2}\vec{a} = \frac{2}{4}\vec{a} = \frac{1}{2}\vec{a}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{OH} = \frac{1}{2}\vec{a}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -873,6 +1225,12 @@ window.MathJax = {
 <li><span class="node step leaf">\(\vec{PH}\cdot\vec{AB} = 0\)（垂直条件）</span></li>
 <li><span class="node step leaf">\(t\) を決定</span></li>
 <li class="note-li"><span class="node leaf">💡 公式を使わない別解。連立で解ける</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\triangle OAB\) において \(|\vec{a}|=2,\ |\vec{b}|=1,\ \vec{a}\cdot\vec{b}=1\) とする。点 B から直線 OA に下ろした垂線の足を H とするとき、\(\vec{OH}\) を求めよ（公式を使わずに）。</div><div class="approach"><span class="lbl">方針</span>\(\vec{OH} = t\vec{a}\) と置き、\(\vec{BH}\cdot\vec{a}=0\) から t を決める。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{OH} = t\vec{a}\) と置く。</li><li>\(\vec{BH} = \vec{OH} - \vec{b} = t\vec{a} - \vec{b}\)</li><li>\(\vec{BH}\cdot\vec{a}=0\)：\((t\vec{a}-\vec{b})\cdot\vec{a} = t|\vec{a}|^2 - \vec{a}\cdot\vec{b} = 4t - 1 = 0\)</li><li>\(\displaystyle t = \frac{1}{4}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{OH} = \frac{1}{4}\vec{a}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -922,6 +1280,12 @@ window.MathJax = {
 <text x="35.0" y="195.0" class="label">α</text>
 <text x="225.0" y="170.0" class="label">射影</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>空間内の点 P\((1,2,3)\) を平面 \(\alpha\): \(x+y+z=0\) に正射影した点 P' の座標を求めよ。</div><div class="approach"><span class="lbl">方針</span>公式は「ベクトル→ベクトル」なので、まず法線方向に射影してから引く。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>法線 \(\vec{n} = (1,1,1)\)、\(\vec{OP} = (1,2,3)\)</li><li>\(\vec{n}\cdot\vec{OP} = 1+2+3 = 6,\ |\vec{n}|^2 = 3\)</li><li>\(\vec{n}\) への射影 \(\displaystyle = \frac{6}{3}\vec{n} = 2(1,1,1) = (2,2,2)\)</li><li>\(\vec{OP'} = \vec{OP} - (\vec{n}\) への射影\() = (1,2,3) - (2,2,2) = (-1,0,1)\)</li></ul><div><span class="lbl">答え</span><span class="answer">P'\((-1, 0, 1)\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -979,6 +1343,12 @@ window.MathJax = {
 <text x="166.0" y="175.0" class="label">R</text>
 <text x="155.0" y="238.0" class="label">M</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\triangle OAB\) において \(|\vec{a}|=2,\ |\vec{b}|=2,\ \vec{a}\cdot\vec{b}=1\) のとき、外心 R について \(\vec{OR} = x\vec{a}+y\vec{b}\) と置くとき、\(x, y\) を求めよ。</div><div class="approach"><span class="lbl">方針</span>辺 OA, OB の中点を M, N とし、RM⊥OA, RN⊥OB を立式して連立。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\displaystyle M=\frac{\vec{a}}{2},\ N=\frac{\vec{b}}{2}\)</li><li>\(\vec{RM}\cdot\vec{a}=0\)：\(\displaystyle \left(\frac{\vec{a}}{2}-x\vec{a}-y\vec{b}\right)\cdot\vec{a}=0\)</li><li>\(\displaystyle \frac{|\vec{a}|^2}{2} - x|\vec{a}|^2 - y\vec{a}\cdot\vec{b} = 0\)</li><li>\(2 - 4x - y = 0\) … ①</li><li>同様に \(\vec{RN}\cdot\vec{b}=0\) より \(2 - x - 4y = 0\) … ②</li><li>①②を解いて \(\displaystyle x = y = \frac{2}{5}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle x = y = \frac{2}{5}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -986,6 +1356,12 @@ window.MathJax = {
 <ul class="hidden">
 <li><span class="node step leaf">外心から辺へ垂線を下ろすと中点に落ちる</span></li>
 <li><span class="node step leaf">外心と垂直二等分線の相性は◎</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\triangle OAB\) の外心を R とする。R から辺 OA に下ろした垂線の足 H は、辺 OA のどこに位置するか。</div><div class="approach"><span class="lbl">方針</span>外心は OA, OB の垂直二等分線の交点。垂直二等分線は OA の中点を通る。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>R は OA の垂直二等分線上 → 垂線の足 H は OA の中点。</li></ul><div><span class="lbl">答え</span><span class="answer">H は辺 OA の中点（つまり \(\displaystyle \vec{OH} = \frac{\vec{a}}{2}\)）</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -994,6 +1370,12 @@ window.MathJax = {
 <li><span class="node step leaf">底面の法線方向 \(\vec{n}\)</span></li>
 <li><span class="node step leaf">高さ \(\displaystyle |\vec{OH}| = \frac{|\vec{b}\cdot\vec{n}|}{|\vec{n}|}\)</span></li>
 <li><span class="node step leaf">体積 \(V\) = 底面積 \(\times\) 高さ</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>3つのベクトル \(\vec{a}=(1,0,0),\ \vec{b}=(0,1,0),\ \vec{c}=(1,1,1)\) で張られる平行六面体の高さ（底面を \(\vec{a},\vec{b}\) の平面とする）を求めよ。</div><div class="approach"><span class="lbl">方針</span>底面の法線 n を取り、c の n 方向への正射影の長さが高さ。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>底面 \(\vec{a},\vec{b}\) の法線方向 \(\vec{n}=(0,0,1)\)</li><li>\(\vec{c}\cdot\vec{n} = 1,\ |\vec{n}|=1\)</li><li>\(\displaystyle h = \frac{|\vec{c}\cdot\vec{n}|}{|\vec{n}|} = 1\)</li></ul><div><span class="lbl">答え</span><span class="answer">高さ \(h = 1\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul></li></ul>
@@ -1008,6 +1390,12 @@ window.MathJax = {
 <li><span class="node step leaf">点 \(A(\vec{a})\) を通り、方向ベクトル \(\vec{l}\) に平行: \(\vec{x} = \vec{a} + t\vec{l}\)</span></li>
 <li><span class="node step leaf">点 \(A(a,b,c)\) を通り、方向 \((\alpha,\beta,\gamma)\) に平行:</span></li>
 <li><span class="node step leaf">\(\displaystyle \frac{x-a}{\alpha} = \frac{y-b}{\beta} = \frac{z-c}{\gamma}\)</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>点 \(A(1,2,3)\) を通り、方向ベクトル \(\vec{l}=(2,-1,1)\) に平行な直線の方程式を求めよ。</div><div class="approach"><span class="lbl">方針</span>公式に代入するだけ。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\displaystyle \frac{x-1}{2} = \frac{y-2}{-1} = \frac{z-3}{1}\)</li><li>または、パラメータ表示 \((x,y,z) = (1+2t,\ 2-t,\ 3+t)\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \frac{x-1}{2} = \frac{y-2}{-1} = \frac{z-3}{1}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1067,6 +1455,12 @@ window.MathJax = {
 <text x="485.0" y="90.0" class="ftxt">n</text>
 <text x="410.0" y="175.0" class="label">(3) 1点と法線</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>3点 \(A(1,0,0),\ B(0,1,0),\ C(0,0,1)\) を通る平面の方程式を求めよ。</div><div class="approach"><span class="lbl">方針</span>パラメータ表示でも法線形でもよいが、ここでは法線形で出す。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{AB}=(-1,1,0),\ \vec{AC}=(-1,0,1)\)</li><li>法線 \(\vec{n}=(\alpha,\beta,\gamma)\) と置き、\(\vec{n}\cdot\vec{AB}=0,\ \vec{n}\cdot\vec{AC}=0\)：</li><li>\(-\alpha+\beta = 0,\ -\alpha+\gamma = 0\) より \(\vec{n}=(1,1,1)\) が取れる。</li><li>点 A を通るので \(1\cdot(x-1)+1\cdot y+1\cdot z = 0\)</li><li>整理して \(x+y+z = 1\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(x+y+z=1\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1076,6 +1470,12 @@ window.MathJax = {
 <li><span class="node step leaf">裏計算: 外積 \(\vec{u}\times\vec{v}\) を計算</span></li>
 <li><span class="node step leaf">\(\vec{u}\times\vec{v} = (u_2 v_3 - u_3 v_2,\ u_3 v_1 - u_1 v_3,\ u_1 v_2 - u_2 v_1)\)</span></li>
 <li class="note-li"><span class="node leaf">💡 答案では外積を使わず内積=0で書く</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>2つのベクトル \(\vec{u}=(1,2,3),\ \vec{v}=(2,1,0)\) の両方に垂直なベクトルを1つ求めよ（答案用：内積=0で連立）。</div><div class="approach"><span class="lbl">方針</span>n=(x,y,z) と置き、u·n=0, v·n=0 を連立。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{n}=(x,y,z)\) と置く。</li><li>\(\vec{u}\cdot\vec{n}=x+2y+3z=0\) … ①</li><li>\(\vec{v}\cdot\vec{n}=2x+y=0\) より \(y=-2x\) … ②</li><li>②を①に代入：\(x-4x+3z=0\) より \(z=x\)</li><li>\(x=1\) と取れば \(\vec{n}=(1,-2,1)\)</li><li>裏計算（外積）でも \(\vec{u}\times\vec{v}=(2\cdot 0-3\cdot 1,\ 3\cdot 2-1\cdot 0,\ 1\cdot 1-2\cdot 2)=(-3,6,-3)\) で同じ向き。</li></ul><div><span class="lbl">答え</span><span class="answer">\(\vec{n}=(1,-2,1)\)（または定数倍）</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1084,6 +1484,12 @@ window.MathJax = {
 <li><span class="node step leaf">直線をパラメータ表示 \(\vec{x} = \vec{a} + t\vec{l}\)</span></li>
 <li><span class="node step leaf">平面の方程式に代入</span></li>
 <li><span class="node step leaf">\(t\) を解く → 交点</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>直線 \((x,y,z)=(1+t, 2t, -1+3t)\) と平面 \(x+y+z=4\) の交点を求めよ。</div><div class="approach"><span class="lbl">方針</span>直線のパラメータ表示を平面の方程式に代入して t を解く。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\((1+t)+2t+(-1+3t) = 4\)</li><li>\(6t = 4\) より \(\displaystyle t = \frac{2}{3}\)</li><li>代入して \(\displaystyle \left(\frac{5}{3},\ \frac{4}{3},\ 1\right)\)</li></ul><div><span class="lbl">答え</span><span class="answer">交点 \(\displaystyle \left(\frac{5}{3},\ \frac{4}{3},\ 1\right)\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1092,6 +1498,12 @@ window.MathJax = {
 <li><span class="node step leaf">各直線をパラメータ表示</span></li>
 <li><span class="node step leaf">連立して解の有無を見る</span></li>
 <li><span class="node step leaf">解なし → ねじれの位置</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>2直線 \(\ell_1\): \((x,y,z)=(t,t,0)\)、\(\ell_2\): \((x,y,z)=(1-s,\ 0,\ s)\) について、交わるか・ねじれの位置か判定せよ。</div><div class="approach"><span class="lbl">方針</span>両式が等しくなる (s, t) があるかを連立で確認。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(t=1-s,\ t=0,\ 0=s\) より \(t=0,\ s=0\)</li><li>検算：\(t=1-s\) は \(0=1-0=1\) で矛盾。</li><li>連立解なし → ねじれの位置。</li></ul><div><span class="lbl">答え</span><span class="answer">ねじれの位置</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1099,6 +1511,12 @@ window.MathJax = {
 <ul class="hidden">
 <li><span class="node step leaf">点から直線へ垂線の足 H を出す（4-A 正射影）</span></li>
 <li><span class="node step leaf">距離 = \(|\vec{PH}|\)</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>点 \(P(2,1,3)\) と直線 \(\ell\): \((x,y,z)=(t,t,t)\) との距離を求めよ。</div><div class="approach"><span class="lbl">方針</span>P から \(\ell\) への垂線の足 H を出し、\(|\vec{PH}|\) を求める。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\ell\) 上の点を \(H=(t,t,t)\) と置く。</li><li>\(\vec{PH}=(t-2, t-1, t-3)\)、方向 \(\vec{l}=(1,1,1)\)</li><li>\(\vec{PH}\cdot\vec{l}=0\)：\((t-2)+(t-1)+(t-3)=3t-6=0\) より \(t=2\)</li><li>\(H=(2,2,2)\)、\(\vec{PH}=(0,1,-1)\)</li><li>距離 \(|\vec{PH}|=\sqrt{0+1+1}=\sqrt{2}\)</li></ul><div><span class="lbl">答え</span><span class="answer">距離 \(\sqrt{2}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1106,6 +1524,12 @@ window.MathJax = {
 <ul class="hidden">
 <li><span class="node step leaf">公式: \(\displaystyle d = \frac{|\alpha(x_0-a) + \beta(y_0-b) + \gamma(z_0-c)|}{\sqrt{\alpha^2+\beta^2+\gamma^2}}\)</span></li>
 <li><span class="node step leaf">別解: 平面上の点 A をとり \(\vec{AP}\) の \(\vec{n}\) 方向への正射影の長さ</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>点 \(P(1,2,3)\) と平面 \(2x-y+2z=1\) との距離を求めよ。</div><div class="approach"><span class="lbl">方針</span>公式に代入。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\displaystyle d = \frac{|2\cdot 1 - 2 + 2\cdot 3 - 1|}{\sqrt{2^2+(-1)^2+2^2}} = \frac{|5|}{3} = \frac{5}{3}\)</li></ul><div><span class="lbl">答え</span><span class="answer">距離 \(\displaystyle \frac{5}{3}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1114,6 +1538,12 @@ window.MathJax = {
 <li><span class="node step leaf">各直線上に動点 P, Q を置く</span></li>
 <li><span class="node step leaf">\(\vec{PQ}\cdot\vec{l_1}=0,\ \vec{PQ}\cdot\vec{l_2}=0\) を連立</span></li>
 <li><span class="node step leaf">最短距離 \(|\vec{PQ}|\)</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>2直線 \(\ell_1\): \((x,y,z)=(t,0,0)\)、\(\ell_2\): \((x,y,z)=(0,s,1)\) の最短距離を求めよ。</div><div class="approach"><span class="lbl">方針</span>各直線上に動点 P, Q を取り、PQ が両方向ベクトルに垂直になるように決める。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(P=(t,0,0),\ Q=(0,s,1)\) と置く。</li><li>\(\vec{PQ}=(-t,s,1)\)、方向 \(\vec{l_1}=(1,0,0),\ \vec{l_2}=(0,1,0)\)</li><li>\(\vec{PQ}\cdot\vec{l_1}=-t=0\) → \(t=0\)</li><li>\(\vec{PQ}\cdot\vec{l_2}=s=0\) → \(s=0\)</li><li>\(\vec{PQ}=(0,0,1)\)、最短距離 \(|\vec{PQ}|=1\)</li></ul><div><span class="lbl">答え</span><span class="answer">最短距離 \(1\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul></li></ul>
@@ -1165,6 +1595,12 @@ window.MathJax = {
 <text x="285.0" y="88.0" class="label">C</text>
 <text x="40.0" y="160.0" class="label">AB = k · AC を満たす実数 k が存在</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>3点 \(A(1,2,3),\ B(2,4,5),\ C(4,8,9)\) が同一直線上にあるか判定せよ。</div><div class="approach"><span class="lbl">方針</span>\(\vec{AB}\) と \(\vec{AC}\) が平行（=実数倍）かを見る。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{AB}=(1,2,2),\ \vec{AC}=(3,6,6)\)</li><li>\(\vec{AC} = 3\vec{AB}\) なので、3点は同一直線上にある。</li></ul><div><span class="lbl">答え</span><span class="answer">同一直線上にある</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1218,6 +1654,12 @@ window.MathJax = {
 <text x="165.0" y="125.0" class="label">P</text>
 <text x="20.0" y="205.0" class="label">OP = sOA + tOB + uOC, s+t+u=1</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>4点 \(O(0,0,0),\ A(1,0,0),\ B(0,1,0),\ D(2,3,0)\) が同一平面上にあるか判定せよ。</div><div class="approach"><span class="lbl">方針</span>D を \(\vec{OA},\vec{OB}\) の一次結合で表せるか確認。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{OD}=s\vec{OA}+t\vec{OB}\) と置く：\((2,3,0)=s(1,0,0)+t(0,1,0)\)</li><li>\(s=2,\ t=3\) で成立。よって D は \(\vec{OA},\vec{OB}\) の一次結合で書ける。</li><li>4点は同一平面（z=0 平面）上にある。</li></ul><div><span class="lbl">答え</span><span class="answer">同一平面上にある</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1227,6 +1669,12 @@ window.MathJax = {
 <li><span class="node step leaf">\((a,b)\perp(c,d) \Leftrightarrow ac + bd = 0\)</span></li>
 <li><span class="node step leaf">空間: \(\vec{u}\parallel\vec{v} \Leftrightarrow \vec{u} = k\vec{v}\)</span></li>
 <li><span class="node step leaf">\(\vec{u}\perp\vec{v} \Leftrightarrow \vec{u}\cdot\vec{v} = 0\)</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>2つの空間ベクトル \(\vec{u}=(2,-1,3),\ \vec{v}=(1,4,-1)\) が垂直か判定せよ。</div><div class="approach"><span class="lbl">方針</span>u·v=0 か確認するだけ。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{u}\cdot\vec{v} = 2\cdot 1 + (-1)\cdot 4 + 3\cdot(-1) = 2 - 4 - 3 = -5\)</li><li>内積が0でないので垂直ではない。</li></ul><div><span class="lbl">答え</span><span class="answer">垂直ではない</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1234,6 +1682,12 @@ window.MathJax = {
 <ul class="hidden">
 <li><span class="node step leaf">平面の基底 \(\vec{u}, \vec{v}\) を取る</span></li>
 <li><span class="node step leaf">\(\vec{l}\cdot\vec{u}=0\) かつ \(\vec{l}\cdot\vec{v}=0\) を示す</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>直線 \(\ell\): 方向 \(\vec{l}=(1,1,1)\) が、平面 \(\alpha\): \(x+y+z=0\) に直交することを示せ。</div><div class="approach"><span class="lbl">方針</span>平面の基底（\(\alpha\) 上の一次独立な2ベクトル）両方と \(\vec{l}\) が垂直であることを示す。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>平面 \(\alpha\) 上の一次独立なベクトル：\(\vec{u}=(1,-1,0),\ \vec{v}=(1,0,-1)\)</li><li>\(\vec{l}\cdot\vec{u}=1-1+0=0\)、\(\vec{l}\cdot\vec{v}=1+0-1=0\)</li><li>よって \(\vec{l}\) は平面 \(\alpha\) に直交する。</li></ul><div><span class="lbl">答え</span><span class="answer">\(\vec{l}\) は平面 \(\alpha\) に直交する（証明完了）</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1243,6 +1697,12 @@ window.MathJax = {
 <li><span class="node step leaf">\(x\vec{a} + y\vec{b} + z\vec{c} = x'\vec{a} + y'\vec{b} + z'\vec{c}\)</span></li>
 <li><span class="node step leaf">⇒ \(\vec{a},\vec{b},\vec{c}\) 一次独立なら \(x=x',y=y',z=z'\)</span></li>
 <li class="note-li"><span class="node leaf">💡 係数比較の根拠。連立を解く強力な道具</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\vec{a},\vec{b}\) が一次独立のとき、\(\vec{p} = (s+1)\vec{a} + (t-2)\vec{b} = 3\vec{a} + \vec{b}\) を満たす実数 \(s, t\) を求めよ。</div><div class="approach"><span class="lbl">方針</span>一次独立なら係数比較ができる。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{a},\vec{b}\) は一次独立なので、両辺の係数を比較：</li><li>\(s+1=3 \Rightarrow s=2\)</li><li>\(t-2=1 \Rightarrow t=3\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(s=2,\ t=3\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1252,6 +1712,12 @@ window.MathJax = {
 <li><span class="node step leaf">始点を統一（位置ベクトル化）</span></li>
 <li><span class="node step leaf">平方完成、または \(|\cdots|^2 = \cdots\) の形に</span></li>
 <li><span class="node step leaf">図形的解釈（球面・平面・円）</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>空間内の点 P が \(\vec{AP}\cdot\vec{BP} = 0\) を満たすとき、P の軌跡を求めよ（A, B は定点）。</div><div class="approach"><span class="lbl">方針</span>1次形と見せかけて、内積を展開すると 2次式 → 平方完成で球面になる。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{AP}\cdot\vec{BP}=(\vec{p}-\vec{a})\cdot(\vec{p}-\vec{b})=0\)</li><li>\(|\vec{p}|^2 - (\vec{a}+\vec{b})\cdot\vec{p} + \vec{a}\cdot\vec{b} = 0\)</li><li>\(\displaystyle \left|\vec{p} - \frac{\vec{a}+\vec{b}}{2}\right|^2 = \left|\frac{\vec{a}-\vec{b}}{2}\right|^2 = \frac{|\vec{AB}|^2}{4}\)</li><li>中心 = AB の中点、半径 = AB/2 → AB を直径とする球面。</li></ul><div><span class="lbl">答え</span><span class="answer">AB を直径とする球面</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul></li></ul>
@@ -1266,6 +1732,12 @@ window.MathJax = {
 <li><span class="node step leaf">形: \(\vec{p} = s\vec{a} + t\vec{b}\)</span></li>
 <li><span class="node step leaf">・パラメータ1つ → 直線</span></li>
 <li><span class="node step leaf">・パラメータ2つ → 平面（空間内）</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>空間内で \(\vec{p} = s\vec{a} + t\vec{b}\)（s, t は実数）が表す図形は何か。\(\vec{a},\vec{b}\) は一次独立とする。</div><div class="approach"><span class="lbl">方針</span>パラメータが2つで一次結合 → 平面（原点と a, b で張られる）。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>パラメータ s, t が独立に実数全体を動く → \(\vec{a},\vec{b}\) で張られる平面。</li></ul><div><span class="lbl">答え</span><span class="answer">原点 O を通り、\(\vec{a},\vec{b}\) で張られる平面</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1311,6 +1783,12 @@ window.MathJax = {
 <text x="40.0" y="180.0" class="label">a · (x − OA) = 0</text>
 <text x="40.0" y="195.0" class="label">→ A を通り a に垂直な直線</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>空間内で \(\vec{a}\cdot(\vec{p}-\vec{q}) = 0\) が表す図形は何か（\(\vec{a}\neq\vec{0}\)）。</div><div class="approach"><span class="lbl">方針</span>内積=0 の1次式 → 点 Q を通り \(\vec{a}\) に垂直な「直線」か「平面」か、空間/平面で答えが変わる。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{p}-\vec{q}\) が \(\vec{a}\) に垂直 → P は Q を通り \(\vec{a}\) に垂直な点の集まり。</li><li>空間内なので平面。</li></ul><div><span class="lbl">答え</span><span class="answer">点 Q を通り \(\vec{a}\) に垂直な平面</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1319,6 +1797,12 @@ window.MathJax = {
 <li><span class="node step leaf">形: \(|\vec{x} - \vec{a}| = r\)</span></li>
 <li><span class="node step leaf">・平面: 中心 A、半径 \(r\) の円</span></li>
 <li><span class="node step leaf">・空間: 中心 A、半径 \(r\) の球面</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>空間内で \(|\vec{p} - \vec{a}| = 3\) が表す図形は何か。</div><div class="approach"><span class="lbl">方針</span>絶対値=定数の形 → 円か球面。空間なので球面。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>P と A の距離が3 → 中心 A、半径3の球面。</li></ul><div><span class="lbl">答え</span><span class="answer">中心 A、半径 3 の球面</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1368,6 +1852,12 @@ window.MathJax = {
 <text x="60.0" y="200.0" class="label">(x−a)·(x−b)=0</text>
 <text x="60.0" y="215.0" class="label">→ AB を直径とする円</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>平面内で \((\vec{p} - \vec{a})\cdot(\vec{p} - \vec{b}) = 0\) が表す図形は何か。</div><div class="approach"><span class="lbl">方針</span>AP·BP=0 → ∠APB=90° → AB を直径とする円（タレス）。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{AP}\cdot\vec{BP}=0\) より \(\vec{AP}\perp\vec{BP}\) または P=A, P=B。</li><li>つまり ∠APB = 90°（タレスの定理）。</li><li>平面内なので、AB を直径とする円。</li></ul><div><span class="lbl">答え</span><span class="answer">AB を直径とする円</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1377,6 +1867,12 @@ window.MathJax = {
 <li><span class="node step leaf">平方完成して \(|\vec{p} - \vec{c}|^2 = R^2\) の形に</span></li>
 <li><span class="node step leaf">円（平面）/ 球面（空間）と判定</span></li>
 <li class="note-li"><span class="node leaf">💡 2次の項を含むなら円・球面が予想される</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>空間内で \(|\vec{p}|^2 - 2\vec{a}\cdot\vec{p} = 0\) が表す図形を求めよ（\(\vec{a}\neq\vec{0}\)）。</div><div class="approach"><span class="lbl">方針</span>2次の項あり → 平方完成。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(|\vec{p}|^2 - 2\vec{a}\cdot\vec{p} = 0\)</li><li>\(|\vec{p}-\vec{a}|^2 - |\vec{a}|^2 = 0\)</li><li>\(|\vec{p}-\vec{a}|^2 = |\vec{a}|^2\)</li><li>中心 A、半径 |a| の球面。</li></ul><div><span class="lbl">答え</span><span class="answer">中心 A、半径 \(|\vec{a}|\) の球面</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1385,6 +1881,12 @@ window.MathJax = {
 <li><span class="node step leaf">2次式が因数分解できる場合</span></li>
 <li><span class="node step leaf">因数分解 → 2つの1次式の積</span></li>
 <li><span class="node step leaf">「内積=0 または 内積=0」の和事象</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\((\vec{p}-\vec{a})\cdot(\vec{p}-\vec{b}) \cdot (\vec{p}-\vec{c})\cdot(\vec{p}-\vec{d})=0\) のような形ではなく、\(((\vec{p}-\vec{a})\cdot\vec{n_1})((\vec{p}-\vec{b})\cdot\vec{n_2})=0\) が表す図形は何か。</div><div class="approach"><span class="lbl">方針</span>積=0 → どちらかの因数が0 → 2平面（または2直線）の和事象。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\((\vec{p}-\vec{a})\cdot\vec{n_1}=0\) または \((\vec{p}-\vec{b})\cdot\vec{n_2}=0\)</li><li>前者は A を通り \(\vec{n_1}\) に垂直な平面、後者は B を通り \(\vec{n_2}\) に垂直な平面。</li></ul><div><span class="lbl">答え</span><span class="answer">2平面 \((\vec{p}-\vec{a})\cdot\vec{n_1}=0\) と \((\vec{p}-\vec{b})\cdot\vec{n_2}=0\) の和（合併）</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1394,6 +1896,12 @@ window.MathJax = {
 <li><span class="node step leaf">\(|\vec{x}-\vec{a}|=r\) かつ \((\vec{x}-\vec{b})\cdot\vec{n} = 0\)</span></li>
 <li><span class="node step leaf">定石2: パラメータ表示</span></li>
 <li><span class="node step leaf">\(\vec{x} = \vec{c} + (r\cos\theta)\vec{p} + (r\sin\theta)\vec{q}\)</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>空間内で \(|\vec{p}|=2\) かつ \(\vec{p}\cdot(0,0,1)=1\) を満たす点 P の軌跡を求めよ。</div><div class="approach"><span class="lbl">方針</span>球面 かつ 平面 → 空間内の円。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(|\vec{p}|=2\)：原点中心、半径2の球面</li><li>\(\vec{p}\cdot(0,0,1)=1\)：z = 1 の平面</li><li>球面と平面の交わりで、z=1 平面上で原点真上1の点を中心、半径 \(\sqrt{4-1}=\sqrt{3}\) の円。</li></ul><div><span class="lbl">答え</span><span class="answer">z=1 平面上、中心 \((0,0,1)\)、半径 \(\sqrt{3}\) の円</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -1403,6 +1911,12 @@ window.MathJax = {
 <li><span class="node step leaf">・平面 → 円・直線</span></li>
 <li><span class="node step leaf">・空間 → 球面・平面</span></li>
 <li><span class="node step leaf">「答えを円周にしないで球面に」</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(|\vec{p}-\vec{a}|=r\) が表す図形を、(1) 平面の問題として、(2) 空間の問題として、それぞれ答えよ。</div><div class="approach"><span class="lbl">方針</span>同じ式でも、空間か平面かで「球面」「円」が変わる。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>(1) 平面の問題：中心 A、半径 r の円</li><li>(2) 空間の問題：中心 A、半径 r の球面</li><li>※ 答えを「円」と書いてしまわないように、空間の問題なら必ず「球面」と書く。</li></ul><div><span class="lbl">答え</span><span class="answer">(1) 円、(2) 球面</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul></li></ul>
@@ -1416,6 +1930,12 @@ window.MathJax = {
 <li><span class="node step leaf">条件が対称（A,B,C等価） → 位置ベクトル（始点はどこでも）</span></li>
 <li><span class="node step leaf">1点だけ条件が違う → その点を始点に統一</span></li>
 <li><span class="node step leaf">外心が絡む → 外心を始点（\(|\vec{a}|=|\vec{b}|=|\vec{c}|=R\) が使える）</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\triangle ABC\) の外心を O とする。\(|\vec{OA}|=|\vec{OB}|=|\vec{OC}|=R\) であることを利用して、\(\vec{OA}\cdot\vec{OB}\) を辺の長さ \(c=AB\) と \(R\) で表せ。</div><div class="approach"><span class="lbl">方針</span>外心が始点なので |OA|=|OB|=|OC|=R が使える。|OA-OB|² = AB² から立式。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(|\vec{OA}-\vec{OB}|^2 = |\vec{AB}|^2 = c^2\)</li><li>\(|\vec{OA}|^2 - 2\vec{OA}\cdot\vec{OB} + |\vec{OB}|^2 = c^2\)</li><li>\(R^2 - 2\vec{OA}\cdot\vec{OB} + R^2 = c^2\)</li><li>\(\displaystyle \vec{OA}\cdot\vec{OB} = R^2 - \frac{c^2}{2}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{OA}\cdot\vec{OB} = R^2 - \frac{c^2}{2}\)</span></div></div></li>
+</ul>
+</li>
 </ul></li>
 <li>
 <span class="node l1 basic has-children" onclick="toggle(this)">一次独立／一次結合</span>
@@ -1430,6 +1950,12 @@ window.MathJax = {
 <li><span class="node step leaf">\(|\vec{a}|^2 = \vec{a}\cdot\vec{a}\)</span></li>
 <li><span class="node step leaf">\(|\vec{a} \pm \vec{b}|^2 = |\vec{a}|^2 \pm 2\vec{a}\cdot\vec{b} + |\vec{b}|^2\)</span></li>
 <li><span class="node step leaf">「絶対値を見たら2乗」が定石</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(|\vec{a}+\vec{b}|=4,\ |\vec{a}-\vec{b}|=2\) のとき、\(\vec{a}\cdot\vec{b}\) を求めよ。</div><div class="approach"><span class="lbl">方針</span>両辺を2乗して内積に変換、引き算で a·b を出す。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(|\vec{a}+\vec{b}|^2 = |\vec{a}|^2 + 2\vec{a}\cdot\vec{b} + |\vec{b}|^2 = 16\) … ①</li><li>\(|\vec{a}-\vec{b}|^2 = |\vec{a}|^2 - 2\vec{a}\cdot\vec{b} + |\vec{b}|^2 = 4\) … ②</li><li>①－②：\(4\vec{a}\cdot\vec{b} = 12\)</li><li>\(\vec{a}\cdot\vec{b} = 3\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\vec{a}\cdot\vec{b} = 3\)</span></div></div></li>
+</ul>
+</li>
 </ul></li>
 <li>
 <span class="node l1 standard has-children" onclick="toggle(this)">角の二等分線</span>
@@ -1492,6 +2018,12 @@ window.MathJax = {
 <li><span class="node step leaf">平行六面体の体積 \(V = |\vec{a}\cdot(\vec{b}\times\vec{c})|\)</span></li>
 <li><span class="node step leaf">四面体の体積 = \(V/6\)</span></li>
 <li><span class="node step leaf">⚠ 答案では「内積=0を満たす」と書く</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\vec{a}=(1,2,3),\ \vec{b}=(2,1,0)\) の両方に垂直なベクトル（の1つ）を、外積で求めよ。</div><div class="approach"><span class="lbl">方針</span>外積の公式に代入（裏計算）。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{a}\times\vec{b} = (a_2 b_3 - a_3 b_2,\ a_3 b_1 - a_1 b_3,\ a_1 b_2 - a_2 b_1)\)</li><li>\(= (2\cdot 0 - 3\cdot 1,\ 3\cdot 2 - 1\cdot 0,\ 1\cdot 1 - 2\cdot 2)\)</li><li>\(= (-3,\ 6,\ -3)\)</li><li>検算：\((-3)\cdot 1+6\cdot 2+(-3)\cdot 3 = -3+12-9 = 0\) ✓</li><li>⚠ 答案では「\(\vec{n}=(-3,6,-3)\) は \(\vec{a}\cdot\vec{n}=0,\ \vec{b}\cdot\vec{n}=0\) を満たす」と書く。</li></ul><div><span class="lbl">答え</span><span class="answer">\(\vec{n}=(-3, 6, -3)\)（または定数倍）</span></div></div></li>
+</ul>
+</li>
 </ul></li>
 <li>
 <span class="node l1 advanced has-children" onclick="toggle(this)">対称性のあるベクトルの座標設定</span>
@@ -1501,6 +2033,12 @@ window.MathJax = {
 <li><span class="node step leaf">→ \(\vec{a}=(1,0,0),\ \vec{b}=(\cos\theta,\sin\theta,0),\)</span></li>
 <li><span class="node step leaf">\(\vec{c}=(l, m, n)\ [l^2+m^2+n^2=1]\)</span></li>
 <li><span class="node step leaf">設定する文字を最小化するのがコツ</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>平面上に長さ1の \(\vec{a},\vec{b}\) があり、なす角は \(60°\) である。これらを座標設定して、\(|\vec{a}+2\vec{b}|\) を求めよ。</div><div class="approach"><span class="lbl">方針</span>\(\vec{a}=(1,0)\)、\(\vec{b}=(\cos 60°,\sin 60°)\) と置く。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\displaystyle \vec{a}=(1,0),\ \vec{b}=\left(\frac{1}{2},\frac{\sqrt{3}}{2}\right)\)</li><li>\(\displaystyle \vec{a}+2\vec{b}=(1,0)+(1,\sqrt{3})=(2,\sqrt{3})\)</li><li>\(|\vec{a}+2\vec{b}|=\sqrt{4+3}=\sqrt{7}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(|\vec{a}+2\vec{b}|=\sqrt{7}\)</span></div></div></li>
+</ul>
+</li>
 </ul></li>
 <li>
 <span class="node l1 standard has-children" onclick="toggle(this)">平面 vs 空間の解法選択</span>
@@ -1517,6 +2055,12 @@ window.MathJax = {
 <li><span class="node step leaf">内積を見る: \(\vec{a}\cdot(s\vec{a}+t\vec{b}+u\vec{c}) = 0\)</span></li>
 <li><span class="node step leaf">対称性を見る</span></li>
 <li><span class="node step leaf">1つ移項して2乗 \(|s\vec{a}|^2 = |-(t\vec{b}+u\vec{c})|^2\)</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(|\vec{a}|=|\vec{b}|=|\vec{c}|=1\) かつ \(\vec{a}+\vec{b}+\vec{c}=\vec{0}\) のとき、\(\vec{a}\cdot\vec{b}\) を求めよ。</div><div class="approach"><span class="lbl">方針</span>1つを移項して2乗、または直接2乗→展開で内積を取り出す。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(|\vec{a}+\vec{b}+\vec{c}|^2 = 0\)</li><li>\(|\vec{a}|^2+|\vec{b}|^2+|\vec{c}|^2 + 2(\vec{a}\cdot\vec{b}+\vec{b}\cdot\vec{c}+\vec{c}\cdot\vec{a})=0\)</li><li>\(3 + 2(\vec{a}\cdot\vec{b}+\vec{b}\cdot\vec{c}+\vec{c}\cdot\vec{a})=0\)</li><li>対称性より \(\vec{a}\cdot\vec{b}=\vec{b}\cdot\vec{c}=\vec{c}\cdot\vec{a}\) なので、</li><li>\(3 + 6\vec{a}\cdot\vec{b}=0\) より \(\displaystyle \vec{a}\cdot\vec{b}=-\frac{1}{2}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{a}\cdot\vec{b}=-\frac{1}{2}\)</span></div></div></li>
+</ul>
+</li>
 </ul></li>
 </ul></li></ul>
 </div>

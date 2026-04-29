@@ -49,6 +49,44 @@ ul.steps li { margin: 6px 0; }
 .guide-options li { margin: 6px 0; }
 .guide-options strong { display: inline-block; min-width: 6em; }
 .routing-table th { background: #f0f7fb; }
+.example {
+  background: #fdf6f0;
+  border: 1px solid #e0c0a0;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+.example-head {
+  font-weight: 600;
+  color: #A55A1F;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.example-section { margin: 8px 0; }
+.example-section .lbl {
+  font-weight: 600;
+  color: #555;
+  font-size: 12px;
+  display: inline-block;
+  background: #fff;
+  padding: 1px 8px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-right: 6px;
+}
+.example-problem { margin: 6px 0 10px 0; }
+.example-solution { margin: 4px 0 4px 12px; }
+.example-solution li { margin: 4px 0; list-style: none; }
+.example-answer {
+  background: #fff;
+  border: 1px solid #d0a070;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 600;
+}
+.example-fig { margin: 10px 0; text-align: center; }
+.example-fig svg { max-width: 100%; height: auto; }
 @media print { body { margin: 20px; } }
 </style>
 
@@ -81,6 +119,19 @@ window.MathJax = {
 <li>平方根をとる</li>
 </ul>
 <div class="note">「絶対値を見たら2乗 → 内積に結ぶ」が定石</div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>三角形 OAB において、\(|\vec{a}|=3,\ |\vec{b}|=2,\ \vec{a}\cdot\vec{b}=4\) とする。辺 AB の長さを求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>\(\vec{AB}=\vec{b}-\vec{a}\) と書き、絶対値の2乗→内積の定石を使う。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\vec{AB} = \vec{b} - \vec{a}\) より、</li>
+<li>\(|\vec{AB}|^2 = |\vec{b}-\vec{a}|^2 = |\vec{b}|^2 - 2\vec{a}\cdot\vec{b} + |\vec{a}|^2\)</li>
+<li>\(\quad = 4 - 8 + 9 = 5\)</li>
+<li>よって \(|\vec{AB}| = \sqrt{5}\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(|\vec{AB}| = \sqrt{5}\)</span></div>
+</div>
 <h3 class="level-standard" id="1B">1B: 三角形の面積<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
 <li>2辺ベクトル \(\vec{u},\ \vec{v}\) を決める</li>
@@ -127,6 +178,17 @@ window.MathJax = {
 <text x="82.0" y="100.0" class="ftxt">v</text>
 <text x="60.0" y="190.0" class="label">S = (1/2)√(|u|²|v|² − (u·v)²)</text>
 </svg></div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>\(|\vec{a}|=2,\ |\vec{b}|=3,\ \vec{a}\cdot\vec{b}=4\) のとき、\(\vec{a},\vec{b}\) で張られる三角形 OAB の面積 \(S\) を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>公式 \(\displaystyle S = \frac{1}{2}\sqrt{|\vec{a}|^2|\vec{b}|^2 - (\vec{a}\cdot\vec{b})^2}\) に代入するだけ。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\displaystyle S = \frac{1}{2}\sqrt{|\vec{a}|^2|\vec{b}|^2 - (\vec{a}\cdot\vec{b})^2}\)</li>
+<li>\(\displaystyle \quad = \frac{1}{2}\sqrt{4 \cdot 9 - 16} = \frac{1}{2}\sqrt{20} = \sqrt{5}\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(S = \sqrt{5}\)</span></div>
+</div>
 <h3 class="level-advanced" id="1C">1C: 四面体の体積（ベクトル）<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>底面 \(\triangle OAB\) の面積 \(S\) を求める</li>
@@ -179,6 +241,22 @@ window.MathJax = {
 <text x="170.0" y="112.5" class="label">高さ h</text>
 <text x="40.0" y="230.0" class="label">V = (1/3) × △OAB × h</text>
 </svg></div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>四面体 OABC において、\(|\vec{a}|=|\vec{b}|=|\vec{c}|=1\)、\(\vec{a}\cdot\vec{b}=\vec{b}\cdot\vec{c}=\vec{c}\cdot\vec{a}=\dfrac{1}{2}\) のとき、四面体の体積を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>底面の面積 → 高さ（正射影で求める）→ 体積、の順。対称性が高いので計算は楽。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>底面 \(\triangle OAB\) の面積：\(\displaystyle S = \frac{1}{2}\sqrt{1\cdot 1 - \left(\frac{1}{2}\right)^2} = \frac{\sqrt{3}}{4}\)</li>
+<li>高さ \(h\)：\(\vec{c}\) の平面 \(OAB\) への正射影を求める。</li>
+<li>対称性より \(\vec{c}\) を \(\vec{a},\vec{b}\) に分解して \(\vec{c} = s\vec{a}+t\vec{b}+\vec{h}\) と置くと、</li>
+<li>\(\vec{h}\cdot\vec{a}=0,\ \vec{h}\cdot\vec{b}=0\) より \(\displaystyle s = t = \frac{1}{3}\)</li>
+<li>\(\displaystyle |\vec{h}|^2 = \left|\vec{c}-\frac{1}{3}\vec{a}-\frac{1}{3}\vec{b}\right|^2 = \frac{2}{3}\)</li>
+<li>よって \(\displaystyle h = \sqrt{\frac{2}{3}}\)</li>
+<li>\(\displaystyle V = \frac{1}{3} \cdot \frac{\sqrt{3}}{4} \cdot \sqrt{\frac{2}{3}} = \frac{\sqrt{2}}{12}\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(\displaystyle V = \frac{\sqrt{2}}{12}\)</span></div>
+</div>
 <h3 class="level-advanced" id="1D">1D: 平行六面体の体積<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>底面の平行四辺形の面積 \(S\)</li>
@@ -186,6 +264,20 @@ window.MathJax = {
 <li>\(V = S \times h\)</li>
 </ul>
 <div class="note">裏計算: \(V = |\vec{a}\cdot(\vec{b}\times\vec{c})|\)</div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>3つのベクトル \(\vec{a},\vec{b},\vec{c}\) で張られる平行六面体について、\(|\vec{a}|=|\vec{b}|=|\vec{c}|=1\)、互いのなす角がすべて \(60°\) のとき、体積 \(V\) を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>裏計算で \(V=|\vec{a}\cdot(\vec{b}\times\vec{c})|\) を予想し、答案では「底面積×高さ」で書く。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>底面 \(\vec{a},\vec{b}\) の作る平行四辺形の面積：\(\displaystyle S = \sqrt{1\cdot 1 - \frac{1}{4}} = \frac{\sqrt{3}}{2}\)</li>
+<li>高さ：\(\vec{c}\) を底面に正射影した残りの長さ。</li>
+<li>\(\vec{c} = s\vec{a}+t\vec{b}+\vec{h}\) と置き、内積条件から \(\displaystyle s = t = \frac{1}{3}\)</li>
+<li>\(\displaystyle h = |\vec{h}| = \sqrt{\frac{2}{3}}\)</li>
+<li>\(\displaystyle V = S \cdot h = \frac{\sqrt{3}}{2} \cdot \sqrt{\frac{2}{3}} = \frac{\sqrt{2}}{2}\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(\displaystyle V = \frac{\sqrt{2}}{2}\)</span></div>
+</div>
 <h3 class="level-basic" id="1E">1E: 2ベクトルのなす角<span class="level-mark lm-basic">基本</span></h3>
 <ul class="steps">
 <li>\(\displaystyle \cos\theta = \frac{\vec{a}\cdot\vec{b}}{|\vec{a}||\vec{b}|}\)</li>
@@ -229,17 +321,54 @@ window.MathJax = {
 <text x="120.0" y="70.0" class="ftxt">b</text>
 <text x="40.0" y="160.0" class="label">cosθ = (a · b) / (|a| |b|)</text>
 </svg></div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>\(|\vec{a}|=2,\ |\vec{b}|=3,\ \vec{a}\cdot\vec{b}=-3\) のとき、\(\vec{a}\) と \(\vec{b}\) のなす角 \(\theta\) を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>公式 \(\displaystyle \cos\theta = \frac{\vec{a}\cdot\vec{b}}{|\vec{a}||\vec{b}|}\) に代入。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\displaystyle \cos\theta = \frac{-3}{2\cdot 3} = -\frac{1}{2}\)</li>
+<li>\(0 \leqq \theta \leqq \pi\) より、</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(\displaystyle \theta = \frac{2}{3}\pi\)</span></div>
+</div>
 <h3 class="level-standard" id="1F">1F: 2直線のなす角<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
 <li>方向ベクトルを取り、内積でcos</li>
 <li>鋭角に直す（必要なら絶対値）</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>2直線 \(\ell_1\): 方向ベクトル \(\vec{u}=(1,2,2)\)、\(\ell_2\): 方向ベクトル \(\vec{v}=(2,-1,2)\) のなす角を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>方向ベクトルの内積でcosを出し、絶対値で鋭角に直す。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\vec{u}\cdot\vec{v} = 2 - 2 + 4 = 4\)</li>
+<li>\(|\vec{u}| = 3,\ |\vec{v}| = 3\)</li>
+<li>\(\displaystyle \cos\theta = \frac{|4|}{3\cdot 3} = \frac{4}{9}\)（鋭角に直すため絶対値）</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(\displaystyle \theta = \arccos\frac{4}{9}\)</span></div>
+</div>
 <h3 class="level-expert" id="1G">1G: 平面と直線・2平面のなす角<span class="level-mark lm-expert">発展</span></h3>
 <ul class="steps">
 <li>法線ベクトルを取る</li>
 <li>内積で計算</li>
 <li>「\(90°\)−（法線同士のなす角）」等、向きを補正</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>平面 \(\alpha\): \(x+y+z=1\) と直線 \(\ell\): 方向ベクトル \(\vec{l}=(1,1,0)\) のなす角を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>平面の法線 \(\vec{n}\) と \(\vec{l}\) のなす角 \(\varphi\) を出し、\(90°-\varphi\) が直線と平面のなす角。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>法線 \(\vec{n}=(1,1,1)\)</li>
+<li>\(\vec{l}\cdot\vec{n} = 2,\ |\vec{l}|=\sqrt{2},\ |\vec{n}|=\sqrt{3}\)</li>
+<li>\(\displaystyle \cos\varphi = \frac{2}{\sqrt{2}\cdot\sqrt{3}} = \frac{\sqrt{6}}{3}\)（鋭角）</li>
+<li>よって直線と平面のなす角 \(\theta = 90° - \varphi\) より</li>
+<li>\(\displaystyle \sin\theta = \cos\varphi = \frac{\sqrt{6}}{3}\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(\displaystyle \sin\theta = \frac{\sqrt{6}}{3}\)（または \(\theta = \arcsin\frac{\sqrt{6}}{3}\)）</span></div>
+</div>
 <hr style="margin-top:40px">
 <p style="font-size:12px; color:#888;">© 数学フローチャート（ベクトル）</p>
 </body>

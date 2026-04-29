@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 220" width="540" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<line x1="40.0" y1="180.0" x2="200.0" y2="180.0" class="vec"/>
+<line x1="50.0" y1="190.0" x2="50.0" y2="30.0" class="vec"/>
+<rect x="50" y="80" width="100" height="100" fill="#ddd" stroke="#000"/>
+<text x="40.0" y="198.0" class="label">O</text>
+<text x="150.0" y="198.0" class="label">1</text>
+<text x="35.0" y="80.0" class="label">1</text>
+<text x="200.0" y="185.0" class="label">s</text>
+<text x="45.0" y="20.0" class="label">t</text>
+<text x="55.0" y="20.0" class="label">(s,t) 平面</text>
+<text x="220.0" y="110.0" class="label">→</text>
+<polygon points="290,190 490,190 570.0,50.0 370,50" fill="#ddd" stroke="#000" stroke-width="1.5"/>
+<line x1="290.0" y1="190.0" x2="490.0" y2="190.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="290.0" y1="190.0" x2="370.0" y2="50.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="290.0" cy="190.0" r="3" class="pt"/>
+<circle cx="490.0" cy="190.0" r="3" class="pt"/>
+<circle cx="370.0" cy="50.0" r="3" class="pt"/>
+<circle cx="570.0" cy="50.0" r="2.5" class="pt"/>
+<text x="275.0" y="195.0" class="label">O</text>
+<text x="495.0" y="195.0" class="label">A</text>
+<text x="355.0" y="45.0" class="label">B</text>
+<text x="573.0" y="47.0" class="label">A+B</text>
+<text x="290.0" y="20.0" class="label">実際の平行四辺形</text>
+</svg>

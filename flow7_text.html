@@ -49,6 +49,44 @@ ul.steps li { margin: 6px 0; }
 .guide-options li { margin: 6px 0; }
 .guide-options strong { display: inline-block; min-width: 6em; }
 .routing-table th { background: #f0f7fb; }
+.example {
+  background: #fdf6f0;
+  border: 1px solid #e0c0a0;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+.example-head {
+  font-weight: 600;
+  color: #A55A1F;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.example-section { margin: 8px 0; }
+.example-section .lbl {
+  font-weight: 600;
+  color: #555;
+  font-size: 12px;
+  display: inline-block;
+  background: #fff;
+  padding: 1px 8px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-right: 6px;
+}
+.example-problem { margin: 6px 0 10px 0; }
+.example-solution { margin: 4px 0 4px 12px; }
+.example-solution li { margin: 4px 0; list-style: none; }
+.example-answer {
+  background: #fff;
+  border: 1px solid #d0a070;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 600;
+}
+.example-fig { margin: 10px 0; text-align: center; }
+.example-fig svg { max-width: 100%; height: auto; }
 @media print { body { margin: 20px; } }
 </style>
 
@@ -80,6 +118,16 @@ window.MathJax = {
 <li>・パラメータ1つ → 直線</li>
 <li>・パラメータ2つ → 平面（空間内）</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>空間内で \(\vec{p} = s\vec{a} + t\vec{b}\)（s, t は実数）が表す図形は何か。\(\vec{a},\vec{b}\) は一次独立とする。</div>
+<div class="example-section"><span class="lbl">方針</span>パラメータが2つで一次結合 → 平面（原点と a, b で張られる）。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>パラメータ s, t が独立に実数全体を動く → \(\vec{a},\vec{b}\) で張られる平面。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">原点 O を通り、\(\vec{a},\vec{b}\) で張られる平面</span></div>
+</div>
 <h3 class="level-standard" id="7B">7B: 内積=一次の形<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
 <li>形: \(\vec{a}\cdot(\vec{p} - \vec{q}) = 0\)</li>
@@ -123,12 +171,33 @@ window.MathJax = {
 <text x="40.0" y="180.0" class="label">a · (x − OA) = 0</text>
 <text x="40.0" y="195.0" class="label">→ A を通り a に垂直な直線</text>
 </svg></div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>空間内で \(\vec{a}\cdot(\vec{p}-\vec{q}) = 0\) が表す図形は何か（\(\vec{a}\neq\vec{0}\)）。</div>
+<div class="example-section"><span class="lbl">方針</span>内積=0 の1次式 → 点 Q を通り \(\vec{a}\) に垂直な「直線」か「平面」か、空間/平面で答えが変わる。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\vec{p}-\vec{q}\) が \(\vec{a}\) に垂直 → P は Q を通り \(\vec{a}\) に垂直な点の集まり。</li>
+<li>空間内なので平面。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">点 Q を通り \(\vec{a}\) に垂直な平面</span></div>
+</div>
 <h3 class="level-standard" id="7C">7C: 絶対値=定数<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
 <li>形: \(|\vec{x} - \vec{a}| = r\)</li>
 <li>・平面: 中心 A、半径 \(r\) の円</li>
 <li>・空間: 中心 A、半径 \(r\) の球面</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>空間内で \(|\vec{p} - \vec{a}| = 3\) が表す図形は何か。</div>
+<div class="example-section"><span class="lbl">方針</span>絶対値=定数の形 → 円か球面。空間なので球面。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>P と A の距離が3 → 中心 A、半径3の球面。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">中心 A、半径 3 の球面</span></div>
+</div>
 <h3 class="level-standard" id="7D">7D: 内積形の積=0<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
 <li>形: \((\vec{x} - \vec{a})\cdot(\vec{x} - \vec{b}) = 0\)</li>
@@ -176,6 +245,18 @@ window.MathJax = {
 <text x="60.0" y="200.0" class="label">(x−a)·(x−b)=0</text>
 <text x="60.0" y="215.0" class="label">→ AB を直径とする円</text>
 </svg></div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>平面内で \((\vec{p} - \vec{a})\cdot(\vec{p} - \vec{b}) = 0\) が表す図形は何か。</div>
+<div class="example-section"><span class="lbl">方針</span>AP·BP=0 → ∠APB=90° → AB を直径とする円（タレス）。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\vec{AP}\cdot\vec{BP}=0\) より \(\vec{AP}\perp\vec{BP}\) または P=A, P=B。</li>
+<li>つまり ∠APB = 90°（タレスの定理）。</li>
+<li>平面内なので、AB を直径とする円。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">AB を直径とする円</span></div>
+</div>
 <h3 class="level-advanced" id="7E">7E: 一般の2次形（平方完成）<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>形: \(|\vec{p}|^2 + \vec{a}\cdot\vec{p} + b = 0\)</li>
@@ -183,12 +264,36 @@ window.MathJax = {
 <li>円（平面）/ 球面（空間）と判定</li>
 </ul>
 <div class="note">2次の項を含むなら円・球面が予想される</div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>空間内で \(|\vec{p}|^2 - 2\vec{a}\cdot\vec{p} = 0\) が表す図形を求めよ（\(\vec{a}\neq\vec{0}\)）。</div>
+<div class="example-section"><span class="lbl">方針</span>2次の項あり → 平方完成。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(|\vec{p}|^2 - 2\vec{a}\cdot\vec{p} = 0\)</li>
+<li>\(|\vec{p}-\vec{a}|^2 - |\vec{a}|^2 = 0\)</li>
+<li>\(|\vec{p}-\vec{a}|^2 = |\vec{a}|^2\)</li>
+<li>中心 A、半径 |a| の球面。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">中心 A、半径 \(|\vec{a}|\) の球面</span></div>
+</div>
 <h3 class="level-advanced" id="7F">7F: 因数分解で2平面の和に<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>2次式が因数分解できる場合</li>
 <li>因数分解 → 2つの1次式の積</li>
 <li>「内積=0 または 内積=0」の和事象</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>\((\vec{p}-\vec{a})\cdot(\vec{p}-\vec{b}) \cdot (\vec{p}-\vec{c})\cdot(\vec{p}-\vec{d})=0\) のような形ではなく、\(((\vec{p}-\vec{a})\cdot\vec{n_1})((\vec{p}-\vec{b})\cdot\vec{n_2})=0\) が表す図形は何か。</div>
+<div class="example-section"><span class="lbl">方針</span>積=0 → どちらかの因数が0 → 2平面（または2直線）の和事象。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\((\vec{p}-\vec{a})\cdot\vec{n_1}=0\) または \((\vec{p}-\vec{b})\cdot\vec{n_2}=0\)</li>
+<li>前者は A を通り \(\vec{n_1}\) に垂直な平面、後者は B を通り \(\vec{n_2}\) に垂直な平面。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">2平面 \((\vec{p}-\vec{a})\cdot\vec{n_1}=0\) と \((\vec{p}-\vec{b})\cdot\vec{n_2}=0\) の和（合併）</span></div>
+</div>
 <h3 class="level-expert" id="7G">7G: 空間内の円<span class="level-mark lm-expert">発展</span></h3>
 <ul class="steps">
 <li>定石1: 「球面 かつ 平面」と捉える</li>
@@ -196,6 +301,18 @@ window.MathJax = {
 <li>定石2: パラメータ表示</li>
 <li>\(\vec{x} = \vec{c} + (r\cos\theta)\vec{p} + (r\sin\theta)\vec{q}\)</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>空間内で \(|\vec{p}|=2\) かつ \(\vec{p}\cdot(0,0,1)=1\) を満たす点 P の軌跡を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>球面 かつ 平面 → 空間内の円。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(|\vec{p}|=2\)：原点中心、半径2の球面</li>
+<li>\(\vec{p}\cdot(0,0,1)=1\)：z = 1 の平面</li>
+<li>球面と平面の交わりで、z=1 平面上で原点真上1の点を中心、半径 \(\sqrt{4-1}=\sqrt{3}\) の円。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">z=1 平面上、中心 \((0,0,1)\)、半径 \(\sqrt{3}\) の円</span></div>
+</div>
 <h3 class="level-expert" id="7H">7H: 平面/空間の判定に注意<span class="level-mark lm-expert">発展</span></h3>
 <ul class="steps">
 <li>同じ式でも「平面」か「空間」かで答えが変わる</li>
@@ -203,6 +320,18 @@ window.MathJax = {
 <li>・空間 → 球面・平面</li>
 <li>「答えを円周にしないで球面に」</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>\(|\vec{p}-\vec{a}|=r\) が表す図形を、(1) 平面の問題として、(2) 空間の問題として、それぞれ答えよ。</div>
+<div class="example-section"><span class="lbl">方針</span>同じ式でも、空間か平面かで「球面」「円」が変わる。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>(1) 平面の問題：中心 A、半径 r の円</li>
+<li>(2) 空間の問題：中心 A、半径 r の球面</li>
+<li>※ 答えを「円」と書いてしまわないように、空間の問題なら必ず「球面」と書く。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">(1) 円、(2) 球面</span></div>
+</div>
 <hr style="margin-top:40px">
 <p style="font-size:12px; color:#888;">© 数学フローチャート（ベクトル）</p>
 </body>

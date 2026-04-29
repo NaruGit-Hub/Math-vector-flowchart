@@ -49,6 +49,44 @@ ul.steps li { margin: 6px 0; }
 .guide-options li { margin: 6px 0; }
 .guide-options strong { display: inline-block; min-width: 6em; }
 .routing-table th { background: #f0f7fb; }
+.example {
+  background: #fdf6f0;
+  border: 1px solid #e0c0a0;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+.example-head {
+  font-weight: 600;
+  color: #A55A1F;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+.example-section { margin: 8px 0; }
+.example-section .lbl {
+  font-weight: 600;
+  color: #555;
+  font-size: 12px;
+  display: inline-block;
+  background: #fff;
+  padding: 1px 8px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-right: 6px;
+}
+.example-problem { margin: 6px 0 10px 0; }
+.example-solution { margin: 4px 0 4px 12px; }
+.example-solution li { margin: 4px 0; list-style: none; }
+.example-answer {
+  background: #fff;
+  border: 1px solid #d0a070;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 600;
+}
+.example-fig { margin: 10px 0; text-align: center; }
+.example-fig svg { max-width: 100%; height: auto; }
 @media print { body { margin: 20px; } }
 </style>
 
@@ -126,6 +164,16 @@ window.MathJax = {
 <text x="130.0" y="100.0" class="ftxt">b</text>
 <text x="135.0" y="152.0" class="ftxt">OH</text>
 </svg></div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>\(|\vec{a}|=2,\ |\vec{b}|=3,\ \vec{a}\cdot\vec{b}=2\) のとき、\(\vec{b}\) の \(\vec{a}\) 上への正射影ベクトル \(\vec{OH}\) を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>公式 \(\displaystyle \vec{OH} = \frac{\vec{a}\cdot\vec{b}}{|\vec{a}|^2}\vec{a}\) に代入。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\displaystyle \vec{OH} = \frac{\vec{a}\cdot\vec{b}}{|\vec{a}|^2}\vec{a} = \frac{2}{4}\vec{a} = \frac{1}{2}\vec{a}\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(\displaystyle \vec{OH} = \frac{1}{2}\vec{a}\)</span></div>
+</div>
 <h3 class="level-standard" id="4B">4B: 垂線の足を交点として求める<span class="level-mark lm-standard">標準</span></h3>
 <ul class="steps">
 <li>\(\vec{OH} = \vec{OA} + t\vec{AB}\) と置く（直線AB上）</li>
@@ -133,6 +181,19 @@ window.MathJax = {
 <li>\(t\) を決定</li>
 </ul>
 <div class="note">公式を使わない別解。連立で解ける</div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>\(\triangle OAB\) において \(|\vec{a}|=2,\ |\vec{b}|=1,\ \vec{a}\cdot\vec{b}=1\) とする。点 B から直線 OA に下ろした垂線の足を H とするとき、\(\vec{OH}\) を求めよ（公式を使わずに）。</div>
+<div class="example-section"><span class="lbl">方針</span>\(\vec{OH} = t\vec{a}\) と置き、\(\vec{BH}\cdot\vec{a}=0\) から t を決める。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\vec{OH} = t\vec{a}\) と置く。</li>
+<li>\(\vec{BH} = \vec{OH} - \vec{b} = t\vec{a} - \vec{b}\)</li>
+<li>\(\vec{BH}\cdot\vec{a}=0\)：\((t\vec{a}-\vec{b})\cdot\vec{a} = t|\vec{a}|^2 - \vec{a}\cdot\vec{b} = 4t - 1 = 0\)</li>
+<li>\(\displaystyle t = \frac{1}{4}\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(\displaystyle \vec{OH} = \frac{1}{4}\vec{a}\)</span></div>
+</div>
 <h3 class="level-advanced" id="4C">4C: 平面への正射影（空間）<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>公式は「ベクトル→ベクトル」なので、まず法線 \(\vec{n}\) に正射影</li>
@@ -180,6 +241,19 @@ window.MathJax = {
 <text x="35.0" y="195.0" class="label">α</text>
 <text x="225.0" y="170.0" class="label">射影</text>
 </svg></div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>空間内の点 P\((1,2,3)\) を平面 \(\alpha\): \(x+y+z=0\) に正射影した点 P' の座標を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>公式は「ベクトル→ベクトル」なので、まず法線方向に射影してから引く。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>法線 \(\vec{n} = (1,1,1)\)、\(\vec{OP} = (1,2,3)\)</li>
+<li>\(\vec{n}\cdot\vec{OP} = 1+2+3 = 6,\ |\vec{n}|^2 = 3\)</li>
+<li>\(\vec{n}\) への射影 \(\displaystyle = \frac{6}{3}\vec{n} = 2(1,1,1) = (2,2,2)\)</li>
+<li>\(\vec{OP'} = \vec{OP} - (\vec{n}\) への射影\() = (1,2,3) - (2,2,2) = (-1,0,1)\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">P'\((-1, 0, 1)\)</span></div>
+</div>
 <h3 class="level-advanced" id="4D">4D: 三角形の外心<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>\(\vec{OR} = x\vec{a} + y\vec{b}\) と置く</li>
@@ -235,17 +309,54 @@ window.MathJax = {
 <text x="166.0" y="175.0" class="label">R</text>
 <text x="155.0" y="238.0" class="label">M</text>
 </svg></div>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>\(\triangle OAB\) において \(|\vec{a}|=2,\ |\vec{b}|=2,\ \vec{a}\cdot\vec{b}=1\) のとき、外心 R について \(\vec{OR} = x\vec{a}+y\vec{b}\) と置くとき、\(x, y\) を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>辺 OA, OB の中点を M, N とし、RM⊥OA, RN⊥OB を立式して連立。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>\(\displaystyle M=\frac{\vec{a}}{2},\ N=\frac{\vec{b}}{2}\)</li>
+<li>\(\vec{RM}\cdot\vec{a}=0\)：\(\displaystyle \left(\frac{\vec{a}}{2}-x\vec{a}-y\vec{b}\right)\cdot\vec{a}=0\)</li>
+<li>\(\displaystyle \frac{|\vec{a}|^2}{2} - x|\vec{a}|^2 - y\vec{a}\cdot\vec{b} = 0\)</li>
+<li>\(2 - 4x - y = 0\) … ①</li>
+<li>同様に \(\vec{RN}\cdot\vec{b}=0\) より \(2 - x - 4y = 0\) … ②</li>
+<li>①②を解いて \(\displaystyle x = y = \frac{2}{5}\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">\(\displaystyle x = y = \frac{2}{5}\)</span></div>
+</div>
 <h3 class="level-advanced" id="4E">4E: 正射影 × 外心の合わせ技<span class="level-mark lm-advanced">応用</span></h3>
 <ul class="steps">
 <li>外心から辺へ垂線を下ろすと中点に落ちる</li>
 <li>外心と垂直二等分線の相性は◎</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>\(\triangle OAB\) の外心を R とする。R から辺 OA に下ろした垂線の足 H は、辺 OA のどこに位置するか。</div>
+<div class="example-section"><span class="lbl">方針</span>外心は OA, OB の垂直二等分線の交点。垂直二等分線は OA の中点を通る。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>R は OA の垂直二等分線上 → 垂線の足 H は OA の中点。</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">H は辺 OA の中点（つまり \(\displaystyle \vec{OH} = \frac{\vec{a}}{2}\)）</span></div>
+</div>
 <h3 class="level-expert" id="4F">4F: 平行六面体の高さ<span class="level-mark lm-expert">発展</span></h3>
 <ul class="steps">
 <li>底面の法線方向 \(\vec{n}\)</li>
 <li>高さ \(\displaystyle |\vec{OH}| = \frac{|\vec{b}\cdot\vec{n}|}{|\vec{n}|}\)</li>
 <li>体積 \(V\) = 底面積 \(\times\) 高さ</li>
 </ul>
+<div class="example">
+<div class="example-head">📝 例題</div>
+<div class="example-section example-problem"><span class="lbl">問題</span>3つのベクトル \(\vec{a}=(1,0,0),\ \vec{b}=(0,1,0),\ \vec{c}=(1,1,1)\) で張られる平行六面体の高さ（底面を \(\vec{a},\vec{b}\) の平面とする）を求めよ。</div>
+<div class="example-section"><span class="lbl">方針</span>底面の法線 n を取り、c の n 方向への正射影の長さが高さ。</div>
+<div class="example-section"><span class="lbl">解答</span></div>
+<ul class="example-solution">
+<li>底面 \(\vec{a},\vec{b}\) の法線方向 \(\vec{n}=(0,0,1)\)</li>
+<li>\(\vec{c}\cdot\vec{n} = 1,\ |\vec{n}|=1\)</li>
+<li>\(\displaystyle h = \frac{|\vec{c}\cdot\vec{n}|}{|\vec{n}|} = 1\)</li>
+</ul>
+<div class="example-section"><span class="lbl">答え</span><span class="example-answer">高さ \(h = 1\)</span></div>
+</div>
 <hr style="margin-top:40px">
 <p style="font-size:12px; color:#888;">© 数学フローチャート（ベクトル）</p>
 </body>

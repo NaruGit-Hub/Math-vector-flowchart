@@ -97,6 +97,43 @@ body {
 .note-li { margin: 6px 0; }
 .note-li .node { background: #fffbe6; border-color: #e0d080; }
 
+.example-li .node { background: #fdf6f0; border-color: #d0a070; font-weight: 500; }
+.example-block {
+  margin: 6px 0 6px 20px;
+  padding: 10px 14px;
+  background: #fdf6f0;
+  border: 1px solid #e0c0a0;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 600px;
+}
+.example-block .lbl {
+  font-weight: 600;
+  color: #555;
+  font-size: 11px;
+  display: inline-block;
+  background: #fff;
+  padding: 1px 6px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-right: 4px;
+}
+.example-block .problem { margin: 4px 0 8px 0; }
+.example-block .solution { margin: 4px 0 4px 8px; padding-left: 0; }
+.example-block .solution li { margin: 3px 0; list-style: none; }
+.example-block .answer {
+  background: #fff;
+  border: 1px solid #d0a070;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 600;
+}
+.example-block .ex-fig { margin: 8px 0; text-align: center; }
+.example-block .ex-fig svg { max-width: 100%; height: auto; }
+.example-block .approach { color: #555; }
+
 .hidden { display: none; }
 
 @media (max-width: 600px) {
@@ -222,6 +259,12 @@ window.MathJax = {
 <text x="420.0" y="190.0" class="label">④s+t≦1,s≧0,t≧0</text>
 <text x="428.0" y="208.0" class="label">→ △OAB周+内部</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\vec{OP} = s\vec{a} + t\vec{b}\) について、実数 \(s, t\) が \(s+t \leqq 1,\ s\geqq 0,\ t\geqq 0\) を満たして動くとき、点 P の存在範囲を答えよ。</div><div class="approach"><span class="lbl">方針</span>暗記している5パターンに照らし合わせる。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(s+t\leqq 1,\ s\geqq 0,\ t\geqq 0\) は基本パターン④に該当。</li></ul><div><span class="lbl">答え</span><span class="answer">\(\triangle OAB\) の周および内部</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -305,6 +348,12 @@ window.MathJax = {
 <text x="420.0" y="180.0" class="label">④l+m+n≦1,各≧0</text>
 <text x="428.0" y="198.0" class="label">→ 四面体周+内部</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\vec{OP} = l\vec{a} + m\vec{b} + n\vec{c}\) について、実数 \(l, m, n\) が \(l+m+n=1,\ l\geqq 0,\ m\geqq 0,\ n\geqq 0\) を満たして動くとき、点 P の存在範囲を答えよ。</div><div class="approach"><span class="lbl">方針</span>空間版の暗記パターンに照合。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>係数和 \(l+m+n=1\) かつ各 \(\geqq 0\) は、空間の基本パターン③に該当。</li></ul><div><span class="lbl">答え</span><span class="answer">\(\triangle ABC\) の周および内部</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -314,6 +363,55 @@ window.MathJax = {
 <li><span class="node step leaf">動く方の変数で線を作る</span></li>
 <li><span class="node step leaf">固定した変数を動かして面に拡大</span></li>
 <li class="note-li"><span class="node leaf">💡 \(0\leqq a\leqq 1,\ \dfrac{1}{2}\leqq b\leqq 1\) のような長方形領域で使う</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\vec{OP} = a\vec{OA} + b\vec{OB}\) について、\(0\leqq a\leqq 1,\ \dfrac{1}{2}\leqq b\leqq 1\) のとき、点 P の動く範囲を図示せよ。</div><div class="approach"><span class="lbl">方針</span>3手順型：(1) b を固定して a を動かす → 線分。(2) b を動かす → 線分が平行移動して帯（平行四辺形）。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>① \(b=k\)（定数）と固定すると \(\vec{OP} = a\vec{OA} + k\vec{OB}\)。</li><li>② \(0\leqq a\leqq 1\) より、P は始点 \(k\vec{OB}\)、終点 \(\vec{OA}+k\vec{OB}\) の線分上を動く。</li><li>③ \(\dfrac{1}{2}\leqq k\leqq 1\) と動かすと、線分が平行移動。</li><li>よって P の範囲は、\(\vec{OB}/2\) と \(\vec{OB}\) を結ぶ線分を「\(\vec{OA}\) 方向に幅 \(|\vec{OA}|\)」だけ平行移動した平行四辺形。</li></ul><div><span class="lbl">答え</span><span class="answer">4頂点 \(\dfrac{1}{2}\vec{OB},\ \vec{OB},\ \vec{OA}+\vec{OB},\ \vec{OA}+\dfrac{1}{2}\vec{OB}\) を結ぶ平行四辺形（境界を含む）</span></div><div class="ex-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" width="400" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="100.0,110.0 300.0,110.0 340.0,40.0 140.0,40.0" fill="#ddd" stroke="#000" stroke-width="1.5"/>
+<line x1="60.0" y1="180.0" x2="260.0" y2="180.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="60.0" y1="180.0" x2="140.0" y2="40.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="100.0" y1="110.0" x2="300.0" y2="110.0" class="dashed"/>
+<circle cx="60.0" cy="180.0" r="3" class="pt"/>
+<circle cx="260.0" cy="180.0" r="3" class="pt"/>
+<circle cx="140.0" cy="40.0" r="3" class="pt"/>
+<circle cx="100.0" cy="110.0" r="2.5" class="pt"/>
+<circle cx="300.0" cy="110.0" r="2.5" class="pt"/>
+<circle cx="340.0" cy="40.0" r="2.5" class="pt"/>
+<text x="45.0" y="185.0" class="label">O</text>
+<text x="265.0" y="185.0" class="label">A</text>
+<text x="125.0" y="35.0" class="label">B</text>
+<text x="68.0" y="113.0" class="label">½B</text>
+<text x="343.0" y="37.0" class="label">A+B</text>
+<text x="60.0" y="210.0" class="label">P の動く範囲（網掛け部）</text>
+</svg></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -323,6 +421,53 @@ window.MathJax = {
 <li><span class="node step leaf">内側の点 Q は線分AB上を動く</span></li>
 <li><span class="node step leaf">P は OQ を \((s+t)\) 倍した点 → 図示</span></li>
 <li class="note-li"><span class="node leaf">💡 「パラメータについて整理する」の発想</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\vec{OP} = s\vec{OA} + t\vec{OB}\) について、\(s\geqq 0,\ t\geqq 0,\ \dfrac{1}{2}\leqq s+t\leqq 1\) のとき、P の動く範囲を答えよ。</div><div class="approach"><span class="lbl">方針</span>\((s+t)\) を作って 3-A に帰着。\((s+t)\) を一度の値に固定して帰着 → 動かして拡大。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\displaystyle \vec{OP} = (s+t)\cdot\frac{s\vec{OA}+t\vec{OB}}{s+t}\)</li><li>内側 \(\displaystyle \vec{OQ} = \frac{s\vec{OA}+t\vec{OB}}{s+t}\) は \(\dfrac{s}{s+t}+\dfrac{t}{s+t}=1\) かつ各 \(\geqq 0\) より線分 AB 上を動く。</li><li>P は OQ を \((s+t)\) 倍した点。</li><li>\(s+t = \dfrac{1}{2}\) のとき：線分 AB を原点中心に \(\dfrac{1}{2}\) 倍した線分（A, B の中点を結ぶ）。</li><li>\(s+t = 1\) のとき：線分 AB そのもの。</li><li>両線分の間（および境界）が P の範囲 → 台形（A, B, AB の中点 M_A, M_B を結ぶ領域）。</li></ul><div><span class="lbl">答え</span><span class="answer">4点 A, B, \(\dfrac{\vec{OA}}{2}\), \(\dfrac{\vec{OB}}{2}\) を結ぶ台形（境界を含む）</span></div><div class="ex-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="160.0,190.0 260.0,190.0 180.0,50.0 120.0,120.0" fill="#ddd" stroke="#000" stroke-width="1.5"/>
+<line x1="60.0" y1="190.0" x2="260.0" y2="190.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="60.0" y1="190.0" x2="180.0" y2="50.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="60.0" cy="190.0" r="3" class="pt"/>
+<circle cx="260.0" cy="190.0" r="3" class="pt"/>
+<circle cx="180.0" cy="50.0" r="3" class="pt"/>
+<circle cx="160.0" cy="190.0" r="2.5" class="pt"/>
+<circle cx="120.0" cy="120.0" r="2.5" class="pt"/>
+<text x="45.0" y="195.0" class="label">O</text>
+<text x="265.0" y="195.0" class="label">A</text>
+<text x="175.0" y="42.0" class="label">B</text>
+<text x="155.0" y="208.0" class="label">A/2</text>
+<text x="90.0" y="123.0" class="label">B/2</text>
+<text x="60.0" y="210.0" class="label">P の動く範囲（網掛け部）</text>
+</svg></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -332,6 +477,12 @@ window.MathJax = {
 <li><span class="node step leaf">始点を A に統一（→\(\vec{AP},\vec{AB},\vec{AC}\) で書き直す）</span></li>
 <li><span class="node step leaf">制約条件も書き換え</span></li>
 <li><span class="node step leaf">3-A に帰着</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>平面上に \(\triangle ABC\) と点 O がある。実数 \(a, b, c\) が \(a\geqq 0,\ b\geqq 0,\ c\geqq 0,\ a+b+c=1\) を満たして動くとき、\(\vec{OP} = a\vec{OA} + b\vec{OB} + c\vec{OC}\) で定まる P の存在領域を求めよ。</div><div class="approach"><span class="lbl">方針</span>始点を A に統一すると見通しが立つ。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\vec{OP} - \vec{OA} = b(\vec{OB}-\vec{OA}) + c(\vec{OC}-\vec{OA})\)（∵ \(a+b+c=1\)）</li><li>\(\vec{AP} = b\vec{AB} + c\vec{AC},\ b+c\leqq 1,\ b\geqq 0,\ c\geqq 0\)</li><li>これは 3-A の基本パターン④（\(b+c\leqq 1\) かつ各 \(\geqq 0\)）。</li></ul><div><span class="lbl">答え</span><span class="answer">\(\triangle ABC\) の周および内部</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -341,6 +492,61 @@ window.MathJax = {
 <li><span class="node step leaf">\((s, t)\) 平面で不等式を図示</span></li>
 <li><span class="node step leaf">元の図に戻す</span></li>
 <li class="note-li"><span class="node leaf">💡 答案では使いにくいが、見通しが立てやすい</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\vec{OP} = s\vec{OA} + t\vec{OB}\) について、\(0\leqq s\leqq 1,\ 0\leqq t\leqq 1\) のとき、P の動く範囲を斜交座標で考えよ。</div><div class="approach"><span class="lbl">方針</span>\(\vec{OA}, \vec{OB}\) を斜交軸に取り、\((s,t)\) 平面上で領域を作って元の図に戻す。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(s, t\) を直交座標とみなすと、\(0\leqq s\leqq 1,\ 0\leqq t\leqq 1\) は単位正方形。</li><li>これを \(\vec{OA}\) 方向、\(\vec{OB}\) 方向に取り直す（=斜交軸）。</li><li>単位正方形の4頂点 \((0,0),(1,0),(1,1),(0,1)\) は順に \(\vec{0},\ \vec{OA},\ \vec{OA}+\vec{OB},\ \vec{OB}\)。</li><li>よって P の範囲は4頂点 O, A, A+B, B を結ぶ平行四辺形。</li></ul><div><span class="lbl">答え</span><span class="answer">4頂点 \(O,\ A,\ \vec{OA}+\vec{OB},\ B\) の平行四辺形（境界含む）</span></div><div class="ex-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 220" width="540" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<line x1="40.0" y1="180.0" x2="200.0" y2="180.0" class="vec"/>
+<line x1="50.0" y1="190.0" x2="50.0" y2="30.0" class="vec"/>
+<rect x="50" y="80" width="100" height="100" fill="#ddd" stroke="#000"/>
+<text x="40.0" y="198.0" class="label">O</text>
+<text x="150.0" y="198.0" class="label">1</text>
+<text x="35.0" y="80.0" class="label">1</text>
+<text x="200.0" y="185.0" class="label">s</text>
+<text x="45.0" y="20.0" class="label">t</text>
+<text x="55.0" y="20.0" class="label">(s,t) 平面</text>
+<text x="220.0" y="110.0" class="label">→</text>
+<polygon points="290,190 490,190 570.0,50.0 370,50" fill="#ddd" stroke="#000" stroke-width="1.5"/>
+<line x1="290.0" y1="190.0" x2="490.0" y2="190.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="290.0" y1="190.0" x2="370.0" y2="50.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="290.0" cy="190.0" r="3" class="pt"/>
+<circle cx="490.0" cy="190.0" r="3" class="pt"/>
+<circle cx="370.0" cy="50.0" r="3" class="pt"/>
+<circle cx="570.0" cy="50.0" r="2.5" class="pt"/>
+<text x="275.0" y="195.0" class="label">O</text>
+<text x="495.0" y="195.0" class="label">A</text>
+<text x="355.0" y="45.0" class="label">B</text>
+<text x="573.0" y="47.0" class="label">A+B</text>
+<text x="290.0" y="20.0" class="label">実際の平行四辺形</text>
+</svg></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -350,6 +556,12 @@ window.MathJax = {
 <li><span class="node step leaf">\((\vec{x} - \vec{a})\cdot(\vec{x} - \vec{b}) = 0\) → 平面なら円、空間なら球面</span></li>
 <li><span class="node step leaf">\((\vec{x} - \vec{a})\cdot\vec{n} = 0\) → 平面なら直線、空間なら平面</span></li>
 <li class="note-li"><span class="node leaf">💡 「答えを円周にしないで球面に」</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>空間内の点 P が \((\vec{p}-\vec{a})\cdot(\vec{p}-\vec{b}) = 0\) を満たすとき、P の軌跡を答えよ。</div><div class="approach"><span class="lbl">方針</span>内積の積=0 → AB を直径とする図形。空間か平面かで「球面」「円」が変わるので注意。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\((\vec{p}-\vec{a})\cdot(\vec{p}-\vec{b})=0\) は「\(\vec{AP}\cdot\vec{BP}=0\)」</li><li>つまり ∠APB = 90°（タレスの定理）</li><li>空間内なので、AB を直径とする「球面」（円ではない）。</li></ul><div><span class="lbl">答え</span><span class="answer">AB を直径とする球面</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul></li></ul>

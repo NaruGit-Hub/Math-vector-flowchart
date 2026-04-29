@@ -97,6 +97,43 @@ body {
 .note-li { margin: 6px 0; }
 .note-li .node { background: #fffbe6; border-color: #e0d080; }
 
+.example-li .node { background: #fdf6f0; border-color: #d0a070; font-weight: 500; }
+.example-block {
+  margin: 6px 0 6px 20px;
+  padding: 10px 14px;
+  background: #fdf6f0;
+  border: 1px solid #e0c0a0;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 600px;
+}
+.example-block .lbl {
+  font-weight: 600;
+  color: #555;
+  font-size: 11px;
+  display: inline-block;
+  background: #fff;
+  padding: 1px 6px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-right: 4px;
+}
+.example-block .problem { margin: 4px 0 8px 0; }
+.example-block .solution { margin: 4px 0 4px 8px; padding-left: 0; }
+.example-block .solution li { margin: 3px 0; list-style: none; }
+.example-block .answer {
+  background: #fff;
+  border: 1px solid #d0a070;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 600;
+}
+.example-block .ex-fig { margin: 8px 0; text-align: center; }
+.example-block .ex-fig svg { max-width: 100%; height: auto; }
+.example-block .approach { color: #555; }
+
 .hidden { display: none; }
 
 @media (max-width: 600px) {
@@ -187,6 +224,12 @@ window.MathJax = {
 <text x="60.0" y="110.0" class="label">P = (nA + mB)/(m+n)  m:n に内分</text>
 <text x="60.0" y="128.0" class="label">Q = (−nA + mB)/(m−n) m:n に外分</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>線分 AB を \(2:3\) に内分する点 P と、\(2:3\) に外分する点 Q の位置ベクトルを、\(\vec{a}=\vec{OA},\ \vec{b}=\vec{OB}\) で表せ。</div><div class="approach"><span class="lbl">方針</span>公式に代入。外分は内分の式の符号を1か所変えれば良い。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>内分: \(\displaystyle \vec{OP} = \frac{3\vec{a} + 2\vec{b}}{2+3} = \frac{3\vec{a}+2\vec{b}}{5}\)</li><li>外分: \(\displaystyle \vec{OQ} = \frac{-3\vec{a} + 2\vec{b}}{2-3} = 3\vec{a} - 2\vec{b}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{OP} = \frac{3\vec{a}+2\vec{b}}{5},\ \vec{OQ} = 3\vec{a}-2\vec{b}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -196,6 +239,56 @@ window.MathJax = {
 <li><span class="node step leaf">別の条件（直線CD上にある等）と連立</span></li>
 <li><span class="node step leaf">一次独立性より係数比較で \(t\) を決定</span></li>
 <li class="note-li"><span class="node leaf">💡 「P は直線AB上」+「別の条件」という形を見たら</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>三角形 OAB において、辺 OA を \(1:2\) に内分する点を M、辺 OB の中点を N とする。線分 AN と BM の交点を P とするとき、\(\vec{OP}\) を \(\vec{a}=\vec{OA},\ \vec{b}=\vec{OB}\) で表せ。</div><div class="approach"><span class="lbl">方針</span>「P は直線AN上」かつ「P は直線BM上」を立式して連立。係数比較で決定。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>P が直線 AN 上：\(\vec{OP} = (1-s)\vec{a} + s\cdot\dfrac{\vec{b}}{2}\)</li><li>P が直線 BM 上：\(\vec{OP} = t\cdot\dfrac{\vec{a}}{3} + (1-t)\vec{b}\)</li><li>\(\vec{a},\vec{b}\) は一次独立より係数比較：</li><li>\(\displaystyle 1-s = \frac{t}{3},\ \frac{s}{2} = 1-t\)</li><li>連立して \(\displaystyle s = \frac{4}{5},\ t = \frac{3}{5}\)</li><li>\(\displaystyle \vec{OP} = \frac{1}{5}\vec{a} + \frac{2}{5}\vec{b}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{OP} = \frac{1}{5}\vec{a} + \frac{2}{5}\vec{b}\)</span></div><div class="ex-fig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<line x1="60.0" y1="200.0" x2="270.0" y2="200.0" class="vec-thin"/>
+<line x1="60.0" y1="200.0" x2="180.0" y2="50.0" class="vec-thin"/>
+<line x1="270.0" y1="200.0" x2="180.0" y2="50.0" class="vec-thin"/>
+<line x1="270.0" y1="200.0" x2="120.0" y2="125.0" class="vec-thin"/>
+<line x1="180.0" y1="50.0" x2="130.0" y2="200.0" class="vec-thin"/>
+<circle cx="60.0" cy="200.0" r="3" class="pt"/>
+<circle cx="270.0" cy="200.0" r="3" class="pt"/>
+<circle cx="180.0" cy="50.0" r="3" class="pt"/>
+<circle cx="130.0" cy="200.0" r="2.5" class="pt"/>
+<circle cx="120.0" cy="125.0" r="2.5" class="pt"/>
+<circle cx="150.0" cy="140.0" r="3.5" class="pt"/>
+<text x="45.0" y="205.0" class="label">O</text>
+<text x="275.0" y="205.0" class="label">A</text>
+<text x="175.0" y="42.0" class="label">B</text>
+<text x="125.0" y="218.0" class="label">M</text>
+<text x="102.0" y="123.0" class="label">N</text>
+<text x="155.0" y="135.0" class="label">P</text>
+</svg></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -248,6 +341,12 @@ window.MathJax = {
 <text x="165.0" y="125.0" class="label">P</text>
 <text x="20.0" y="205.0" class="label">OP = sOA + tOB + uOC, s+t+u=1</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>四面体 OABC において、辺 OA, OB, OC の中点をそれぞれ L, M, N とする。直線 OG（G は \(\triangle ABC\) の重心）と平面 LMN の交点 P について、\(\vec{OP}\) を \(\vec{a},\vec{b},\vec{c}\) で表せ。</div><div class="approach"><span class="lbl">方針</span>P が直線 OG 上＝1パラメータ、P が平面 LMN 上＝係数和=1（共面条件）を立式して連立。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(\displaystyle \vec{OG} = \frac{\vec{a}+\vec{b}+\vec{c}}{3}\)</li><li>P は直線 OG 上：\(\displaystyle \vec{OP} = u\cdot\frac{\vec{a}+\vec{b}+\vec{c}}{3}\)</li><li>P は平面 LMN 上：\(\vec{OP} = s\vec{OL} + t\vec{OM} + r\vec{ON}\)（\(s+t+r=1\)）</li><li>\(\displaystyle = \frac{s}{2}\vec{a} + \frac{t}{2}\vec{b} + \frac{r}{2}\vec{c}\)</li><li>両式で係数比較：\(\displaystyle \frac{u}{3} = \frac{s}{2} = \frac{t}{2} = \frac{r}{2}\) かつ \(s+t+r=1\)</li><li>対称性より \(\displaystyle s=t=r=\frac{1}{3}\)、よって \(\displaystyle \frac{u}{3} = \frac{1}{6}\)、\(\displaystyle u = \frac{1}{2}\)</li><li>\(\displaystyle \vec{OP} = \frac{1}{6}(\vec{a}+\vec{b}+\vec{c})\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{OP} = \frac{1}{6}(\vec{a}+\vec{b}+\vec{c})\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -294,6 +393,12 @@ window.MathJax = {
 <text x="74.4" y="108.4" class="ftxt">b/|b|</text>
 <text x="189.4" y="118.4" class="ftxt">二等分方向</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\triangle OAB\) において \(OA=3,\ OB=2\) とする。\(\angle AOB\) の二等分線と辺 AB の交点 P について、\(\vec{OP}\) を \(\vec{a}=\vec{OA},\ \vec{b}=\vec{OB}\) で表せ。</div><div class="approach"><span class="lbl">方針</span>\(AP:PB = OA:OB = 3:2\) なので、内分点の公式に代入。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(AP:PB = OA:OB = 3:2\) より P は AB を \(3:2\) に内分。</li><li>\(\displaystyle \vec{OP} = \frac{2\vec{a} + 3\vec{b}}{3+2} = \frac{2\vec{a}+3\vec{b}}{5}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{OP} = \frac{2\vec{a}+3\vec{b}}{5}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -302,6 +407,12 @@ window.MathJax = {
 <li><span class="node step leaf">三角形 ABC の重心: \(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}}{3}\)</span></li>
 <li><span class="node step leaf">四面体 ABCD の重心: \(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}+\vec{d}}{4}\)</span></li>
 <li class="note-li"><span class="node leaf">💡 \(\vec{GA}+\vec{GB}+\vec{GC}=\vec{0}\)（始点を重心に取れば成立）</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\triangle ABC\) の重心を G、四面体 ABCD の重心を G' とする。それぞれの位置ベクトルを各頂点の位置ベクトルで表せ。</div><div class="approach"><span class="lbl">方針</span>公式そのもの。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>三角形の重心：\(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}}{3}\)</li><li>四面体の重心：\(\displaystyle \vec{g'} = \frac{\vec{a}+\vec{b}+\vec{c}+\vec{d}}{4}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{g} = \frac{\vec{a}+\vec{b}+\vec{c}}{3},\ \vec{g'} = \frac{\vec{a}+\vec{b}+\vec{c}+\vec{d}}{4}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -312,6 +423,12 @@ window.MathJax = {
 <li><span class="node step leaf">\(AI:ID = (b+c):a\) を再利用</span></li>
 <li><span class="node step leaf">結果: \(\displaystyle \vec{i} = \frac{a\vec{a} + b\vec{b} + c\vec{c}}{a+b+c}\)</span></li>
 <li class="note-li"><span class="node leaf">💡 \(a, b, c\) は対辺の長さ（覚える価値あり）</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\triangle ABC\) において \(BC=a,\ CA=b,\ AB=c\) とする。内心 I の位置ベクトル \(\vec{i}\) を、各頂点の位置ベクトルで表せ。</div><div class="approach"><span class="lbl">方針</span>角の二等分線を2回使う。BD:DC=c:b、AI:ID=(b+c):a の順で。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>角 A の二等分線と辺 BC の交点 D について、\(BD:DC = c:b\)</li><li>\(\displaystyle \vec{d} = \frac{b\vec{b} + c\vec{c}}{b+c}\)</li><li>角 B の二等分線の性質より \(AI:ID = (b+c):a\)</li><li>\(\displaystyle \vec{i} = \frac{a\vec{a} + (b+c)\vec{d}}{(b+c)+a} = \frac{a\vec{a} + b\vec{b} + c\vec{c}}{a+b+c}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \vec{i} = \frac{a\vec{a} + b\vec{b} + c\vec{c}}{a+b+c}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -369,6 +486,12 @@ window.MathJax = {
 <text x="166.0" y="175.0" class="label">R</text>
 <text x="155.0" y="238.0" class="label">M</text>
 </svg></div></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(\triangle OAB\) において \(|\vec{a}|=2,\ |\vec{b}|=3,\ \vec{a}\cdot\vec{b}=4\) とする。外心 R について \(\vec{OR}=x\vec{a}+y\vec{b}\) と置くとき、\(x, y\) を求めよ。</div><div class="approach"><span class="lbl">方針</span>外心は OA, OB の垂直二等分線の交点。各中点 M, N について RM⊥OA, RN⊥OB。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>OA, OB の中点 \(\displaystyle M=\frac{\vec{a}}{2},\ N=\frac{\vec{b}}{2}\)</li><li>\(\vec{RM}\cdot\vec{a}=0\)：\(\displaystyle \left(\frac{\vec{a}}{2}-x\vec{a}-y\vec{b}\right)\cdot\vec{a} = 0\)</li><li>\(\displaystyle \frac{|\vec{a}|^2}{2} - x|\vec{a}|^2 - y\vec{a}\cdot\vec{b} = 0\)</li><li>\(2 - 4x - 4y = 0\) … ①</li><li>同様に \(\vec{RN}\cdot\vec{b}=0\) より \(\displaystyle \frac{9}{2} - 4x - 9y = 0\) … ②</li><li>①②を解いて \(\displaystyle x = \frac{3}{20},\ y = \frac{7}{20}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle x = \frac{3}{20},\ y = \frac{7}{20}\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
@@ -378,6 +501,12 @@ window.MathJax = {
 <li><span class="node step leaf">パターン2: 内積を見る \(\vec{a}\cdot(s\vec{a}+t\vec{b}+u\vec{c}) = 0\)</span></li>
 <li><span class="node step leaf">パターン3: 1つを移項して2乗 \(|s\vec{a}|^2 = |-(t\vec{b}+u\vec{c})|^2\)</span></li>
 <li class="note-li"><span class="node leaf">💡 3ベクトルの和が0なら2乗が定石</span></li>
+<li class="example-li">
+<span class="node  has-children" onclick="toggle(this)">📝 例題</span>
+<ul class="hidden">
+<li><div class="example-block"><div class="problem"><span class="lbl">問題</span>\(|\vec{a}|=|\vec{b}|=|\vec{c}|=1\) かつ \(2\vec{a}+3\vec{b}+\sqrt{7}\,\vec{c}=\vec{0}\) のとき、\(\vec{a}\) と \(\vec{b}\) のなす角を求めよ。</div><div class="approach"><span class="lbl">方針</span>3つのベクトルの和が \(\vec{0}\) なので、1つを移項して2乗。</div><div><span class="lbl">解答</span></div><ul class="solution"><li>\(2\vec{a}+3\vec{b}=-\sqrt{7}\,\vec{c}\) の両辺を2乗：</li><li>\(|2\vec{a}+3\vec{b}|^2 = 7|\vec{c}|^2\)</li><li>\(4|\vec{a}|^2 + 12\vec{a}\cdot\vec{b} + 9|\vec{b}|^2 = 7\)</li><li>\(4 + 12\vec{a}\cdot\vec{b} + 9 = 7\)</li><li>\(\displaystyle \vec{a}\cdot\vec{b} = -\frac{1}{2}\)</li><li>\(|\vec{a}|=|\vec{b}|=1\) より \(\displaystyle \cos\theta = -\frac{1}{2}\)</li></ul><div><span class="lbl">答え</span><span class="answer">\(\displaystyle \theta = \frac{2}{3}\pi\)</span></div></div></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul></li></ul>
