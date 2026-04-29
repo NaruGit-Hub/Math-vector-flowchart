@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>③ 終点範囲・軌跡を求める｜ベクトル（マインドマップ）</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Hiragino Sans", "Meiryo", "Helvetica Neue", sans-serif;
+  background: #fff; color: #222;
+  -webkit-text-size-adjust: 100%;
+}
+.header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  position: sticky; top: 0; background: #fff; z-index: 10;
+}
+.header h1 { font-size: 16px; font-weight: 600; }
+.legend {
+  padding: 8px 16px;
+  font-size: 12px; color: #666;
+  border-bottom: 1px solid #eee;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.legend-item { display: flex; align-items: center; gap: 3px; }
+.legend-box {
+  width: 14px; height: 14px; border: 2px solid; border-radius: 2px;
+  display: inline-block; flex-shrink: 0;
+}
+.tree { padding: 12px 8px 40px 8px; }
+.tree ul { list-style: none; padding-left: 20px; border-left: 1px solid #ddd; }
+.tree > ul { border-left: none; padding-left: 0; }
+.tree li { margin: 3px 0; }
+
+.node {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  user-select: none;
+  max-width: calc(100vw - 60px);
+  word-break: break-word;
+  -webkit-tap-highlight-color: transparent;
+}
+.node:hover { background: #f0f0f0; }
+.node:active { background: #e8e8e8; }
+.node.has-children { padding-left: 24px; position: relative; }
+.node.has-children::before {
+  content: "\25B6"; font-size: 10px;
+  position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
+  transition: transform 0.15s;
+}
+.node.has-children.open::before { transform: translateY(-50%) rotate(90deg); }
+
+.node.root { font-size: 17px; font-weight: 600; border: 2px solid #000; background: #fff; }
+.node.l1 { font-size: 15px; font-weight: 500; }
+.node.basic { border-color: #000; }
+.node.standard { border-color: #BA7517; border-width: 1.5px; }
+.node.advanced { border-color: #185FA5; border-width: 1.5px; }
+.node.expert { border-color: #A32D2D; border-width: 1.5px; }
+.node.step { background: #f0f7ff; border-color: #aac8e8; }
+.node.leaf { cursor: default; background: #fff; border-color: #e0e0e0; }
+.node.leaf:hover { background: #fff; }
+.node.ref { background: #eef4fb; border-color: #c4d9ee; }
+.node.tail { background: #f4f4f4; border-color: #ccc; font-size: 13px; }
+
+.img-wrap {
+  margin: 6px 0 6px 20px;
+  max-width: min(100%, 520px);
+  overflow-x: auto;
+}
+.img-wrap svg { width: 100%; height: auto; display: block; }
+
+.hidden { display: none; }
+
+@media (max-width: 600px) {
+  .node { font-size: 13px; padding: 5px 8px; padding-left: 22px; }
+  .node.root { font-size: 15px; }
+  .node.l1 { font-size: 14px; }
+  .tree ul { padding-left: 14px; }
+  .img-wrap { margin-left: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="header"><h1>③ 終点範囲・軌跡を求める</h1></div>
+
+<div class="legend">
+  <span>難易度：</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#000"></span>基本</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#BA7517"></span>標準</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#185FA5"></span>応用</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#A32D2D"></span>発展</span>
+  <span style="color:#999">｜ &#9654; をタップで展開</span>
+</div>
+
+<div class="tree">
+<ul>
+<li>
+<span class="node root advanced has-children open" onclick="toggle(this)">③ 終点範囲・軌跡を求める</span>
+<ul>
+<li><span class="node tail leaf">末尾: 「Pの動く範囲を図示せよ」／「Pの存在領域を求めよ」／「領域を求めよ」</span></li>
+<li>
+<span class="node l1 basic has-children open" onclick="toggle(this)">3A: 基本パターン（暗記）</span>
+<ul>
+<li><span class="node step leaf">OP = sa + tb のとき</span></li>
+<li><span class="node step leaf">・s, t 実数全体 → 全平面</span></li>
+<li><span class="node step leaf">・s+t = 1 → 直線AB</span></li>
+<li><span class="node step leaf">・s+t = 1, s≧0,t≧0 → 線分AB</span></li>
+<li><span class="node step leaf">・s+t ≦ 1, s≧0,t≧0 → △OAB周+内部</span></li>
+<li><span class="node step leaf">空間も同様: s+t+u に拡張</span></li>
+<li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="560" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<rect x="30" y="50" width="100" height="100" fill="#ddd" stroke="none"/>
+<line x1="50.0" y1="140.0" x2="120.0" y2="140.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="50.0" y1="140.0" x2="80.0" y2="70.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="50.0" cy="140.0" r="3" class="pt"/>
+<circle cx="120.0" cy="140.0" r="3" class="pt"/>
+<circle cx="80.0" cy="70.0" r="3" class="pt"/>
+<text x="35.0" y="145.0" class="label">O</text>
+<text x="123.0" y="145.0" class="label">A</text>
+<text x="75.0" y="65.0" class="label">B</text>
+<text x="30.0" y="190.0" class="label">①s,tが実数全体</text>
+<text x="38.0" y="208.0" class="label">→ 全平面</text>
+<line x1="274.0" y1="182.0" x2="186.0" y2="28.0" class="vec"/>
+<line x1="180.0" y1="140.0" x2="250.0" y2="140.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="180.0" y1="140.0" x2="210.0" y2="70.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="180.0" cy="140.0" r="3" class="pt"/>
+<circle cx="250.0" cy="140.0" r="3" class="pt"/>
+<circle cx="210.0" cy="70.0" r="3" class="pt"/>
+<text x="165.0" y="145.0" class="label">O</text>
+<text x="253.0" y="145.0" class="label">A</text>
+<text x="205.0" y="65.0" class="label">B</text>
+<text x="160.0" y="190.0" class="label">②s+t=1</text>
+<text x="168.0" y="208.0" class="label">→ 直線AB</text>
+<line x1="380" y1="140" x2="340" y2="70" stroke="#000" stroke-width="3"/>
+<line x1="310.0" y1="140.0" x2="380.0" y2="140.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="310.0" y1="140.0" x2="340.0" y2="70.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="310.0" cy="140.0" r="3" class="pt"/>
+<circle cx="380.0" cy="140.0" r="3" class="pt"/>
+<circle cx="340.0" cy="70.0" r="3" class="pt"/>
+<text x="295.0" y="145.0" class="label">O</text>
+<text x="383.0" y="145.0" class="label">A</text>
+<text x="335.0" y="65.0" class="label">B</text>
+<text x="290.0" y="190.0" class="label">③s+t=1,s≧0,t≧0</text>
+<text x="298.0" y="208.0" class="label">→ 線分AB</text>
+<polygon points="440,140 510,140 470,70" fill="#ddd" stroke="#000"/>
+<line x1="440.0" y1="140.0" x2="510.0" y2="140.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="440.0" y1="140.0" x2="470.0" y2="70.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="440.0" cy="140.0" r="3" class="pt"/>
+<circle cx="510.0" cy="140.0" r="3" class="pt"/>
+<circle cx="470.0" cy="70.0" r="3" class="pt"/>
+<text x="425.0" y="145.0" class="label">O</text>
+<text x="513.0" y="145.0" class="label">A</text>
+<text x="465.0" y="65.0" class="label">B</text>
+<text x="420.0" y="190.0" class="label">④s+t≦1,s≧0,t≧0</text>
+<text x="428.0" y="208.0" class="label">→ △OAB周+内部</text>
+</svg></div></li>
+</ul>
+</li>
+<li>
+<span class="node l1 basic has-children open" onclick="toggle(this)">3A2: 基本パターン（空間）</span>
+<ul>
+<li><span class="node step leaf">OP = la + mb + nc のとき</span></li>
+<li><span class="node step leaf">・l+m+n = 1 → 平面ABC</span></li>
+<li><span class="node step leaf">・l+m+n = 1, 各≧0 → △ABC周+内部</span></li>
+<li><span class="node step leaf">・l+m+n ≦ 1, 各≧0 → 四面体OABC周+内部</span></li>
+<li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="560" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<rect x="30" y="50" width="100" height="100" fill="#eee" stroke="none"/>
+<line x1="60.0" y1="140.0" x2="125.0" y2="130.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="60.0" y1="140.0" x2="100.0" y2="100.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="60.0" y1="140.0" x2="70.0" y2="55.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<circle cx="60.0" cy="140.0" r="3" class="pt"/>
+<circle cx="125.0" cy="130.0" r="3" class="pt"/>
+<circle cx="100.0" cy="100.0" r="3" class="pt"/>
+<circle cx="70.0" cy="55.0" r="3" class="pt"/>
+<text x="45.0" y="145.0" class="label">O</text>
+<text x="30.0" y="180.0" class="label">①l,m,nが実数全体</text>
+<text x="38.0" y="198.0" class="label">→ 全空間</text>
+<polygon points="255,130 230,100 200,55" fill="#ddd" stroke="#000"/>
+<line x1="190.0" y1="140.0" x2="255.0" y2="130.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="190.0" y1="140.0" x2="230.0" y2="100.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="190.0" y1="140.0" x2="200.0" y2="55.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<circle cx="190.0" cy="140.0" r="3" class="pt"/>
+<circle cx="255.0" cy="130.0" r="3" class="pt"/>
+<circle cx="230.0" cy="100.0" r="3" class="pt"/>
+<circle cx="200.0" cy="55.0" r="3" class="pt"/>
+<text x="175.0" y="145.0" class="label">O</text>
+<text x="160.0" y="180.0" class="label">②l+m+n=1</text>
+<text x="168.0" y="198.0" class="label">→ 平面ABC</text>
+<polygon points="385,130 360,100 330,55" fill="#ddd" stroke="#000"/>
+<line x1="320.0" y1="140.0" x2="385.0" y2="130.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="320.0" y1="140.0" x2="360.0" y2="100.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="320.0" y1="140.0" x2="330.0" y2="55.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<circle cx="320.0" cy="140.0" r="3" class="pt"/>
+<circle cx="385.0" cy="130.0" r="3" class="pt"/>
+<circle cx="360.0" cy="100.0" r="3" class="pt"/>
+<circle cx="330.0" cy="55.0" r="3" class="pt"/>
+<text x="305.0" y="145.0" class="label">O</text>
+<text x="290.0" y="180.0" class="label">③l+m+n=1,各≧0</text>
+<text x="298.0" y="198.0" class="label">→ △ABC周+内部</text>
+<polygon points="450,140 515,130 490,100" fill="#ddd" stroke="#000"/>
+<polygon points="450,140 490,100 460,55" fill="#ccc" stroke="#000"/>
+<polygon points="450,140 515,130 460,55" fill="#bbb" stroke="#000"/>
+<line x1="450.0" y1="140.0" x2="515.0" y2="130.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="450.0" y1="140.0" x2="490.0" y2="100.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="450.0" y1="140.0" x2="460.0" y2="55.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<circle cx="450.0" cy="140.0" r="3" class="pt"/>
+<circle cx="515.0" cy="130.0" r="3" class="pt"/>
+<circle cx="490.0" cy="100.0" r="3" class="pt"/>
+<circle cx="460.0" cy="55.0" r="3" class="pt"/>
+<text x="435.0" y="145.0" class="label">O</text>
+<text x="420.0" y="180.0" class="label">④l+m+n≦1,各≧0</text>
+<text x="428.0" y="198.0" class="label">→ 四面体周+内部</text>
+</svg></div></li>
+</ul>
+</li>
+<li>
+<span class="node l1 standard has-children open" onclick="toggle(this)">3B: 一般の終点範囲（3手順型）</span>
+<ul>
+<li><span class="node step leaf">s（または t）を固定</span></li>
+<li><span class="node step leaf">動く方の変数で線を作る</span></li>
+<li><span class="node step leaf">固定した変数を動かして面に拡大</span></li>
+<li><span class="node ref leaf">💡 0≦a≦1, 1/2≦b≦1 のような長方形領域で使う</span></li>
+</ul>
+</li>
+<li>
+<span class="node l1 advanced has-children open" onclick="toggle(this)">3C: (s+t) を作って3-Aに帰着</span>
+<ul>
+<li><span class="node step leaf">OP = (s+t) × {(sa+tb)/(s+t)} と変形</span></li>
+<li><span class="node step leaf">内側の点 Q は線分AB上を動く</span></li>
+<li><span class="node step leaf">P は OQ を (s+t) 倍した点 → 図示</span></li>
+<li><span class="node ref leaf">💡 「パラメータについて整理する」の発想</span></li>
+</ul>
+</li>
+<li>
+<span class="node l1 advanced has-children open" onclick="toggle(this)">3D: 始点を変えて簡単化</span>
+<ul>
+<li><span class="node step leaf">a, b, c の係数和が a+b+c=1 等のとき</span></li>
+<li><span class="node step leaf">始点を A に統一（→AP, AB, AC で書き直す）</span></li>
+<li><span class="node step leaf">制約条件も書き換え</span></li>
+<li><span class="node step leaf">3-A に帰着</span></li>
+</ul>
+</li>
+<li>
+<span class="node l1 advanced has-children open" onclick="toggle(this)">3E: 斜交座標による解法</span>
+<ul>
+<li><span class="node step leaf">a, b 方向を斜交軸とみなす</span></li>
+<li><span class="node step leaf">(s, t) 平面で不等式を図示</span></li>
+<li><span class="node step leaf">元の図に戻す</span></li>
+<li><span class="node ref leaf">💡 答案では使いにくいが、見通しが立てやすい</span></li>
+</ul>
+</li>
+<li>
+<span class="node l1 expert has-children open" onclick="toggle(this)">3F: 平面/空間の判別に注意</span>
+<ul>
+<li><span class="node step leaf">|x − a| = r → 平面なら円、空間なら球面</span></li>
+<li><span class="node step leaf">(x − a)·(x − b) = 0 → 平面なら円、空間なら球面</span></li>
+<li><span class="node step leaf">(x − a)·n = 0 → 平面なら直線、空間なら平面</span></li>
+<li><span class="node ref leaf">💡 「答えを円周にしないで球面に」</span></li>
+</ul>
+</li>
+</ul></li></ul>
+</div>
+<script>
+function toggle(el) {
+  const ul = el.nextElementSibling;
+  if (!ul || ul.tagName !== 'UL') return;
+  ul.classList.toggle('hidden');
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>

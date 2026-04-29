@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<circle cx="160" cy="110" r="80" fill="none" stroke="#888"/>
+<line x1="80.0" y1="110.0" x2="240.0" y2="110.0" class="vec-thin"/>
+<line x1="80.0" y1="110.0" x2="200.0" y2="40.7" class="vec-thin"/>
+<line x1="240.0" y1="110.0" x2="200.0" y2="40.7" class="vec-thin"/>
+<polyline points="193.1,44.7 197.1,51.6 204.0,47.6" class="right-angle"/>
+<circle cx="80.0" cy="110.0" r="3" class="pt"/>
+<circle cx="240.0" cy="110.0" r="3" class="pt"/>
+<circle cx="200.0" cy="40.7" r="3" class="pt"/>
+<text x="65.0" y="115.0" class="label">A</text>
+<text x="245.0" y="115.0" class="label">B</text>
+<text x="195.0" y="32.7" class="label">P</text>
+<text x="60.0" y="200.0" class="label">(x−a)·(x−b)=0</text>
+<text x="60.0" y="215.0" class="label">→ AB を直径とする円</text>
+</svg>

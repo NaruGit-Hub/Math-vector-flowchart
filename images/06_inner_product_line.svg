@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<line x1="115.0" y1="35.0" x2="205.0" y2="185.0" class="vec"/>
+<line x1="160.0" y1="110.0" x2="210.0" y2="80.0" class="vec" marker-end="url(#arrow)"/>
+<polyline points="166.9,105.9 171.0,112.7 164.1,116.9" class="right-angle"/>
+<circle cx="160.0" cy="110.0" r="3" class="pt"/>
+<text x="145.0" y="125.0" class="label">A</text>
+<text x="215.0" y="75.0" class="ftxt">a</text>
+<text x="40.0" y="180.0" class="label">a · (x − OA) = 0</text>
+<text x="40.0" y="195.0" class="label">→ A を通り a に垂直な直線</text>
+</svg>

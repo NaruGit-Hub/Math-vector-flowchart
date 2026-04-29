@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 200" width="280" height="200">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="50,160 220,140 150,40" fill="#f0f0f0" stroke="#000"/>
+<line x1="50.0" y1="160.0" x2="220.0" y2="140.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="50.0" y1="160.0" x2="150.0" y2="40.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="50.0" cy="160.0" r="3" class="pt"/>
+<circle cx="220.0" cy="140.0" r="3" class="pt"/>
+<circle cx="150.0" cy="40.0" r="3" class="pt"/>
+<text x="35.0" y="165.0" class="label">O</text>
+<text x="225.0" y="145.0" class="label">A</text>
+<text x="145.0" y="32.0" class="label">B</text>
+<text x="130.0" y="168.0" class="ftxt">u</text>
+<text x="82.0" y="100.0" class="ftxt">v</text>
+<text x="60.0" y="190.0" class="label">S = (1/2)√(|u|²|v|² − (u·v)²)</text>
+</svg>

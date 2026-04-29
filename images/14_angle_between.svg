@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 180" width="280" height="180">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<line x1="60.0" y1="130.0" x2="240.0" y2="130.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="60.0" y1="130.0" x2="180.0" y2="30.0" class="vec" marker-end="url(#arrow)"/>
+<path d="M 90 130 A 30 30 0 0 1 78.0 115.0" fill="none" stroke="#555" stroke-width="1"/>
+<text x="98.0" y="118.0" class="label">θ</text>
+<circle cx="60.0" cy="130.0" r="3" class="pt"/>
+<text x="45.0" y="135.0" class="label">O</text>
+<text x="145.0" y="148.0" class="ftxt">a</text>
+<text x="120.0" y="70.0" class="ftxt">b</text>
+<text x="40.0" y="160.0" class="label">cosθ = (a · b) / (|a| |b|)</text>
+</svg>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>② 点の位置・分点を求める｜ベクトル（マインドマップ）</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Hiragino Sans", "Meiryo", "Helvetica Neue", sans-serif;
+  background: #fff; color: #222;
+  -webkit-text-size-adjust: 100%;
+}
+.header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  position: sticky; top: 0; background: #fff; z-index: 10;
+}
+.header h1 { font-size: 16px; font-weight: 600; }
+.legend {
+  padding: 8px 16px;
+  font-size: 12px; color: #666;
+  border-bottom: 1px solid #eee;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.legend-item { display: flex; align-items: center; gap: 3px; }
+.legend-box {
+  width: 14px; height: 14px; border: 2px solid; border-radius: 2px;
+  display: inline-block; flex-shrink: 0;
+}
+.tree { padding: 12px 8px 40px 8px; }
+.tree ul { list-style: none; padding-left: 20px; border-left: 1px solid #ddd; }
+.tree > ul { border-left: none; padding-left: 0; }
+.tree li { margin: 3px 0; }
+
+.node {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  user-select: none;
+  max-width: calc(100vw - 60px);
+  word-break: break-word;
+  -webkit-tap-highlight-color: transparent;
+}
+.node:hover { background: #f0f0f0; }
+.node:active { background: #e8e8e8; }
+.node.has-children { padding-left: 24px; position: relative; }
+.node.has-children::before {
+  content: "\25B6"; font-size: 10px;
+  position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
+  transition: transform 0.15s;
+}
+.node.has-children.open::before { transform: translateY(-50%) rotate(90deg); }
+
+.node.root { font-size: 17px; font-weight: 600; border: 2px solid #000; background: #fff; }
+.node.l1 { font-size: 15px; font-weight: 500; }
+.node.basic { border-color: #000; }
+.node.standard { border-color: #BA7517; border-width: 1.5px; }
+.node.advanced { border-color: #185FA5; border-width: 1.5px; }
+.node.expert { border-color: #A32D2D; border-width: 1.5px; }
+.node.step { background: #f0f7ff; border-color: #aac8e8; }
+.node.leaf { cursor: default; background: #fff; border-color: #e0e0e0; }
+.node.leaf:hover { background: #fff; }
+.node.ref { background: #eef4fb; border-color: #c4d9ee; }
+.node.tail { background: #f4f4f4; border-color: #ccc; font-size: 13px; }
+
+.img-wrap {
+  margin: 6px 0 6px 20px;
+  max-width: min(100%, 520px);
+  overflow-x: auto;
+}
+.img-wrap svg { width: 100%; height: auto; display: block; }
+
+.hidden { display: none; }
+
+@media (max-width: 600px) {
+  .node { font-size: 13px; padding: 5px 8px; padding-left: 22px; }
+  .node.root { font-size: 15px; }
+  .node.l1 { font-size: 14px; }
+  .tree ul { padding-left: 14px; }
+  .img-wrap { margin-left: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="header"><h1>② 点の位置・分点を求める</h1></div>
+
+<div class="legend">
+  <span>難易度：</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#000"></span>基本</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#BA7517"></span>標準</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#185FA5"></span>応用</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#A32D2D"></span>発展</span>
+  <span style="color:#999">｜ &#9654; をタップで展開</span>
+</div>
+
+<div class="tree">
+<ul>
+<li>
+<span class="node root standard has-children open" onclick="toggle(this)">② 点の位置・分点を求める</span>
+<ul>
+<li><span class="node tail leaf">末尾: 「位置ベクトルを表せ」／「OPを表せ」／「s:tに内分する点を求めよ」／「交点を求めよ」</span></li>
+<li>
+<span class="node l1 basic has-children open" onclick="toggle(this)">2A: 内分点・外分点の公式</span>
+<ul>
+<li><span class="node step leaf">m:n に内分: p = (na + mb) / (m+n)</span></li>
+<li><span class="node step leaf">m:n に外分: p = (−na + mb) / (m−n)</span></li>
+<li><span class="node step leaf">「m:n に外分」⇔「m:(−n) に内分」として覚える</span></li>
+<li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 140" width="380" height="140">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<line x1="60.0" y1="70.0" x2="420.0" y2="70.0" class="vec-thin"/>
+<circle cx="60.0" cy="70.0" r="3" class="pt"/>
+<circle cx="300.0" cy="70.0" r="3" class="pt"/>
+<circle cx="140.0" cy="70.0" r="3" class="pt"/>
+<circle cx="420.0" cy="70.0" r="3" class="pt"/>
+<text x="55.0" y="60.0" class="label">A</text>
+<text x="295.0" y="60.0" class="label">B</text>
+<text x="135.0" y="60.0" class="label">P (内分)</text>
+<text x="405.0" y="60.0" class="label">Q (外分)</text>
+<text x="60.0" y="110.0" class="label">P = (nA + mB)/(m+n)  m:n に内分</text>
+<text x="60.0" y="128.0" class="label">Q = (−nA + mB)/(m−n) m:n に外分</text>
+</svg></div></li>
+</ul>
+</li>
+<li>
+<span class="node l1 standard has-children open" onclick="toggle(this)">2B: 共線条件で点を決定</span>
+<ul>
+<li><span class="node step leaf">OP = (1−t)OA + t·OB と置く</span></li>
+<li><span class="node step leaf">別の条件（直線CD上にある等）と連立</span></li>
+<li><span class="node step leaf">一次独立性より係数比較で t を決定</span></li>
+<li><span class="node ref leaf">💡 「Pは直線AB上」+「別の条件」という形を見たら</span></li>
+</ul>
+</li>
+<li>
+<span class="node l1 standard has-children open" onclick="toggle(this)">2C: 共面条件で点を決定（空間）</span>
+<ul>
+<li><span class="node step leaf">OP = sOA + tOB + uOC, s+t+u=1 と置く</span></li>
+<li><span class="node step leaf">別の条件と連立</span></li>
+<li><span class="node step leaf">係数比較</span></li>
+<li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 220" width="340" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="60,170 260,180 200,60" fill="#f0f0f0" stroke="#000"/>
+<line x1="130.0" y1="200.0" x2="60.0" y2="170.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="130.0" y1="200.0" x2="260.0" y2="180.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="130.0" y1="200.0" x2="200.0" y2="60.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="130.0" y1="200.0" x2="160.0" y2="130.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="130.0" cy="200.0" r="3" class="pt"/>
+<circle cx="60.0" cy="170.0" r="3" class="pt"/>
+<circle cx="260.0" cy="180.0" r="3" class="pt"/>
+<circle cx="200.0" cy="60.0" r="3" class="pt"/>
+<circle cx="160.0" cy="130.0" r="3" class="pt"/>
+<text x="125.0" y="218.0" class="label">O</text>
+<text x="45.0" y="175.0" class="label">A</text>
+<text x="265.0" y="185.0" class="label">B</text>
+<text x="195.0" y="52.0" class="label">C</text>
+<text x="165.0" y="125.0" class="label">P</text>
+<text x="20.0" y="205.0" class="label">OP = sOA + tOB + uOC, s+t+u=1</text>
+</svg></div></li>
+</ul>
+</li>
+<li>
+<span class="node l1 standard has-children open" onclick="toggle(this)">2D: 角の二等分線との交点</span>
+<ul>
+<li><span class="node step leaf">∠AOBの二等分線方向は a/|a| + b/|b|</span></li>
+<li><span class="node step leaf">AP:PB = OA:OB を使って OP = (|b|a + |a|b)/(|a|+|b|)</span></li>
+<li><span class="node ref leaf">💡 ひし形の公式 OP // a/|a| + b/|b| でも可</span></li>
+<li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<line x1="60.0" y1="180.0" x2="140.0" y2="180.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="60.0" y1="180.0" x2="104.4" y2="113.4" class="vec" marker-end="url(#arrow)"/>
+<line x1="60.0" y1="180.0" x2="184.4" y2="113.4" class="vec" marker-end="url(#arrow)"/>
+<line x1="140.0" y1="180.0" x2="184.4" y2="113.4" class="dashed"/>
+<line x1="104.4" y1="113.4" x2="184.4" y2="113.4" class="dashed"/>
+<circle cx="60.0" cy="180.0" r="3" class="pt"/>
+<text x="45.0" y="185.0" class="label">O</text>
+<text x="145.0" y="185.0" class="ftxt">a/|a|</text>
+<text x="74.4" y="108.4" class="ftxt">b/|b|</text>
+<text x="189.4" y="118.4" class="ftxt">二等分方向</text>
+</svg></div></li>
+</ul>
+</li>
+<li>
+<span class="node l1 basic has-children open" onclick="toggle(this)">2E: 三角形・四面体の重心</span>
+<ul>
+<li><span class="node step leaf">三角形 ABC の重心: g = (a+b+c)/3</span></li>
+<li><span class="node step leaf">四面体 ABCD の重心: g = (a+b+c+d)/4</span></li>
+<li><span class="node ref leaf">💡 GA + GB + GC = 0（始点を重心に取れば成立）</span></li>
+</ul>
+</li>
+<li>
+<span class="node l1 advanced has-children open" onclick="toggle(this)">2F: 内心の位置ベクトル</span>
+<ul>
+<li><span class="node step leaf">角の二等分線の性質から BD:DC = c:b</span></li>
+<li><span class="node step leaf">D の位置ベクトルを出す</span></li>
+<li><span class="node step leaf">AI:ID = (b+c):a を再利用</span></li>
+<li><span class="node step leaf">結果: i = (a·a + b·b + c·c)/(a+b+c)</span></li>
+<li><span class="node ref leaf">💡 a, b, c は対辺の長さ（覚える価値あり）</span></li>
+</ul>
+</li>
+<li>
+<span class="node l1 advanced has-children open" onclick="toggle(this)">2G: 外心の位置ベクトル</span>
+<ul>
+<li><span class="node step leaf">OR = xa + yb と置く</span></li>
+<li><span class="node step leaf">辺OA, OBの中点を M, N</span></li>
+<li><span class="node step leaf">RM·OA = 0, RN·OB = 0 を連立</span></li>
+<li><span class="node step leaf">x, y を解く</span></li>
+<li><span class="node ref leaf">💡 外心を始点に取れる場合は |a|=|b|=|c|=R が使えてラク</span></li>
+<li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" width="320" height="260">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<circle cx="160.0" cy="170.0" r="111.8" fill="none" stroke="#888" stroke-width="1"/>
+<line x1="60.0" y1="220.0" x2="260.0" y2="220.0" class="vec-thin"/>
+<line x1="260.0" y1="220.0" x2="180.0" y2="60.0" class="vec-thin"/>
+<line x1="180.0" y1="60.0" x2="60.0" y2="220.0" class="vec-thin"/>
+<line x1="160.0" y1="220.0" x2="160.0" y2="170.0" class="dashed"/>
+<line x1="220.0" y1="140.0" x2="160.0" y2="170.0" class="dashed"/>
+<line x1="120.0" y1="140.0" x2="160.0" y2="170.0" class="dashed"/>
+<circle cx="60.0" cy="220.0" r="3" class="pt"/>
+<circle cx="260.0" cy="220.0" r="3" class="pt"/>
+<circle cx="180.0" cy="60.0" r="3" class="pt"/>
+<circle cx="160.0" cy="170.0" r="3" class="pt"/>
+<circle cx="160.0" cy="220.0" r="2" class="pt"/>
+<circle cx="220.0" cy="140.0" r="2" class="pt"/>
+<circle cx="120.0" cy="140.0" r="2" class="pt"/>
+<text x="48.0" y="225.0" class="label">A</text>
+<text x="265.0" y="225.0" class="label">B</text>
+<text x="175.0" y="55.0" class="label">C</text>
+<text x="166.0" y="175.0" class="label">R</text>
+<text x="155.0" y="238.0" class="label">M</text>
+</svg></div></li>
+</ul>
+</li>
+<li>
+<span class="node l1 advanced has-children open" onclick="toggle(this)">2H: 「sa + tb + uc = 0」型の利用</span>
+<ul>
+<li><span class="node step leaf">パターン1: 一文字消去 a = −(tb+uc)/s</span></li>
+<li><span class="node step leaf">パターン2: 内積を見る a·(sa+tb+uc) = 0</span></li>
+<li><span class="node step leaf">パターン3: 1つを移項して2乗 |sa|² = |−(tb+uc)|²</span></li>
+<li><span class="node ref leaf">💡 3ベクトルの和が0なら2乗が定石</span></li>
+</ul>
+</li>
+</ul></li></ul>
+</div>
+<script>
+function toggle(el) {
+  const ul = el.nextElementSibling;
+  if (!ul || ul.tagName !== 'UL') return;
+  ul.classList.toggle('hidden');
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>

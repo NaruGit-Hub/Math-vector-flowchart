@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⑥ 共線・共面・平行・垂直の判定/証明｜ベクトル（マインドマップ）</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Hiragino Sans", "Meiryo", "Helvetica Neue", sans-serif;
+  background: #fff; color: #222;
+  -webkit-text-size-adjust: 100%;
+}
+.header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  position: sticky; top: 0; background: #fff; z-index: 10;
+}
+.header h1 { font-size: 16px; font-weight: 600; }
+.legend {
+  padding: 8px 16px;
+  font-size: 12px; color: #666;
+  border-bottom: 1px solid #eee;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.legend-item { display: flex; align-items: center; gap: 3px; }
+.legend-box {
+  width: 14px; height: 14px; border: 2px solid; border-radius: 2px;
+  display: inline-block; flex-shrink: 0;
+}
+.tree { padding: 12px 8px 40px 8px; }
+.tree ul { list-style: none; padding-left: 20px; border-left: 1px solid #ddd; }
+.tree > ul { border-left: none; padding-left: 0; }
+.tree li { margin: 3px 0; }
+
+.node {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  user-select: none;
+  max-width: calc(100vw - 60px);
+  word-break: break-word;
+  -webkit-tap-highlight-color: transparent;
+}
+.node:hover { background: #f0f0f0; }
+.node:active { background: #e8e8e8; }
+.node.has-children { padding-left: 24px; position: relative; }
+.node.has-children::before {
+  content: "\25B6"; font-size: 10px;
+  position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
+  transition: transform 0.15s;
+}
+.node.has-children.open::before { transform: translateY(-50%) rotate(90deg); }
+
+.node.root { font-size: 17px; font-weight: 600; border: 2px solid #000; background: #fff; }
+.node.l1 { font-size: 15px; font-weight: 500; }
+.node.basic { border-color: #000; }
+.node.standard { border-color: #BA7517; border-width: 1.5px; }
+.node.advanced { border-color: #185FA5; border-width: 1.5px; }
+.node.expert { border-color: #A32D2D; border-width: 1.5px; }
+.node.step { background: #f0f7ff; border-color: #aac8e8; }
+.node.leaf { cursor: default; background: #fff; border-color: #e0e0e0; }
+.node.leaf:hover { background: #fff; }
+.node.ref { background: #eef4fb; border-color: #c4d9ee; }
+.node.tail { background: #f4f4f4; border-color: #ccc; font-size: 13px; }
+
+.img-wrap {
+  margin: 6px 0 6px 20px;
+  max-width: min(100%, 520px);
+  overflow-x: auto;
+}
+.img-wrap svg { width: 100%; height: auto; display: block; }
+
+.hidden { display: none; }
+
+@media (max-width: 600px) {
+  .node { font-size: 13px; padding: 5px 8px; padding-left: 22px; }
+  .node.root { font-size: 15px; }
+  .node.l1 { font-size: 14px; }
+  .tree ul { padding-left: 14px; }
+  .img-wrap { margin-left: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="header"><h1>⑥ 共線・共面・平行・垂直の判定/証明</h1></div>
+
+<div class="legend">
+  <span>難易度：</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#000"></span>基本</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#BA7517"></span>標準</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#185FA5"></span>応用</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#A32D2D"></span>発展</span>
+  <span style="color:#999">｜ &#9654; をタップで展開</span>
+</div>
+
+<div class="tree">
+<ul>
+<li>
+<span class="node root standard has-children open" onclick="toggle(this)">⑥ 共線・共面・平行・垂直の判定/証明</span>
+<ul>
+<li><span class="node tail leaf">末尾: 「同一直線上にあることを示せ」／「同一平面上にあることを示せ」／「垂直であることを示せ」</span></li>
+<li>
+<span class="node l1 basic has-children open" onclick="toggle(this)">6A: 3点が同一直線上</span>
+<ul>
+<li><span class="node step leaf">条件: AB = k·AC を満たす実数 k が存在</span></li>
+<li><span class="node step leaf">⇔ OC = tOA + (1−t)OB</span></li>
+<li><span class="node step leaf">2つのベクトルを書く</span></li>
+<li><span class="node step leaf">平行関係（実数倍）を示す</span></li>
+<li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 180" width="340" height="180">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<line x1="30.0" y1="135.0" x2="310.0" y2="65.0" class="vec"/>
+<circle cx="50.0" cy="130.0" r="3" class="pt"/>
+<circle cx="170.0" cy="100.0" r="3" class="pt"/>
+<circle cx="290.0" cy="70.0" r="3" class="pt"/>
+<text x="45.0" y="148.0" class="label">A</text>
+<text x="165.0" y="118.0" class="label">B</text>
+<text x="285.0" y="88.0" class="label">C</text>
+<text x="40.0" y="160.0" class="label">AB = k · AC を満たす実数 k が存在</text>
+</svg></div></li>
+</ul>
+</li>
+<li>
+<span class="node l1 standard has-children open" onclick="toggle(this)">6B: 4点が同一平面上</span>
+<ul>
+<li><span class="node step leaf">OD = sOA + tOB + uOC, s+t+u=1</span></li>
+<li><span class="node step leaf">⇔ AD = xAB + yAC（A始点）</span></li>
+<li><span class="node step leaf">3つのベクトルを取る</span></li>
+<li><span class="node step leaf">一方を他2つの一次結合で表す</span></li>
+<li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 220" width="340" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="60,170 260,180 200,60" fill="#f0f0f0" stroke="#000"/>
+<line x1="130.0" y1="200.0" x2="60.0" y2="170.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="130.0" y1="200.0" x2="260.0" y2="180.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="130.0" y1="200.0" x2="200.0" y2="60.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="130.0" y1="200.0" x2="160.0" y2="130.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="130.0" cy="200.0" r="3" class="pt"/>
+<circle cx="60.0" cy="170.0" r="3" class="pt"/>
+<circle cx="260.0" cy="180.0" r="3" class="pt"/>
+<circle cx="200.0" cy="60.0" r="3" class="pt"/>
+<circle cx="160.0" cy="130.0" r="3" class="pt"/>
+<text x="125.0" y="218.0" class="label">O</text>
+<text x="45.0" y="175.0" class="label">A</text>
+<text x="265.0" y="185.0" class="label">B</text>
+<text x="195.0" y="52.0" class="label">C</text>
+<text x="165.0" y="125.0" class="label">P</text>
+<text x="20.0" y="205.0" class="label">OP = sOA + tOB + uOC, s+t+u=1</text>
+</svg></div></li>
+</ul>
+</li>
+<li>
+<span class="node l1 basic has-children open" onclick="toggle(this)">6C: 平行条件・垂直条件（成分）</span>
+<ul>
+<li><span class="node step leaf">平面: (a,b)//(c,d) ⇔ ad − bc = 0</span></li>
+<li><span class="node step leaf">    : (a,b)⊥(c,d) ⇔ ac + bd = 0</span></li>
+<li><span class="node step leaf">空間: u // v ⇔ u = kv</span></li>
+<li><span class="node step leaf">    : u ⊥ v ⇔ u·v = 0</span></li>
+</ul>
+</li>
+<li>
+<span class="node l1 standard has-children open" onclick="toggle(this)">6D: 直線が平面に直交を示す</span>
+<ul>
+<li><span class="node step leaf">平面の基底 u, v を取る</span></li>
+<li><span class="node step leaf">l·u = 0 かつ l·v = 0 を示す</span></li>
+</ul>
+</li>
+<li>
+<span class="node l1 advanced has-children open" onclick="toggle(this)">6E: 一次独立性の活用</span>
+<ul>
+<li><span class="node step leaf">同じベクトルを2通りに表したとき</span></li>
+<li><span class="node step leaf">xa + yb + zc = x'a + y'b + z'c</span></li>
+<li><span class="node step leaf">⇒ a,b,c一次独立なら x=x', y=y', z=z'</span></li>
+<li><span class="node ref leaf">💡 係数比較の根拠。連立を解く強力な道具</span></li>
+</ul>
+</li>
+<li>
+<span class="node l1 expert has-children open" onclick="toggle(this)">6F: 対称性ある条件の式変形証明</span>
+<ul>
+<li><span class="node step leaf">例: AP·BP + BP·CP + CP·AP = 0</span></li>
+<li><span class="node step leaf">始点を統一（位置ベクトル化）</span></li>
+<li><span class="node step leaf">平方完成、または |...|² = ... の形に</span></li>
+<li><span class="node step leaf">図形的解釈（球面・平面・円）</span></li>
+</ul>
+</li>
+</ul></li></ul>
+</div>
+<script>
+function toggle(el) {
+  const ul = el.nextElementSibling;
+  if (!ul || ul.tagName !== 'UL') return;
+  ul.classList.toggle('hidden');
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>

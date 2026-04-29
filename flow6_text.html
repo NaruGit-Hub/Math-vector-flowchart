@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⑥ 共線・共面・平行・垂直の判定/証明｜ベクトル</title>
+<style>
+body {
+  font-family: "Hiragino Sans", "Meiryo", sans-serif;
+  max-width: 800px; margin: 40px auto; padding: 0 20px;
+  line-height: 1.7; color: #222;
+}
+h1 { font-size: 22px; border-bottom: 2px solid #000; padding-bottom: 8px; }
+h2 { font-size: 18px; margin-top: 40px; border-left: 4px solid #000; padding-left: 10px; }
+h3 { font-size: 15px; margin-top: 24px; }
+h4 { font-size: 14px; margin-top: 16px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #999; padding: 6px 10px; text-align: left; font-size: 14px; vertical-align: top; }
+th { background: #f4f4f4; }
+blockquote { background: #f9f9f6; border-left: 3px solid #888; padding: 8px 16px; margin: 12px 0; font-size: 14px; }
+.img-container { margin: 20px 0; text-align: center; }
+.img-container svg { max-width: 100%; height: auto; }
+.note { background: #fffbe6; border: 1px solid #e0d080; padding: 10px 14px; border-radius: 4px; margin: 12px 0; font-size: 14px; }
+.level-basic { border-left: 4px solid #000; padding-left: 10px; }
+.level-standard { border-left: 4px solid #BA7517; padding-left: 10px; }
+.level-advanced { border-left: 4px solid #185FA5; padding-left: 10px; }
+.level-expert { border-left: 4px solid #A32D2D; padding-left: 10px; }
+code { background: #f0f0f0; padding: 1px 4px; border-radius: 2px; }
+.ref { background: #eef4fb; border: 1px solid #c4d9ee; padding: 6px 12px; border-radius: 4px; margin: 8px 0; font-size: 14px; }
+ul.steps { padding-left: 22px; }
+ul.steps li { margin: 4px 0; }
+.tail { background: #f4f4f4; border: 1px solid #ccc; padding: 6px 10px; margin: 8px 0; border-radius: 3px; font-size: 13px; }
+.toc { background: #f9f9f9; border: 1px solid #ddd; padding: 12px 18px; margin: 20px 0; border-radius: 4px; }
+.toc ul { padding-left: 20px; margin: 4px 0; }
+.toc a { color: #185FA5; text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.level-mark { font-size: 11px; padding: 1px 6px; border-radius: 2px; margin-left: 6px; vertical-align: middle; }
+.lm-basic { border: 1px solid #000; color: #000; }
+.lm-standard { border: 1px solid #BA7517; color: #BA7517; }
+.lm-advanced { border: 1px solid #185FA5; color: #185FA5; }
+.lm-expert { border: 1px solid #A32D2D; color: #A32D2D; }
+@media print { body { margin: 20px; } }
+</style>
+</head>
+<body>
+<h1>ベクトル｜⑥ 共線・共面・平行・垂直の判定/証明</h1>
+<p><a href="index.html">← 入口に戻る</a></p>
+<h2 class="level-standard" id="flow6">⑥ 共線・共面・平行・垂直の判定/証明<span class="level-mark lm-standard">標準</span></h2>
+<div class="tail"><strong>末尾キーワード:</strong> 「同一直線上にあることを示せ」／「同一平面上にあることを示せ」／「垂直であることを示せ」</div>
+<p>「示せ・証明せよ」を見たら、共線条件・共面条件・内積=0で書き表す。</p>
+<h3 class="level-basic">6A: 3点が同一直線上<span class="level-mark lm-basic">基本</span></h3>
+<ul class="steps">
+<li>条件: AB = k·AC を満たす実数 k が存在</li>
+<li>⇔ OC = tOA + (1−t)OB</li>
+<li>2つのベクトルを書く</li>
+<li>平行関係（実数倍）を示す</li>
+</ul>
+<div class="img-container"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 180" width="340" height="180">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<line x1="30.0" y1="135.0" x2="310.0" y2="65.0" class="vec"/>
+<circle cx="50.0" cy="130.0" r="3" class="pt"/>
+<circle cx="170.0" cy="100.0" r="3" class="pt"/>
+<circle cx="290.0" cy="70.0" r="3" class="pt"/>
+<text x="45.0" y="148.0" class="label">A</text>
+<text x="165.0" y="118.0" class="label">B</text>
+<text x="285.0" y="88.0" class="label">C</text>
+<text x="40.0" y="160.0" class="label">AB = k · AC を満たす実数 k が存在</text>
+</svg></div>
+<h3 class="level-standard">6B: 4点が同一平面上<span class="level-mark lm-standard">標準</span></h3>
+<ul class="steps">
+<li>OD = sOA + tOB + uOC, s+t+u=1</li>
+<li>⇔ AD = xAB + yAC（A始点）</li>
+<li>3つのベクトルを取る</li>
+<li>一方を他2つの一次結合で表す</li>
+</ul>
+<div class="img-container"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 220" width="340" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="60,170 260,180 200,60" fill="#f0f0f0" stroke="#000"/>
+<line x1="130.0" y1="200.0" x2="60.0" y2="170.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="130.0" y1="200.0" x2="260.0" y2="180.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="130.0" y1="200.0" x2="200.0" y2="60.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="130.0" y1="200.0" x2="160.0" y2="130.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="130.0" cy="200.0" r="3" class="pt"/>
+<circle cx="60.0" cy="170.0" r="3" class="pt"/>
+<circle cx="260.0" cy="180.0" r="3" class="pt"/>
+<circle cx="200.0" cy="60.0" r="3" class="pt"/>
+<circle cx="160.0" cy="130.0" r="3" class="pt"/>
+<text x="125.0" y="218.0" class="label">O</text>
+<text x="45.0" y="175.0" class="label">A</text>
+<text x="265.0" y="185.0" class="label">B</text>
+<text x="195.0" y="52.0" class="label">C</text>
+<text x="165.0" y="125.0" class="label">P</text>
+<text x="20.0" y="205.0" class="label">OP = sOA + tOB + uOC, s+t+u=1</text>
+</svg></div>
+<h3 class="level-basic">6C: 平行条件・垂直条件（成分）<span class="level-mark lm-basic">基本</span></h3>
+<ul class="steps">
+<li>平面: (a,b)//(c,d) ⇔ ad − bc = 0</li>
+<li>    : (a,b)⊥(c,d) ⇔ ac + bd = 0</li>
+<li>空間: u // v ⇔ u = kv</li>
+<li>    : u ⊥ v ⇔ u·v = 0</li>
+</ul>
+<h3 class="level-standard">6D: 直線が平面に直交を示す<span class="level-mark lm-standard">標準</span></h3>
+<ul class="steps">
+<li>平面の基底 u, v を取る</li>
+<li>l·u = 0 かつ l·v = 0 を示す</li>
+</ul>
+<h3 class="level-advanced">6E: 一次独立性の活用<span class="level-mark lm-advanced">応用</span></h3>
+<ul class="steps">
+<li>同じベクトルを2通りに表したとき</li>
+<li>xa + yb + zc = x'a + y'b + z'c</li>
+<li>⇒ a,b,c一次独立なら x=x', y=y', z=z'</li>
+</ul>
+<div class="note">係数比較の根拠。連立を解く強力な道具</div>
+<h3 class="level-expert">6F: 対称性ある条件の式変形証明<span class="level-mark lm-expert">発展</span></h3>
+<ul class="steps">
+<li>例: AP·BP + BP·CP + CP·AP = 0</li>
+<li>始点を統一（位置ベクトル化）</li>
+<li>平方完成、または |...|² = ... の形に</li>
+<li>図形的解釈（球面・平面・円）</li>
+</ul>
+<hr style="margin-top:40px">
+<p style="font-size:12px; color:#888;">© 数学フローチャート（ベクトル）</p>
+</body>
+</html>

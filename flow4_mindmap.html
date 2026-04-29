@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>④ 垂線・正射影・外心｜ベクトル（マインドマップ）</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Hiragino Sans", "Meiryo", "Helvetica Neue", sans-serif;
+  background: #fff; color: #222;
+  -webkit-text-size-adjust: 100%;
+}
+.header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  position: sticky; top: 0; background: #fff; z-index: 10;
+}
+.header h1 { font-size: 16px; font-weight: 600; }
+.legend {
+  padding: 8px 16px;
+  font-size: 12px; color: #666;
+  border-bottom: 1px solid #eee;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.legend-item { display: flex; align-items: center; gap: 3px; }
+.legend-box {
+  width: 14px; height: 14px; border: 2px solid; border-radius: 2px;
+  display: inline-block; flex-shrink: 0;
+}
+.tree { padding: 12px 8px 40px 8px; }
+.tree ul { list-style: none; padding-left: 20px; border-left: 1px solid #ddd; }
+.tree > ul { border-left: none; padding-left: 0; }
+.tree li { margin: 3px 0; }
+
+.node {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+  border: 1px solid #ddd;
+  background: #fafafa;
+  user-select: none;
+  max-width: calc(100vw - 60px);
+  word-break: break-word;
+  -webkit-tap-highlight-color: transparent;
+}
+.node:hover { background: #f0f0f0; }
+.node:active { background: #e8e8e8; }
+.node.has-children { padding-left: 24px; position: relative; }
+.node.has-children::before {
+  content: "\25B6"; font-size: 10px;
+  position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
+  transition: transform 0.15s;
+}
+.node.has-children.open::before { transform: translateY(-50%) rotate(90deg); }
+
+.node.root { font-size: 17px; font-weight: 600; border: 2px solid #000; background: #fff; }
+.node.l1 { font-size: 15px; font-weight: 500; }
+.node.basic { border-color: #000; }
+.node.standard { border-color: #BA7517; border-width: 1.5px; }
+.node.advanced { border-color: #185FA5; border-width: 1.5px; }
+.node.expert { border-color: #A32D2D; border-width: 1.5px; }
+.node.step { background: #f0f7ff; border-color: #aac8e8; }
+.node.leaf { cursor: default; background: #fff; border-color: #e0e0e0; }
+.node.leaf:hover { background: #fff; }
+.node.ref { background: #eef4fb; border-color: #c4d9ee; }
+.node.tail { background: #f4f4f4; border-color: #ccc; font-size: 13px; }
+
+.img-wrap {
+  margin: 6px 0 6px 20px;
+  max-width: min(100%, 520px);
+  overflow-x: auto;
+}
+.img-wrap svg { width: 100%; height: auto; display: block; }
+
+.hidden { display: none; }
+
+@media (max-width: 600px) {
+  .node { font-size: 13px; padding: 5px 8px; padding-left: 22px; }
+  .node.root { font-size: 15px; }
+  .node.l1 { font-size: 14px; }
+  .tree ul { padding-left: 14px; }
+  .img-wrap { margin-left: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="header"><h1>④ 垂線・正射影・外心</h1></div>
+
+<div class="legend">
+  <span>難易度：</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#000"></span>基本</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#BA7517"></span>標準</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#185FA5"></span>応用</span>
+  <span class="legend-item"><span class="legend-box" style="border-color:#A32D2D"></span>発展</span>
+  <span style="color:#999">｜ &#9654; をタップで展開</span>
+</div>
+
+<div class="tree">
+<ul>
+<li>
+<span class="node root standard has-children open" onclick="toggle(this)">④ 垂線・正射影・外心</span>
+<ul>
+<li><span class="node tail leaf">末尾: 「垂線の足を求めよ」／「正射影ベクトルを求めよ」／「外心を求めよ」</span></li>
+<li>
+<span class="node l1 standard has-children open" onclick="toggle(this)">4A: 直線（ベクトル）への正射影</span>
+<ul>
+<li><span class="node step leaf">公式: OH = (a·b / |a|²) × a</span></li>
+<li><span class="node step leaf">内積 a·b を計算</span></li>
+<li><span class="node step leaf">|a|² を計算</span></li>
+<li><span class="node step leaf">公式に代入</span></li>
+<li><span class="node ref leaf">💡 「ある点から直線に垂線を下ろす」を見たら即この公式</span></li>
+<li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 200" width="360" height="200">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<line x1="40.0" y1="160.0" x2="320.0" y2="160.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="40.0" y1="160.0" x2="240.0" y2="50.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="40.0" y1="160.0" x2="240.0" y2="160.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="240.0" y1="50.0" x2="240.0" y2="160.0" class="dashed"/>
+<polyline points="240.0,152.0 232.0,152.0 232.0,160.0" class="right-angle"/>
+<circle cx="40.0" cy="160.0" r="3" class="pt"/>
+<circle cx="320.0" cy="160.0" r="3" class="pt"/>
+<circle cx="240.0" cy="50.0" r="3" class="pt"/>
+<circle cx="240.0" cy="160.0" r="3" class="pt"/>
+<text x="25.0" y="165.0" class="label">O</text>
+<text x="325.0" y="165.0" class="label">A</text>
+<text x="235.0" y="42.0" class="label">B</text>
+<text x="235.0" y="178.0" class="label">H</text>
+<text x="170.0" y="178.0" class="ftxt">a</text>
+<text x="130.0" y="100.0" class="ftxt">b</text>
+<text x="135.0" y="152.0" class="ftxt">OH</text>
+</svg></div></li>
+</ul>
+</li>
+<li>
+<span class="node l1 standard has-children open" onclick="toggle(this)">4B: 垂線の足を交点として求める</span>
+<ul>
+<li><span class="node step leaf">H = OA + t·AB と置く（直線AB上）</span></li>
+<li><span class="node step leaf">PH·AB = 0（垂直条件）</span></li>
+<li><span class="node step leaf">t を決定</span></li>
+<li><span class="node ref leaf">💡 公式を使わない別解。連立で解ける</span></li>
+</ul>
+</li>
+<li>
+<span class="node l1 advanced has-children open" onclick="toggle(this)">4C: 平面への正射影（空間）</span>
+<ul>
+<li><span class="node step leaf">公式は「ベクトル→ベクトル」なので、まず法線nに正射影</span></li>
+<li><span class="node step leaf">n への正射影 = (n·x/|n|²)·n</span></li>
+<li><span class="node step leaf">平面αへの正射影 = x − (n·x/|n|²)·n</span></li>
+<li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="50,180 300,180 340,130 90,130" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
+<line x1="200.0" y1="155.0" x2="240.0" y2="70.0" class="vec" marker-end="url(#arrow)"/>
+<text x="245.0" y="70.0" class="ftxt">n</text>
+<line x1="140.0" y1="155.0" x2="200.0" y2="50.0" class="vec" marker-end="url(#arrow)"/>
+<text x="155.0" y="97.5" class="ftxt">x</text>
+<line x1="140.0" y1="155.0" x2="220.0" y2="155.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="200.0" y1="50.0" x2="220.0" y2="155.0" class="dashed"/>
+<polyline points="212.0,155.0 215.6,147.8 223.6,147.8" class="right-angle"/>
+<circle cx="140.0" cy="155.0" r="3" class="pt"/>
+<circle cx="200.0" cy="50.0" r="3" class="pt"/>
+<circle cx="220.0" cy="155.0" r="3" class="pt"/>
+<text x="35.0" y="195.0" class="label">α</text>
+<text x="225.0" y="170.0" class="label">射影</text>
+</svg></div></li>
+</ul>
+</li>
+<li>
+<span class="node l1 advanced has-children open" onclick="toggle(this)">4D: 三角形の外心</span>
+<ul>
+<li><span class="node step leaf">OR = xa + yb と置く</span></li>
+<li><span class="node step leaf">辺の中点 M, N を取る</span></li>
+<li><span class="node step leaf">RM·OA = 0, RN·OB = 0 を連立</span></li>
+<li><span class="node step leaf">x, y を決定</span></li>
+<li><span class="node ref leaf">💡 外心は「垂直二等分線の交点」</span></li>
+<li><div class="img-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" width="320" height="260">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<circle cx="160.0" cy="170.0" r="111.8" fill="none" stroke="#888" stroke-width="1"/>
+<line x1="60.0" y1="220.0" x2="260.0" y2="220.0" class="vec-thin"/>
+<line x1="260.0" y1="220.0" x2="180.0" y2="60.0" class="vec-thin"/>
+<line x1="180.0" y1="60.0" x2="60.0" y2="220.0" class="vec-thin"/>
+<line x1="160.0" y1="220.0" x2="160.0" y2="170.0" class="dashed"/>
+<line x1="220.0" y1="140.0" x2="160.0" y2="170.0" class="dashed"/>
+<line x1="120.0" y1="140.0" x2="160.0" y2="170.0" class="dashed"/>
+<circle cx="60.0" cy="220.0" r="3" class="pt"/>
+<circle cx="260.0" cy="220.0" r="3" class="pt"/>
+<circle cx="180.0" cy="60.0" r="3" class="pt"/>
+<circle cx="160.0" cy="170.0" r="3" class="pt"/>
+<circle cx="160.0" cy="220.0" r="2" class="pt"/>
+<circle cx="220.0" cy="140.0" r="2" class="pt"/>
+<circle cx="120.0" cy="140.0" r="2" class="pt"/>
+<text x="48.0" y="225.0" class="label">A</text>
+<text x="265.0" y="225.0" class="label">B</text>
+<text x="175.0" y="55.0" class="label">C</text>
+<text x="166.0" y="175.0" class="label">R</text>
+<text x="155.0" y="238.0" class="label">M</text>
+</svg></div></li>
+</ul>
+</li>
+<li>
+<span class="node l1 advanced has-children open" onclick="toggle(this)">4E: 正射影 × 外心の合わせ技</span>
+<ul>
+<li><span class="node step leaf">外心から辺へ垂線を下ろすと中点に落ちる</span></li>
+<li><span class="node step leaf">外心と垂直二等分線の相性は◎</span></li>
+</ul>
+</li>
+<li>
+<span class="node l1 expert has-children open" onclick="toggle(this)">4F: 平行六面体の高さ</span>
+<ul>
+<li><span class="node step leaf">底面の法線方向 n</span></li>
+<li><span class="node step leaf">高さ |OH| = |b·n| / |n|</span></li>
+<li><span class="node step leaf">体積 V = 底面積 × 高さ</span></li>
+</ul>
+</li>
+</ul></li></ul>
+</div>
+<script>
+function toggle(el) {
+  const ul = el.nextElementSibling;
+  if (!ul || ul.tagName !== 'UL') return;
+  ul.classList.toggle('hidden');
+  el.classList.toggle('open');
+}
+</script>
+</body>
+</html>

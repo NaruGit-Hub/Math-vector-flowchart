@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⑤ 直線・平面の方程式（空間中心）｜ベクトル</title>
+<style>
+body {
+  font-family: "Hiragino Sans", "Meiryo", sans-serif;
+  max-width: 800px; margin: 40px auto; padding: 0 20px;
+  line-height: 1.7; color: #222;
+}
+h1 { font-size: 22px; border-bottom: 2px solid #000; padding-bottom: 8px; }
+h2 { font-size: 18px; margin-top: 40px; border-left: 4px solid #000; padding-left: 10px; }
+h3 { font-size: 15px; margin-top: 24px; }
+h4 { font-size: 14px; margin-top: 16px; }
+table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+th, td { border: 1px solid #999; padding: 6px 10px; text-align: left; font-size: 14px; vertical-align: top; }
+th { background: #f4f4f4; }
+blockquote { background: #f9f9f6; border-left: 3px solid #888; padding: 8px 16px; margin: 12px 0; font-size: 14px; }
+.img-container { margin: 20px 0; text-align: center; }
+.img-container svg { max-width: 100%; height: auto; }
+.note { background: #fffbe6; border: 1px solid #e0d080; padding: 10px 14px; border-radius: 4px; margin: 12px 0; font-size: 14px; }
+.level-basic { border-left: 4px solid #000; padding-left: 10px; }
+.level-standard { border-left: 4px solid #BA7517; padding-left: 10px; }
+.level-advanced { border-left: 4px solid #185FA5; padding-left: 10px; }
+.level-expert { border-left: 4px solid #A32D2D; padding-left: 10px; }
+code { background: #f0f0f0; padding: 1px 4px; border-radius: 2px; }
+.ref { background: #eef4fb; border: 1px solid #c4d9ee; padding: 6px 12px; border-radius: 4px; margin: 8px 0; font-size: 14px; }
+ul.steps { padding-left: 22px; }
+ul.steps li { margin: 4px 0; }
+.tail { background: #f4f4f4; border: 1px solid #ccc; padding: 6px 10px; margin: 8px 0; border-radius: 3px; font-size: 13px; }
+.toc { background: #f9f9f9; border: 1px solid #ddd; padding: 12px 18px; margin: 20px 0; border-radius: 4px; }
+.toc ul { padding-left: 20px; margin: 4px 0; }
+.toc a { color: #185FA5; text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.level-mark { font-size: 11px; padding: 1px 6px; border-radius: 2px; margin-left: 6px; vertical-align: middle; }
+.lm-basic { border: 1px solid #000; color: #000; }
+.lm-standard { border: 1px solid #BA7517; color: #BA7517; }
+.lm-advanced { border: 1px solid #185FA5; color: #185FA5; }
+.lm-expert { border: 1px solid #A32D2D; color: #A32D2D; }
+@media print { body { margin: 20px; } }
+</style>
+</head>
+<body>
+<h1>ベクトル｜⑤ 直線・平面の方程式（空間中心）</h1>
+<p><a href="index.html">← 入口に戻る</a></p>
+<h2 class="level-standard" id="flow5">⑤ 直線・平面の方程式（空間中心）<span class="level-mark lm-standard">標準</span></h2>
+<div class="tail"><strong>末尾キーワード:</strong> 「直線の方程式を求めよ」／「平面の方程式を求めよ」／「点と平面の距離」</div>
+<p>ベクトル方程式を立てる。直線は「点+方向」、平面は「点+2方向」または「点+法線」。</p>
+<h3 class="level-basic">5A: 直線のベクトル方程式<span class="level-mark lm-basic">基本</span></h3>
+<ul class="steps">
+<li>点A(a)を通り、方向ベクトル l に平行: x = a + tl</li>
+<li>点A(a,b,c)を通り、方向(α,β,γ)に平行:</li>
+<li>(x−a)/α = (y−b)/β = (z−c)/γ</li>
+</ul>
+<h3 class="level-basic">5B: 平面のベクトル方程式<span class="level-mark lm-basic">基本</span></h3>
+<ul class="steps">
+<li>3点A,B,Cを通る: x = αa + βb + γc, α+β+γ=1</li>
+<li>点Aを通り u, v で張られる: x = a + su + tv</li>
+<li>点Aを通り、法線nに平行: (x−a)·n = 0</li>
+<li>成分形: α(x−a) + β(y−b) + γ(z−c) = 0</li>
+</ul>
+<div class="img-container"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 200" width="540" height="200">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="90,130 40,70 140,60" fill="#f0f0f0" stroke="#000"/>
+<circle cx="90.0" cy="130.0" r="3" class="pt"/>
+<circle cx="40.0" cy="70.0" r="3" class="pt"/>
+<circle cx="140.0" cy="60.0" r="3" class="pt"/>
+<text x="75.0" y="135.0" class="label">A</text>
+<text x="25.0" y="65.0" class="label">B</text>
+<text x="145.0" y="55.0" class="label">C</text>
+<text x="40.0" y="175.0" class="label">(1) 3点を通る</text>
+<polygon points="270,130 220,70 270,0 320,60" fill="#f0f0f0" stroke="#000"/>
+<line x1="270.0" y1="130.0" x2="220.0" y2="70.0" class="vec" marker-end="url(#arrow)"/>
+<line x1="270.0" y1="130.0" x2="320.0" y2="60.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="270.0" cy="130.0" r="3" class="pt"/>
+<text x="255.0" y="135.0" class="label">A</text>
+<text x="227.0" y="100.0" class="ftxt">u</text>
+<text x="300.0" y="95.0" class="ftxt">v</text>
+<text x="220.0" y="175.0" class="label">(2) 1点と2方向</text>
+<polygon points="420,150 500,140 510,110 430,120" fill="#f0f0f0" stroke="#000"/>
+<line x1="460.0" y1="130.0" x2="480.0" y2="70.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="460.0" cy="130.0" r="3" class="pt"/>
+<text x="447.0" y="125.0" class="label">A</text>
+<text x="485.0" y="90.0" class="ftxt">n</text>
+<text x="410.0" y="175.0" class="label">(3) 1点と法線</text>
+</svg></div>
+<h3 class="level-advanced">5C: 法線ベクトルを求める<span class="level-mark lm-advanced">応用</span></h3>
+<ul class="steps">
+<li>答案用: n = (x,y,z) と置き、n·u=0, n·v=0 を連立</li>
+<li>裏計算: 外積 u × v を計算</li>
+<li>u×v = (u₂v₃−u₃v₂, u₃v₁−u₁v₃, u₁v₂−u₂v₁)</li>
+</ul>
+<div class="note">答案では外積を使わず内積=0で書く</div>
+<h3 class="level-standard">5D: 直線と平面の交点<span class="level-mark lm-standard">標準</span></h3>
+<ul class="steps">
+<li>直線をパラメータ表示 x = a + tl</li>
+<li>平面の方程式に代入</li>
+<li>t を解く → 交点</li>
+</ul>
+<h3 class="level-advanced">5E: 2直線の交点／ねじれの判定<span class="level-mark lm-advanced">応用</span></h3>
+<ul class="steps">
+<li>各直線をパラメータ表示</li>
+<li>連立して解の有無を見る</li>
+<li>解なし → ねじれの位置</li>
+</ul>
+<h3 class="level-standard">5F: 点と直線の距離<span class="level-mark lm-standard">標準</span></h3>
+<ul class="steps">
+<li>点から直線へ垂線の足 H を出す（4-A 正射影）</li>
+<li>距離 = |PH|</li>
+</ul>
+<h3 class="level-standard">5G: 点と平面の距離<span class="level-mark lm-standard">標準</span></h3>
+<ul class="steps">
+<li>公式: d = |α(x₀−a) + β(y₀−b) + γ(z₀−c)| / √(α²+β²+γ²)</li>
+<li>別解: 平面上の点AをとりAPのn方向への正射影の長さ</li>
+</ul>
+<h3 class="level-expert">5H: 共通垂線・最短距離<span class="level-mark lm-expert">発展</span></h3>
+<ul class="steps">
+<li>各直線上に動点 P, Q を置く</li>
+<li>PQ·l₁ = 0, PQ·l₂ = 0 を連立</li>
+<li>最短距離 |PQ|</li>
+</ul>
+<hr style="margin-top:40px">
+<p style="font-size:12px; color:#888;">© 数学フローチャート（ベクトル）</p>
+</body>
+</html>

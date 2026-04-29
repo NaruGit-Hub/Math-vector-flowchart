@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 220" width="340" height="220">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="60,170 260,180 200,60" fill="#f0f0f0" stroke="#000"/>
+<line x1="130.0" y1="200.0" x2="60.0" y2="170.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="130.0" y1="200.0" x2="260.0" y2="180.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="130.0" y1="200.0" x2="200.0" y2="60.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="130.0" y1="200.0" x2="160.0" y2="130.0" class="vec" marker-end="url(#arrow)"/>
+<circle cx="130.0" cy="200.0" r="3" class="pt"/>
+<circle cx="60.0" cy="170.0" r="3" class="pt"/>
+<circle cx="260.0" cy="180.0" r="3" class="pt"/>
+<circle cx="200.0" cy="60.0" r="3" class="pt"/>
+<circle cx="160.0" cy="130.0" r="3" class="pt"/>
+<text x="125.0" y="218.0" class="label">O</text>
+<text x="45.0" y="175.0" class="label">A</text>
+<text x="265.0" y="185.0" class="label">B</text>
+<text x="195.0" y="52.0" class="label">C</text>
+<text x="165.0" y="125.0" class="label">P</text>
+<text x="20.0" y="205.0" class="label">OP = sOA + tOB + uOC, s+t+u=1</text>
+</svg>

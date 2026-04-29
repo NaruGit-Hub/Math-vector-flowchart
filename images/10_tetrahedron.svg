@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="70,200 250,200 180,170" fill="#f0f0f0" stroke="#000"/>
+<line x1="70.0" y1="200.0" x2="160.0" y2="50.0" class="vec-thin"/>
+<line x1="250.0" y1="200.0" x2="160.0" y2="50.0" class="vec-thin"/>
+<line x1="180.0" y1="170.0" x2="160.0" y2="50.0" class="vec-thin"/>
+<line x1="160.0" y1="50.0" x2="160.0" y2="175.0" class="dashed"/>
+<polyline points="160.0,169.0 166.0,169.0 166.0,175.0" class="right-angle"/>
+<circle cx="70.0" cy="200.0" r="3" class="pt"/>
+<circle cx="250.0" cy="200.0" r="3" class="pt"/>
+<circle cx="180.0" cy="170.0" r="3" class="pt"/>
+<circle cx="160.0" cy="50.0" r="3" class="pt"/>
+<text x="55.0" y="205.0" class="label">O</text>
+<text x="255.0" y="205.0" class="label">A</text>
+<text x="185.0" y="175.0" class="label">B</text>
+<text x="155.0" y="42.0" class="label">C</text>
+<text x="165.0" y="180.0" class="label">H</text>
+<text x="170.0" y="112.5" class="label">高さ h</text>
+<text x="40.0" y="230.0" class="label">V = (1/3) × △OAB × h</text>
+</svg>

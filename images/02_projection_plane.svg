@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240">
+
+<style>
+  .axis { stroke: #000; stroke-width: 1; fill: none; }
+  .vec  { stroke: #000; stroke-width: 1.5; fill: none; }
+  .vec-thin { stroke: #555; stroke-width: 1; fill: none; }
+  .dashed { stroke: #555; stroke-width: 1; stroke-dasharray: 4 3; fill: none; }
+  .ftxt { font-family: 'Times New Roman', serif; font-style: italic; font-size: 14px; fill: #000; }
+  .label { font-family: 'Hiragino Sans', sans-serif; font-size: 12px; fill: #000; }
+  .pt { fill: #000; }
+  .filled { fill: #ddd; stroke: #000; stroke-width: 1; }
+  .filled-light { fill: #eee; stroke: #000; stroke-width: 1; }
+  .right-angle { stroke: #000; stroke-width: 1; fill: none; }
+</style>
+
+
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+  </marker>
+  <marker id="arrowgray" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+  </marker>
+</defs>
+
+<polygon points="50,180 300,180 340,130 90,130" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
+<line x1="200.0" y1="155.0" x2="240.0" y2="70.0" class="vec" marker-end="url(#arrow)"/>
+<text x="245.0" y="70.0" class="ftxt">n</text>
+<line x1="140.0" y1="155.0" x2="200.0" y2="50.0" class="vec" marker-end="url(#arrow)"/>
+<text x="155.0" y="97.5" class="ftxt">x</text>
+<line x1="140.0" y1="155.0" x2="220.0" y2="155.0" class="vec-thin" marker-end="url(#arrowgray)"/>
+<line x1="200.0" y1="50.0" x2="220.0" y2="155.0" class="dashed"/>
+<polyline points="212.0,155.0 215.6,147.8 223.6,147.8" class="right-angle"/>
+<circle cx="140.0" cy="155.0" r="3" class="pt"/>
+<circle cx="200.0" cy="50.0" r="3" class="pt"/>
+<circle cx="220.0" cy="155.0" r="3" class="pt"/>
+<text x="35.0" y="195.0" class="label">α</text>
+<text x="225.0" y="170.0" class="label">射影</text>
+</svg>
